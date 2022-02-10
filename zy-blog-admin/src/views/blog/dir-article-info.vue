@@ -63,13 +63,23 @@
               </lk-tool-button>
             </template>
           </el-table-column>
-          <el-table-column v-else-if="field.key=='taskType'" :align="field.align" :label="field.name"
+          <el-table-column v-else-if="field.key=='isTop'" :align="field.align" :label="field.name"
                            :width="field.width" :fixed="field.fixed"
           >
             <template slot-scope="scope">
               <div class="col-tags">
-                <el-tag class="tags" type="warning" v-if="scope.row.taskType == 1">类型2</el-tag>
-                <el-tag class="tags" type="" v-if="scope.row.taskType == 0">类型1</el-tag>
+                <el-tag class="tags" type="warning" v-if="scope.row.isTop == 1">是</el-tag>
+                <el-tag class="tags" type="" v-if="scope.row.isTop == 0">否</el-tag>
+              </div>
+            </template>
+          </el-table-column>
+          <el-table-column v-else-if="field.key=='isHot'" :align="field.align" :label="field.name"
+                           :width="field.width" :fixed="field.fixed"
+          >
+            <template slot-scope="scope">
+              <div class="col-tags">
+                <el-tag class="tags" type="warning" v-if="scope.row.isHot == 1">是</el-tag>
+                <el-tag class="tags" type="" v-if="scope.row.isHot == 0">否</el-tag>
               </div>
             </template>
           </el-table-column>
@@ -171,18 +181,18 @@ export default {
       },
       //列表渲染数据列
       fields: [
-        {key: 'id', name: '任务ID', show: true, width: '180', enableSort: false, align: "center", fixed: false},
-        {key: 'taskName', name: '任务名称', show: true, width: '180', enableSort: false, align: "center", fixed: false},
-        // {key: 'budget', name: '任务预算', show: true, width: '', enableSort: false, align: "center", fixed: false},
-        {key: 'companyName', name: '需求公司', show: true, width: '180', enableSort: false, align: "center", fixed: false},
-        {key: 'phone', name: '联系人手机号', show: true, width: '120', enableSort: false, align: "center", fixed: false},
-        {key: 'startTimestamp', name: '任务发起时间', show: true, width: '180', enableSort: false, align: "center", fixed: false},
-        {key: 'endTimestamp', name: '任务截止时间', show: true, width: '180', enableSort: false, align: "center", fixed: false},
-        {key: 'updateTimestamp', name: '任务修改时间', show: true, width: '180', enableSort: false, align: "center", fixed: false},
-        {key: 'content', name: '任务内容', show: true, width: '180', enableSort: false, align: "center", fixed: false},
-        {key: 'workCycle', name: '工作周期', show: true, width: '180', enableSort: false, align: "center", fixed: false},
-        {key: 'workPlace', name: '工作地点', show: true, width: '180', enableSort: false, align: "center", fixed: false},
-        {key: 'taskType', name: '任务类型', show: true, width: '80', enableSort: false, align: "center", fixed: 'right'},
+        {key: 'id', name: 'ID', show: true, width: '180', enableSort: false, align: "center", fixed: false},
+        {key: 'title', name: '文章标题', show: true, width: '180', enableSort: false, align: "center", fixed: false},
+        {key: 'summary', name: '文章简介', show: true, width: '180', enableSort: false, align: "center", fixed: false},
+        {key: 'commentsCount', name: '评论数', show: true, width: '120', enableSort: false, align: "center", fixed: false},
+        {key: 'viewsCount', name: '浏览人数', show: true, width: '180', enableSort: false, align: "center", fixed: false},
+        {key: 'img', name: '文章图片', show: true, width: '180', enableSort: false, align: "center", fixed: false},
+        {key: 'content', name: '文章内容', show: true, width: '180', enableSort: false, align: "center", fixed: false},
+        {key: 'isTop', name: '是否置顶', show: true, width: '80', enableSort: false, align: "center", fixed: false},
+        {key: 'isHot', name: '是否火热', show: true, width: '80', enableSort: false, align: "center", fixed: false},
+        {key: 'pubTime', name: '发布时间', show: true, width: '180', enableSort: false, align: "center", fixed: false},
+        {key: 'insertTime', name: '插入时间', show: true, width: '', enableSort: false, align: "center", fixed: false},
+        {key: 'updateTime', name: '修改时间', show: true, width: '', enableSort: false, align: "center", fixed: false},
         {key: 'toolButton', name: '操作', show: true, width: '200', enableSort: false, align: "center", fixed: 'right'},
       ]
     }
@@ -336,7 +346,7 @@ export default {
 <style lang="scss" scoped>
 .col-tags {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
 

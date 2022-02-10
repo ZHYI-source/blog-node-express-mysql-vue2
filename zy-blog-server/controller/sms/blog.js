@@ -13,7 +13,13 @@ exports.articleList = async (req, res, next) => {
                 return
             }
             if (result) {
-                res.json({data: result, parms: parms}) //以json的方式返回客户端
+                let data = {
+                    current: 1,
+                    records: result,
+                    size: 20,
+                    total: 33,
+                }
+                res.json(data) //以json的方式返回客户端
             }
         })
     } catch (err) {
