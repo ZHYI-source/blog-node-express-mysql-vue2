@@ -73,7 +73,7 @@
         </lk-get-row>
         <lk-get-row>
           <el-form-item label="文章内容" prop="content">
-           <tinymce width="900" height="150"/>
+           <tinymce width="900" height="150" v-model="form.content"/>
           </el-form-item>
         </lk-get-row>
         <el-divider/>
