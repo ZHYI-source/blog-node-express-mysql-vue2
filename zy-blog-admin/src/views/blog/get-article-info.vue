@@ -4,51 +4,70 @@
     <section class="lk-add-pop">
       <el-form ref="formAdd" :model="form" :rules="rules" label-width="100px">
         <lk-get-row>
-          <el-form-item label="任务名称" prop="taskName">
-            <el-input clearable v-model.trim="form.taskName" class="input-one" size="mini" placeholder="请输入任务名称"
-                      show-word-limit maxlength="50"
+          <el-form-item label="文章标题" prop="title">
+            <el-input clearable v-model.trim="form.title" class="input-one" size="mini" placeholder="请输入任务名称"
             />
           </el-form-item>
         </lk-get-row>
-
         <lk-get-row>
-          <el-form-item label="需求公司" prop="companyName">
-            <el-input clearable v-model.trim="form.companyName" class="input-one" size="mini" placeholder="请输入需求公司名称"
-                      show-word-limit maxlength="50"
-            />
+          <el-form-item label="文章简介" prop="summary">
+            <el-input type="textarea"
+                      placeholder="请输入文章简介"
+                      :autosize="{ minRows: 3}"
+                      v-model="form.summary" style="width: 610px;"
+            ></el-input>
           </el-form-item>
-          <el-form-item label="截止时间" prop="endTimestamp">
-            <el-date-picker
-                class="input-one"
-                v-model="form.endTimestamp"
-                size="mini"
-                type="datetime"
-                placeholder="选择截止时间"
+        </lk-get-row>
+        <lk-get-row>
+          <el-form-item label="文章图片" prop="img">
+            <el-upload
+              :key="commonKey+2"
+              class="avatar-uploader"
+              action="/taxi-file/fileserver/upload/v2"
+              :show-file-list="false"
+              :on-success="handleAvatarSuccessLicenseUrl"
+              :before-upload="beforeAvatarUpload">
+              <img v-if="form.img"  :src="form.img" class="avatar">
+              <el-button v-else size="mini" icon="el-icon-upload2" type="primary">点击上传</el-button>
+            </el-upload>
+          </el-form-item>
+        </lk-get-row>
+        <lk-get-row>
+          <el-form-item label="是否火热" prop="isHot">
+            <el-select
+              clearable
+              style="padding-top: 3px"
+              v-model.trim="form.isTop"
+              class="input-one" size="mini" placeholder="请选择是否火热"
+              show-word-limit maxlength="20"
             >
-            </el-date-picker>
+              <el-option
+                label="否"
+                :value="0"
+              >
+              </el-option>
+              <el-option
+                label="是"
+                :value="1"
+              >
+              </el-option>
+            </el-select>
           </el-form-item>
-        </lk-get-row>
-        <lk-get-row>
-          <el-form-item label="联系人电话" prop="phone">
-            <el-input clearable v-model.number="form.phone" class="input-one" size="mini" placeholder="请输入联系人电话"
-                      show-word-limit maxlength="50"
-            />
-          </el-form-item>
-          <el-form-item label="任务类型" prop="taskType">
+          <el-form-item label="是否置顶" prop="isTop">
             <el-select
                 clearable
                 style="padding-top: 3px"
-                v-model.trim="form.taskType"
+                v-model.trim="form.isTop"
                 class="input-one" size="mini" placeholder="请选择任务类型"
                 show-word-limit maxlength="20"
             >
               <el-option
-                  label="类型1"
+                  label="否"
                   :value="0"
               >
               </el-option>
               <el-option
-                  label="类型2"
+                  label="是"
                   :value="1"
               >
               </el-option>
@@ -56,33 +75,8 @@
           </el-form-item>
         </lk-get-row>
         <lk-get-row>
-          <el-form-item label="任务内容" prop="content">
-            <el-input type="textarea"
-                      placeholder="请输入任务内容"
-                      :autosize="{ minRows: 6}"
-                      maxlength="275"
-                      v-model="form.content" style="width: 610px;"
-            ></el-input>
-          </el-form-item>
-        </lk-get-row>
-        <lk-get-row>
-          <el-form-item label="工作周期" prop="workCycle">
-            <el-input type="textarea"
-                      placeholder="请输入工作周期"
-                      :autosize="{ minRows: 2}"
-                      maxlength="275"
-                      v-model="form.workCycle" style="width: 610px;"
-            ></el-input>
-          </el-form-item>
-        </lk-get-row>
-        <lk-get-row>
-          <el-form-item label="工作地点" prop="workPlace">
-            <el-input type="textarea"
-                      placeholder="请输入工作地点"
-                      :autosize="{ minRows: 2}"
-                      maxlength="275"
-                      v-model="form.workPlace" style="width: 610px;"
-            ></el-input>
+          <el-form-item label="文章内容" prop="content">
+           <tinymce width="900" height="200"/>
           </el-form-item>
         </lk-get-row>
         <el-divider/>
@@ -98,10 +92,11 @@ import LkGetRow from "@/components/common/lk-get-row";
 import LkGetButton from "@/components/common/lk-get-button";
 import LkBackList from "@/components/common/lk-back-list";
 import LkEdit from "@/components/common/lk-edit";
+import Tinymce from "@/components/Tinymce";
 
 export default {
   name: "get-article-info",
-  components: {LkEdit, LkBackList, LkGetButton, LkGetRow},
+  components: {Tinymce, LkEdit, LkBackList, LkGetButton, LkGetRow},
   props: {
     updateData: {
       type: Object,
@@ -125,6 +120,7 @@ export default {
   },
   data() {
     return {
+      commonKey:0,
       form: {},
       isAdd: true,
       rules: {
@@ -157,6 +153,21 @@ export default {
         }
       });
     },
+    handleAvatarSuccessLicenseUrl(res, file) {
+      this.form.img = res[0].url;
+      this.commonKey+=1
+    },
+    beforeAvatarUpload(file) {
+      const isLt2M = file.size / 1024 / 1024 < 2;
+      if (!(file.type === 'image/png' || file.type === 'image/gif' || file.type === 'image/jpg' || file.type === 'image/jpeg')) {
+        this.$message.error('请上传格式为image/png, image/gif, image/jpg, image/jpeg的图片');
+        return
+      }
+      if (!isLt2M) {
+        this.$message.error('上传头像图片大小不能超过 2MB!');
+      }
+      return isLt2M;
+    },
     close(show) {
       if (show) {
         this.toast.confirmSave().then(() => {
@@ -170,6 +181,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+ .avatar {
+   border-radius: 8px;
+ }
 </style>
