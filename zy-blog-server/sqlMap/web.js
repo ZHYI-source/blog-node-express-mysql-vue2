@@ -1,16 +1,12 @@
-/**
- * sql语句文件
- * */
 
-// sqlmap.js
-var sqlMap = {
-    //菜单表 sys_menu
-    menu: {
-        all: "SELECT * FROM sys_menu"
-    },
-    dict: {
-        all_dict_type: "SELECT * FROM sys_dict_type"
-    },
+/**
+ *@author ZY
+ *@date 2022/2/10
+ *@Description:客户端的sql语句文件
+ */
+
+const webSqlMap = {
+
     article: {
         all: "SELECT * FROM zy_article"
     },
@@ -23,4 +19,4 @@ var sqlMap = {
     //     query: 'SELECT * FROM mk_dict WHERE id=?',//详情查询
     // },
    }
-module.exports = sqlMap
+module.exports = webSqlMap

@@ -1,4 +1,4 @@
-let $sql = require('../../sqlMap') // sql语句
+let $sql = require('../../sqlMap/system') // sql语句
 let conn = require('../../common') // 引入公共连接池
 let tools = require('../../utils/tools') // 引入工具模块
 
