@@ -5,8 +5,7 @@
       <el-form ref="formAdd" :model="form" :rules="rules" label-width="100px">
         <lk-get-row>
           <el-form-item label="文章标题" prop="title">
-            <el-input clearable v-model.trim="form.title" class="input-one" size="mini" placeholder="请输入任务名称"
-            />
+            <el-input clearable v-model.trim="form.title" class="input-one" size="mini" placeholder="请输入文章标题"/>
           </el-form-item>
         </lk-get-row>
         <lk-get-row>
@@ -37,9 +36,8 @@
             <el-select
               clearable
               style="padding-top: 3px"
-              v-model.trim="form.isTop"
+              v-model.trim="form.isHot"
               class="input-one" size="mini" placeholder="请选择是否火热"
-              show-word-limit maxlength="20"
             >
               <el-option
                 label="否"
@@ -59,7 +57,6 @@
                 style="padding-top: 3px"
                 v-model.trim="form.isTop"
                 class="input-one" size="mini" placeholder="请选择任务类型"
-                show-word-limit maxlength="20"
             >
               <el-option
                   label="否"
@@ -76,7 +73,7 @@
         </lk-get-row>
         <lk-get-row>
           <el-form-item label="文章内容" prop="content">
-           <tinymce width="900" height="200"/>
+           <tinymce width="900" height="150"/>
           </el-form-item>
         </lk-get-row>
         <el-divider/>
@@ -124,13 +121,10 @@ export default {
       form: {},
       isAdd: true,
       rules: {
-        taskName: [{required: true, message: '请输入任务名称', trigger: 'blur'},],
-        companyName: [{required: true, message: '请输入需求公司名称', trigger: 'blur'},],
-        content: [{required: true, message: '请输入任务内容', trigger: 'blur'},],
-        endTimestamp: [{required: true, message: '请选择截止时间', trigger: 'blur'},],
-        taskType: [{required: true, message: '请输入任务类型', trigger: 'blur'},],
-        phone: [{required: true, message: '请输入联系人电话', trigger: 'blur'},],
-        budget: [{required: true, message: '请输入任务预算', trigger: 'blur'},],
+        title: [{required: true, message: '请输入文章标题', trigger: 'blur'},],
+        summary: [{required: true, message: '请输入文章简介', trigger: 'blur'},],
+        content: [{required: true, message: '请输入文章内容', trigger: 'blur'},],
+
       }
     }
   },
