@@ -320,10 +320,9 @@ export default {
     goDelete(data) {
       let p = {
         id: data.id || '',
-        status: 1
       }
       this.toast.confirmDelete().then(() => {
-        this.request('api_admin_task_task_change', p).then(res => {
+        this.request('api_blog_article_delete', p).then(res => {
           this.$message({
             message: '删除成功！',
             type: 'success'

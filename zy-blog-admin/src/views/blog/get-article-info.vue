@@ -124,7 +124,6 @@ export default {
         title: [{required: true, message: '请输入文章标题', trigger: 'blur'},],
         summary: [{required: true, message: '请输入文章简介', trigger: 'blur'},],
         content: [{required: true, message: '请输入文章内容', trigger: 'blur'},],
-
       }
     }
   },
@@ -132,9 +131,7 @@ export default {
     save() {
       this.$refs['formAdd'].validate((valid) => {
         if (valid) {
-          this.form.endTimestamp = new Date(this.form.endTimestamp).getTime()
-          this.form.taskType = parseInt(this.form.taskType)
-          let api = this.isAdd ? 'api_admin_task_task_create' : 'api_admin_task_task_change'
+          let api = this.isAdd ? 'api_blog_article_create' : 'api_blog_article_update'
           this.request(api, this.form).then(res => {
             this.toast.success(this.isAdd ? '发布成功！' : '修改成功！')
             this.$emit('close');
