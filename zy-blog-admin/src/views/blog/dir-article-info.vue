@@ -10,12 +10,12 @@
                       @search="goPage(1)"
       >
         <el-form-item class="inline-item" prop="taskName">
-          <el-input v-model.trim="query.params.taskName" clearable placeholder="输入任务名称搜索" size="mini"
+          <el-input v-model.trim="query.params.taskName" clearable placeholder="输入文章名称搜索" size="mini"
                     @clear="goPage(1)" @keyup.enter.native="goPage(1)"
           ></el-input>
         </el-form-item>
         <el-form-item class="inline-item" prop="id">
-          <el-input v-model.trim="query.params.id" clearable placeholder="输入任务ID搜索" size="mini"
+          <el-input v-model.trim="query.params.id" clearable placeholder="输入文章ID搜索" size="mini"
                     @clear="goPage(1)" @keyup.enter.native="goPage(1)"
           ></el-input>
         </el-form-item>
@@ -107,7 +107,7 @@
 /**
  *@author ZY
  *@date 2021/12/9
- *@Description:任务信息
+ *@Description:文章信息
  */
 import {getToken} from "@/utils/auth";
 
@@ -135,7 +135,7 @@ export default {
       uploadHeader: {
         'x-access-token': getToken()
       },
-      updateData: {},//修改任务数据
+      updateData: {},//修改文章数据
       show: {
         edit: false,
         view: false,
@@ -314,9 +314,9 @@ export default {
     //跳转到查看详情
     goView(data) {
       let datas = data ? data : {};
-      this.toast.showSmallModal('任务详情', ViewArticleInfo, {datas})
+      this.toast.showSmallModal('文章详情', ViewArticleInfo, {datas})
     },
-    //删除任务
+    //删除文章
     goDelete(data) {
       let p = {
         id: data.id || '',

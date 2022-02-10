@@ -1,6 +1,6 @@
 <template>
   <section>
-    <lk-view-header @back="$emit('close')" :content="isAdd?'添加任务':'修改任务'"/>
+    <lk-view-header @back="$emit('close')" :content="isAdd?'添加文章':'修改文章'"/>
     <section class="lk-add-pop">
       <el-form ref="formAdd" :model="form" :rules="rules" label-width="100px">
         <lk-get-row>
