@@ -28,6 +28,7 @@ exports.upload = async (req, res, next) => {
     const busboy = Busboy({headers: req.headers});
     // 解析请求文件事件
     busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
+        console.log(filename)
         let fileNames = ''
         let _uploadFilePath = '' //存放的完整路径
         let _savePath = '' //存放数据库的完整路径
@@ -85,8 +86,11 @@ exports.getImg = async (req, res, next) => {
     const filePath = path.resolve(__dirname, `../../public/img/${id}`);
     //设置请求的返回头type,content的type类型列表见上面
     res.setHeader("Content-Type", 'image/jpeg');
-//格式必须为 binary 否则会出错
+    //格式必须为 binary 否则会出错
     var content = fs.readFileSync(filePath,"binary");
+    if (!content){
+       res.json({msg:'无'})
+    }
     res.writeHead(200, "Ok");
     res.write(content,"binary"); //格式必须为 binary，否则会出错
     res.end();
