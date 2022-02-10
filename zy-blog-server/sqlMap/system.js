@@ -8,7 +8,7 @@
 const systemSqlMap = {
     //博文管理
     articleOpt: {
-        list: "SELECT * FROM zy_article ORDER BY insetTime DESC",
+        list: "SELECT * FROM zy_article ORDER BY insertTime DESC",
 
         count: "SELECT COUNT(id) FROM zy_article;",
 
@@ -16,7 +16,7 @@ const systemSqlMap = {
 
         delete:"DELETE FROM zy_article WHERE id=?",
 
-        update:"UPDATE zy_article SET title=?,summary=?,img=?,content=?,isTop=?,isHot=?,img=?,updateTime=? WHERE id = ?",
+        update:"UPDATE zy_article SET title=?,summary=?,commentsCount=?,img=?,content=?,isTop=?,isHot=?,pubTime=?,insertTime=?,updateTime=? WHERE id=?",
     },
 
    }

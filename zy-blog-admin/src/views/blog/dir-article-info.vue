@@ -252,14 +252,7 @@ export default {
         this.query.params.startTime = this.date && this.date.length > 0 ? this.date[0] : null
         this.query.params.endTime = this.date && this.date.length > 0 ? this.date[1] : null
         this.request('api_blog_article_list', this.query).then(res => {
-          let datas = res.records || []
-          for (const data of datas) {
-            //时间格式化
-            data.startTimestamp = Tools.fmtLong2DateTime(Number(data.startTimestamp))
-            data.endTimestamp && (data.endTimestamp = Tools.fmtLong2DateTime(Number(data.endTimestamp)))
-            data.updateTimestamp = Tools.fmtLong2DateTime(Number(data.updateTimestamp))
-          }
-          this.datas = datas;
+          this.datas = res.records || [];
           this.temp.dataSize = res.total;
           this.loading.list = false;
         })
