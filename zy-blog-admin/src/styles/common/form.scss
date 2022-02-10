@@ -1,0 +1,35 @@
+.lk-add-form {
+  padding: 28px 24px 0 31px;
+  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.lk-add-pop {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  text-align: left;
+  padding: 13px;
+
+  .row-title {
+    font-weight: bold;
+    font-size: 14px;
+    color: #8b8989;
+    line-height: 26px;
+  }
+}
+
+.v-dialog-modal {
+  z-index: 9999 !important;
+}
+
+.v-dialog-overlay {
+  z-index: 998 !important;
+}
+
+.inline-item {
+
+}

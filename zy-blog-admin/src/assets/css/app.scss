@@ -1,0 +1,73 @@
+
+.app-table {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  height: 100%;
+  //列表的查询
+  .app-table-query {
+    padding: 8px;
+    margin-bottom: 5px;
+    background-color: #ffffff;
+    //border-bottom: solid 1px #cbcbcb;
+    display: grid;
+
+    grid-auto-flow: column;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-gap: 5px;
+    justify-content:start;
+    align-content: center;
+    align-items: center;
+
+    .table-header-query {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  //列表的工具栏
+  .app-table-tools {
+    padding: 8px ;
+    background-color: #ffffff;
+    display: inline-grid;
+    grid-auto-flow: column;
+    grid-template-columns: auto;
+    grid-gap: 5px;
+    justify-content:start;
+  }
+
+  //列表布局
+  .app-table-contain {
+    padding: 5px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    background-color: #ffffff;
+  }
+
+}
+
+.app-table-tools-pop-title {
+  font-weight: bold;
+  margin: 0px -12px 16px -12px;
+  padding: 0 12px 12px 12px;
+  border-bottom: solid 1px rgba(203, 203, 203, 0.6);
+}
+
+.app-form-class {
+  padding: 16px 16px;
+  border-bottom: solid 1px rgba(203, 203, 203, 0.6);
+}
+
+.el-dialog__wrapper {
+  .el-dialog {
+    .el-dialog__header {
+      border-bottom: solid 1px rgba(203, 203, 203, 0.6);
+    }
+
+  }
+}
+
+
