@@ -104,4 +104,32 @@ exports.articleUpdate = async (req, res, next) => {
         next(err)
     }
 }
+//删除文章
+exports.articleDelete = async (req, res, next) => {
+    try {
+        let parms = req.body
+        let sql = $systemSqlMap.articleOpt.delete
+        let data =[parms.id,]
+        conn.query(sql,data, function (err, result) {
+            if (err) {
+                console.log("错误", err)
+                let data = {
+                    error:1,
+                    errMsg:'删除失败',
+                    data:err
+                }
+                res.json(data)
+            }
+            if (result) {
+                let data = {
+                    error:0,
+                    msg:'删除成功!'
+                }
+                res.json(data) //以json的方式返回客户端
+            }
+        })
+    } catch (err) {
+        next(err)
+    }
+}
 
