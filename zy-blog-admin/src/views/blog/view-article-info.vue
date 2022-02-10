@@ -3,43 +3,37 @@
     <section class="task-view-box">
       <section class="task-info">
         <lk-view-row>
-          <lk-view-item title="任务ID" label-width="70">{{ form.id }}</lk-view-item>
-          <lk-view-item title="任务名称" label-width="70">{{ form.taskName }}</lk-view-item>
+          <lk-view-item title="文章标题" label-width="70">{{ form.title }}</lk-view-item>
         </lk-view-row>
         <lk-view-row>
-          <lk-view-item title="任务类型" label-width="70">{{ form.taskType == 0 ? '类型1' : '类型2' }}</lk-view-item>
-          <lk-view-item title="联系人号码" label-width="70">{{ form.phone }}</lk-view-item>
+          <lk-view-item title="是否置顶" label-width="70">{{ form.isTop == 0 ? '否' : '是' }}</lk-view-item>
+          <lk-view-item title="是否火热" label-width="70">{{ form.isHot == 0 ? '否' : '是' }}</lk-view-item>
         </lk-view-row>
         <lk-view-row>
-          <!--          <lk-view-item title="任务预算" label-width="70">{{ form.budget + ' 元'}}</lk-view-item>-->
-          <lk-view-item title="需求公司" label-width="70">{{ form.companyName }}</lk-view-item>
+          <lk-view-item title="评论数" label-width="70">{{ form.commentsCount}}</lk-view-item>
+          <lk-view-item title="浏览人数" label-width="70">{{ form.viewsCount }}</lk-view-item>
         </lk-view-row>
         <lk-view-row>
-          <lk-view-item title="发起时间" label-width="70">
-            <lk-view-date :date="form.startTimestamp"/>
+          <lk-view-item title="发布时间" label-width="70">
+            <lk-view-date :date="form.pubTime"/>
           </lk-view-item>
-          <lk-view-item title="截止时间" label-width="70">
-            <lk-view-date :date="form.endTimestamp"/>
-          </lk-view-item>
-        </lk-view-row>
-        <lk-view-row>
-          <lk-view-item title="更新时间" label-width="70">
-            <lk-view-date :date="form.updateTimestamp"/>
+          <lk-view-item title="插入时间" label-width="70">
+            <lk-view-date :date="form.insertTime"/>
           </lk-view-item>
         </lk-view-row>
         <lk-view-row>
-          <lk-view-item title="工作周期" label-width="70">
-            <lk-view-textarea :content="form.workCycle|| '无'"/>
+          <lk-view-item title="修改时间" label-width="70">
+            <lk-view-date :date="form.updateTime"/>
           </lk-view-item>
         </lk-view-row>
         <lk-view-row>
-          <lk-view-item title="工作地点" label-width="70">
-            <lk-view-textarea :content="form.workPlace || '无'"/>
+          <lk-view-item title="文章简介" label-width="70">
+            <lk-view-textarea :content="form.summary|| '无'"/>
           </lk-view-item>
         </lk-view-row>
         <lk-view-row>
-          <lk-view-item title="任务内容" label-width="70">
-            <lk-view-textarea :content="form.content"/>
+          <lk-view-item title="文章内容" label-width="70">
+            <lk-view-textarea :content="form.content || '无'"/>
           </lk-view-item>
         </lk-view-row>
       </section>
