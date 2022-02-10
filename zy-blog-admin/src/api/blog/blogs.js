@@ -8,5 +8,8 @@ export const blogApi ={
 
   /**博客文章管理**/
   api_blog_article_list: {url: '/zy-server/article/list', method: 'post',},//文章列表
+  api_blog_article_create: {url: '/zy-server/article/create', method: 'post',},//文章添加
+  api_blog_article_update: {url: '/zy-server/article/update', method: 'post',},//文章修改
+  api_blog_article_delete: {url: '/zy-server/article/delete', method: 'post',},//文章删除
 
 }
