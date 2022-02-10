@@ -21,7 +21,7 @@ function getSuffixName(fileName) {
     let nameList = fileName.split('.')
     return nameList[nameList.length - 1]
 }
-
+let imgList = []
 // const host = process.env.VUE_HOST
 //文件上传
 exports.upload = async (req, res, next) => {
@@ -31,26 +31,26 @@ exports.upload = async (req, res, next) => {
         let fileNames = ''
         let _uploadFilePath = '' //存放的完整路径
         let _savePath = '' //存放数据库的完整路径
-        //判断文件类型
+        // 多图上传
         fileNames = Date.now() + Math.random().toString(16).substr(2) + '.' + getSuffixName(filename.filename)
         _uploadFilePath = path.join('public', '/img', fileNames)
         _savePath = fileNames //存储
-
         let saveTo = path.join(_uploadFilePath)
+        let url = 'http://localhost:5220/zy-server/public/images?id='+ fileNames
         // 文件保存到制定路径
         file.pipe(fs.createWriteStream(saveTo));
 
-        // 文件写入事件结束
+        // // 文件写入事件结束
         file.on('end', function () {
             let datas = {
                 message: '文件上传成功',
-                url: 'http://localhost:5220/zy-server/public/images?id='+ fileNames
+                url:url
             }
             res.json(datas)
         })
     });
-    busboy.on('finish', function (data) {
-        console.log('文件上传成功！', data)
+    busboy.on('finish', function () {
+        console.log('文件上传结束！',)
     });
     // 解析错误事件
     busboy.on('error', function (err) {

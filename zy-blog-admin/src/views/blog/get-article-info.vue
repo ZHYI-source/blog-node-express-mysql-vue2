@@ -19,15 +19,16 @@
         </lk-get-row>
         <lk-get-row>
           <el-form-item label="文章图片" prop="img">
+            <lk-img-list v-if="form.img" :urls="[form.img]"/>
             <el-upload
               :key="commonKey+2"
               class="avatar-uploader"
               action="/zy-server/upload/v1"
+
               :show-file-list="false"
               :on-success="handleAvatarSuccessLicenseUrl"
               :before-upload="beforeAvatarUpload">
-              <img v-if="form.img"  :src="form.img" class="avatar">
-              <el-button v-else size="mini" icon="el-icon-upload2" type="primary">点击上传</el-button>
+              <el-button  size="mini" icon="el-icon-upload2" type="primary">点击上传</el-button>
             </el-upload>
           </el-form-item>
         </lk-get-row>
@@ -90,10 +91,11 @@ import LkGetButton from "@/components/common/lk-get-button";
 import LkBackList from "@/components/common/lk-back-list";
 import LkEdit from "@/components/common/lk-edit";
 import Tinymce from "@/components/Tinymce";
+import LkImgList from "@/components/common/lk-img-list";
 
 export default {
   name: "get-article-info",
-  components: {Tinymce, LkEdit, LkBackList, LkGetButton, LkGetRow},
+  components: {LkImgList, Tinymce, LkEdit, LkBackList, LkGetButton, LkGetRow},
   props: {
     updateData: {
       type: Object,
