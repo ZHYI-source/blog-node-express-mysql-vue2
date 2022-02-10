@@ -63,6 +63,15 @@
               </lk-tool-button>
             </template>
           </el-table-column>
+          <el-table-column v-else-if="field.key=='img'" :align="field.align" :label="field.name"
+                           :width="field.width" :fixed="field.fixed"
+          >
+            <template slot-scope="scope">
+              <div class="col-tags">
+               <a :href="scope.row.img" target="_blank" style="color: #0a76a4">查看</a>
+              </div>
+            </template>
+          </el-table-column>
           <el-table-column v-else-if="field.key=='isTop'" :align="field.align" :label="field.name"
                            :width="field.width" :fixed="field.fixed"
           >
