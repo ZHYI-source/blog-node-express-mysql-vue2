@@ -1,5 +1,7 @@
 import {driverScore} from '../api/driverScore/driverScore'
-import {zyApi} from '../api/zz/zzPages'//引入zz-api
+import {zyApi} from '../api/zz/zzPages'
+import {blogApi} from "@/api/blog/blogs";
+//引入zz-api
 /* eslint-disable spaced-comment,semi */
 /**
  * url 访问地址
@@ -7,9 +9,10 @@ import {zyApi} from '../api/zz/zzPages'//引入zz-api
  */
 const methodMap = {
 
-  /******中智项目api分离*****/
+  /******项目api分离*****/
 
   ...zyApi,
+  ...blogApi, //博客文章api
 
   /***********************/
 

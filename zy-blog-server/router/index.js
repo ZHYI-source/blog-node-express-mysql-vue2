@@ -2,9 +2,11 @@
 const  express = require ('express')
 
 const router = express.Router()
-//菜单相关路由
-router.use(require('./blog/article'))
+//web端
+router.use(require('./web/article'))
+//管理端
 router.use(require('./system/sms'))
+router.use(require('./system/blog'))
 
 
 module.exports = router

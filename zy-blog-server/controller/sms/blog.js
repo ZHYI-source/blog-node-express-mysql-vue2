@@ -2,10 +2,10 @@ let $sql = require('../../sqlMap') // sql语句
 let conn = require('../../common') // 引入公共连接池
 let tools = require('../../utils/tools') // 引入工具模块
 
-//查询字典列表业务处理
-exports.queryDictType = async (req, res, next) => {
+//查询文章列表
+exports.articleList = async (req, res, next) => {
     try {
-        let sql = $sql.dict.all_dict_type
+        let sql = $sql.article.all
         let parms = req.body
         conn.query(sql, function (err, result) {
             if (err) {
@@ -19,6 +19,5 @@ exports.queryDictType = async (req, res, next) => {
     } catch (err) {
         next(err)
     }
-
 }
 

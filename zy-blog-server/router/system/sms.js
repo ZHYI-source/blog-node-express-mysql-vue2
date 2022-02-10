@@ -1,7 +1,7 @@
 /**
  *@author ZY
  *@date 2022/2/10
- *@Description:后台系统
+ *@Description:后台系统管理
 */
 let express = require('express') // express框架
 let router = express.Router() // express路由

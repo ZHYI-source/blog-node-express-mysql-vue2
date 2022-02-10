@@ -1,11 +1,9 @@
-/**
- * 菜单
- * */
+/** 文章 * */
 let express = require('express') // express框架
 let router = express.Router() // express路由
-const menuCtrl = require ('../../controller/menu/menu')
+const articleCtrl = require ('../../controller/web/article')
 // 查询文章列表接口，
-router.get('/system/menu', menuCtrl.queryMenuList)
+router.post('/zy_blog/dir_article', articleCtrl.queryArticle)
 
 
 module.exports = router
