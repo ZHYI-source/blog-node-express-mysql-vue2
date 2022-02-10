@@ -2,6 +2,8 @@
 const  express = require ('express')
 
 const router = express.Router()
+//文件上传
+router.use(require('./upload/upload'))
 //web端
 router.use(require('./web/article'))
 //管理端

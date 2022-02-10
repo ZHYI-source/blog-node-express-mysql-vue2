@@ -22,7 +22,7 @@
             <el-upload
               :key="commonKey+2"
               class="avatar-uploader"
-              action="/taxi-file/fileserver/upload/v2"
+              action="/zy-server/upload/v1"
               :show-file-list="false"
               :on-success="handleAvatarSuccessLicenseUrl"
               :before-upload="beforeAvatarUpload">
@@ -145,10 +145,12 @@ export default {
       });
     },
     handleAvatarSuccessLicenseUrl(res, file) {
-      this.form.img = res[0].url;
+      console.log(res)
+      this.form.img = res.url;
       this.commonKey+=1
     },
     beforeAvatarUpload(file) {
+      console.log(file)
       const isLt2M = file.size / 1024 / 1024 < 2;
       if (!(file.type === 'image/png' || file.type === 'image/gif' || file.type === 'image/jpg' || file.type === 'image/jpeg')) {
         this.$message.error('请上传格式为image/png, image/gif, image/jpg, image/jpeg的图片');

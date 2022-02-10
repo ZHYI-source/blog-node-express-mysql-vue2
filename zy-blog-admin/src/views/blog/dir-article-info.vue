@@ -332,7 +332,7 @@ export default {
           this.getDataList()
         }).catch(err => {
           this.$message({
-            message: err.msg,
+            message: err.errMsg,
             type: 'error'
           });
           // console.log(err)
