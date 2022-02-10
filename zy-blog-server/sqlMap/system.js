@@ -6,23 +6,16 @@
 */
 
 const systemSqlMap = {
-    //菜单表 sys_menu
-    menu: {
-        all: "SELECT * FROM sys_menu"
+    //博文管理
+    articleOpt: {
+        list: "SELECT * FROM zy_article",
+
+        create:"INSERT INTO zy_article (id,title,summary,commentsCount,img,content,isTop,isHot,pubTime,insertTime,updateTime) VALUES (?,?,?,?,?,?,?,?,?,?,?)",
+
+        delete:"DELETE FROM zy_article WHERE id=?",
+
+        update:"UPDATE zy_article SET title=?,summary=?,img=?,content=?,isTop=?,isHot=?,img=?,updateTime=? WHERE id = ?",
     },
-    dict: {
-        all_dict_type: "SELECT * FROM sys_dict_type"
-    },
-    article: {
-        all: "SELECT * FROM zy_article"
-    },
-    // //全局字典
-    // dict: {
-    //     add: "INSERT INTO mk_dict (id,name,description,createdTime,modifyTime,codeName) VALUES (?,?,?,?,?,?)",//增加字典
-    //     all: 'SELECT * FROM sys_dict',//查询所有字典
-    //     del: 'DELETE FROM mk_dict WHERE id=?',// 删除字典
-    //     update:'UPDATE mk_dict SET name=?,description=?,createdTime=?,modifyTime=?,codeName=? WHERE id = ?',
-    //     query: 'SELECT * FROM mk_dict WHERE id=?',//详情查询
-    // },
+
    }
 module.exports = systemSqlMap
