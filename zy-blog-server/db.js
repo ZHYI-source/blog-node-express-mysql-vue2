@@ -14,9 +14,8 @@ module.exports = {
     mysql: {
         host: "localhost",
         user: "root",
-        // password: "root",
-        // database: "serves",
-        password: "zhouyi....568568",
+        // password: "zhouyi....568568",
+        password: "root",
         database: "zy-blog",
         port: '3306', // mysql链接端口
         connectTimeout: 5000, //连接超时
