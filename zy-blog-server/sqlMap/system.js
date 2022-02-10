@@ -8,7 +8,9 @@
 const systemSqlMap = {
     //博文管理
     articleOpt: {
-        list: "SELECT * FROM zy_article",
+        list: "SELECT * FROM zy_article ORDER BY insetTime DESC",
+
+        count: "SELECT COUNT(id) FROM zy_article;",
 
         create:"INSERT INTO zy_article (id,title,summary,commentsCount,img,content,isTop,isHot,pubTime,insertTime,updateTime) VALUES (?,?,?,?,?,?,?,?,?,?,?)",
 
