@@ -8,9 +8,12 @@
           </lk-view-item>
         </lk-view-row>
         <lk-view-row>
-          <lk-view-item title="是否置顶" label-width="70">
+          <lk-view-item title="是否发布" label-width="70">
             <el-tag type="success" v-if="form.isTop == 1">已发布</el-tag>
             <el-tag type="info" v-else>草稿</el-tag>
+          </lk-view-item>
+          <lk-view-item title="文章类型" label-width="70">
+            <el-tag type="success">{{form.className || '无'}}</el-tag>
           </lk-view-item>
         </lk-view-row>
         <lk-view-row>
