@@ -8,7 +8,7 @@
 const systemSqlMap = {
     //博文管理
     articleOpt: {
-        list: "SELECT * FROM zy_article ORDER BY insertTime DESC",
+        list: "SELECT * FROM zy_article ",
 
         count: "SELECT COUNT(id) FROM zy_article;",
 

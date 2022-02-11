@@ -15,6 +15,7 @@ import router from './router'
 import './icons' // icon
 import './permission' // permission control
 import './utils/error-log' // error log
+
 import install from './utils/registeredComponents';
 Vue.use(install);
 import * as filters from './filters' // global filters
@@ -27,9 +28,11 @@ Vue.use(Dialog)
 import {toast} from "@/utils/toastUtils"
 import {listen} from "@/utils/listen"
 import Tools from "@/utils/tool";
+import {setSortType} from "@/utils/sortUtil";
 Vue.prototype.$tools=Tools;
 Vue.prototype.toast=toast;
 Vue.prototype.$listen=listen;
+Vue.prototype.setSortType = setSortType;
 
 Vue.use(scroll)
 

@@ -9,32 +9,18 @@
                       @edit="goEdit()"
                       @search="goPage(1)"
       >
-        <el-form-item class="inline-item" prop="taskName">
-          <el-input v-model.trim="query.params.taskName" clearable placeholder="输入文章名称搜索" size="mini"
-                    @clear="goPage(1)" @keyup.enter.native="goPage(1)"
-          ></el-input>
-        </el-form-item>
         <el-form-item class="inline-item" prop="id">
           <el-input v-model.trim="query.params.id" clearable placeholder="输入文章ID搜索" size="mini"
                     @clear="goPage(1)" @keyup.enter.native="goPage(1)"
           ></el-input>
         </el-form-item>
-        <el-form-item class="inline-item" prop="date">
-          <el-date-picker
-            size="mini"
-            v-model="date"
-            @change="goPage(1)"
-            type="daterange"
-            range-separator="至"
-            start-placeholder="开始日期"
-            end-placeholder="结束日期"
-            :default-time="['00:00:00', '23:59:59']"
-            value-format="timestamp"
-          >
-          </el-date-picker>
+        <el-form-item class="inline-item" prop="title">
+          <el-input v-model.trim="query.params.title" clearable placeholder="输入文章名称搜索" size="mini"
+                    @clear="goPage(1)" @keyup.enter.native="goPage(1)"
+          ></el-input>
         </el-form-item>
-
       </lk-search-form>
+
       <div class="table-operate">
         <lk-table-field-filter :fields="fields" @showChange="updataKey +=1"/>
         <lk-table-button
@@ -44,6 +30,7 @@
         </lk-table-button>
       </div>
       <lk-el-table
+        @sort="sortChange"
         :key="updataKey"
         :height="tableHeight"
         :datas="datas" stripe  :loadingText="loading.text" :loading="loading.list">
@@ -123,6 +110,7 @@ import {getToken} from "@/utils/auth";
 import Tools from "@/libs/tool";
 import GetArticleInfo from "@/views/blog/get-article-info";
 import ViewArticleInfo from "@/views/blog/view-article-info";
+import {setSortType} from "@/utils/sortUtil";
 
 export default {
   name: 'dir-article-info',
@@ -155,12 +143,13 @@ export default {
       query: {
         size: 20,
         current: 1,
+        //排序字段
+        orderBy: 'insertTime',
+        //排序类型
+        orderType: 'DESC',
         params: {
-          endTime: null,
           id: '',
-          startTime: null,
-          taskName: "",
-          // status:0
+          title:''
         }
       },
       btnPerm: {
@@ -193,15 +182,15 @@ export default {
         {key: 'id', name: 'ID', show: true, width: '180', enableSort: false, align: "center", fixed: false},
         {key: 'title', name: '文章标题', show: true, width: '180', enableSort: false, align: "center", fixed: false},
         {key: 'summary', name: '文章简介', show: true, width: '180', enableSort: false, align: "center", fixed: false},
-        {key: 'commentsCount', name: '评论数', show: true, width: '120', enableSort: false, align: "center", fixed: false},
-        {key: 'viewsCount', name: '浏览人数', show: true, width: '180', enableSort: false, align: "center", fixed: false},
+        {key: 'commentsCount', name: '评论数', show: true, width: '120', enableSort: true, align: "center", fixed: false},
+        {key: 'viewsCount', name: '浏览人数', show: true, width: '180', enableSort: true, align: "center", fixed: false},
         {key: 'img', name: '文章图片', show: true, width: '180', enableSort: false, align: "center", fixed: false},
         {key: 'content', name: '文章内容', show: true, width: '180', enableSort: false, align: "center", fixed: false},
         {key: 'isTop', name: '是否置顶', show: true, width: '80', enableSort: false, align: "center", fixed: false},
         {key: 'isHot', name: '是否火热', show: true, width: '80', enableSort: false, align: "center", fixed: false},
         {key: 'pubTime', name: '发布时间', show: true, width: '180', enableSort: false, align: "center", fixed: false},
-        {key: 'insertTime', name: '插入时间', show: true, width: '', enableSort: false, align: "center", fixed: false},
-        {key: 'updateTime', name: '修改时间', show: true, width: '', enableSort: false, align: "center", fixed: false},
+        {key: 'insertTime', name: '插入时间',sort:true, show: true, width: '180', enableSort: true, align: "center", fixed: false},
+        {key: 'updateTime', name: '修改时间', show: true, width: '180', enableSort: true, align: "center", fixed: false},
         {key: 'toolButton', name: '操作', show: true, width: '200', enableSort: false, align: "center", fixed: 'right'},
       ]
     }
@@ -248,9 +237,6 @@ export default {
     getDataList() {
       try {
         this.loading.list = true;
-        //时间转存
-        this.query.params.startTime = this.date && this.date.length > 0 ? this.date[0] : null
-        this.query.params.endTime = this.date && this.date.length > 0 ? this.date[1] : null
         this.request('api_blog_article_list', this.query).then(res => {
           this.datas = res.records || [];
           this.temp.dataSize = res.total;
@@ -274,7 +260,7 @@ export default {
     },
     //排序
     sortChange(sort) {
-      // setSortType(this.query, sort);
+      setSortType(this.query, sort);
       this.getDataList();
     },
     //重置查询条件
