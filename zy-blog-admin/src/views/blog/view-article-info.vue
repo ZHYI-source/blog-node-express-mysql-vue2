@@ -33,7 +33,8 @@
         </lk-view-row>
         <lk-view-row>
           <lk-view-item title="文章内容" label-width="70">
-            <lk-view-textarea :content="form.content || '无'"/>
+<!--            <lk-view-textarea />-->
+            <lk-view-html :content="form.content || '无'"/>
           </lk-view-item>
         </lk-view-row>
       </section>
@@ -42,6 +43,7 @@
 </template>
 
 <script>
+import LkViewHtml from "@/components/common/lk-view-html";
 /**
  *@author ZY
  *@date 2021/12/9
@@ -49,6 +51,7 @@
  */
 export default {
   name: "view-article-info",
+  components: {LkViewHtml},
   data() {
     return {
       form: {}
