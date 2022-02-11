@@ -41,6 +41,11 @@
           </el-form-item>
         </lk-get-row>
         <lk-get-row>
+          <el-form-item label="文章类型" prop="classId">
+            <lk-select-class v-model="form.classId"/>
+          </el-form-item>
+        </lk-get-row>
+        <lk-get-row>
           <el-form-item label="是否火热" prop="isHot">
             <el-select
               clearable
@@ -100,10 +105,11 @@ import LkBackList from "@/components/common/lk-back-list";
 import LkEdit from "@/components/common/lk-edit";
 import Tinymce from "@/components/Tinymce";
 import LkImgList from "@/components/common/lk-img-list";
+import LkSelectClass from "@/components/common/lk-select-class";
 
 export default {
   name: "get-article-info",
-  components: {LkImgList, Tinymce, LkEdit, LkBackList, LkGetButton, LkGetRow},
+  components: {LkSelectClass, LkImgList, Tinymce, LkEdit, LkBackList, LkGetButton, LkGetRow},
   props: {
     updateData: {
       type: Object,

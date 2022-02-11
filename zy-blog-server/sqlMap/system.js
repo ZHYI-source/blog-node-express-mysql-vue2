@@ -12,11 +12,11 @@ const systemSqlMap = {
 
         count: "SELECT COUNT(id) FROM zy_article;",
 
-        create:"INSERT INTO zy_article (id,title,isPublish,summary,commentsCount,img,content,isTop,isHot,pubTime,insertTime,updateTime) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",
+        create:"INSERT INTO zy_article (id,classId,className,classValue,title,isPublish,summary,commentsCount,img,content,isTop,isHot,pubTime,insertTime,updateTime) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
 
         delete:"DELETE FROM zy_article WHERE id=?",
 
-        update:"UPDATE zy_article SET isPublish=?,title=?,summary=?,commentsCount=?,img=?,content=?,isTop=?,isHot=?,pubTime=?,insertTime=?,updateTime=? WHERE id=?",
+        update:"UPDATE zy_article SET classId=?,className=?,classValue=?,isPublish=?,title=?,summary=?,commentsCount=?,img=?,content=?,isTop=?,isHot=?,pubTime=?,insertTime=?,updateTime=? WHERE id=?",
 
         publish:"UPDATE zy_article SET isPublish=?,pubTime=? WHERE id=?",
     },

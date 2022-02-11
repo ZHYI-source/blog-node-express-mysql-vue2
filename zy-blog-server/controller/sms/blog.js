@@ -50,14 +50,9 @@ exports.articleCreate = async (req, res, next) => {
     try {
         let parms = req.body
         let sql = $systemSqlMap.articleOpt.create
-        let data = [
-            tools.createRandomId(), parms.title,0,
-            parms.summary, parms.commentsCount, parms.img,
-            parms.content, parms.isTop, parms.isHot, '',
-            tools.getDate(),
-            '',
-        ]
-        conn.query(sql, data, function (err, result) {
+        let queryClassData = $systemSqlMap.articleClassOpt.list + ` WHERE id='${parms.classId}'`
+        //查询分类数据
+        conn.query(queryClassData, function (err, result) {
             if (err) {
                 console.log("错误", err)
                 let data = {
@@ -68,13 +63,36 @@ exports.articleCreate = async (req, res, next) => {
                 res.json(data)
             }
             if (result) {
-                let data = {
-                    error: 0,
-                    msg: '添加成功!'
-                }
-                res.json(data) //以json的方式返回客户端
+                console.log(result[0])
+                let data = [
+                    tools.createRandomId(),result[0].id,result[0].className,result[0].classValue, parms.title,0,
+                    parms.summary, parms.commentsCount, parms.img,
+                    parms.content, parms.isTop, parms.isHot, '',
+                    tools.getDate(),
+                    '',
+                ]
+                conn.query(sql, data, function (err, result) {
+                    if (err) {
+                        console.log("错误", err)
+                        let data = {
+                            error: 1,
+                            errMsg: '添加错误',
+                            data: err
+                        }
+                        res.json(data)
+                    }
+                    if (result) {
+                        let data = {
+                            error: 0,
+                            msg: '添加成功!'
+                        }
+                        res.json(data) //以json的方式返回客户端
+                    }
+                })
             }
         })
+
+
     } catch (err) {
         next(err)
     }
@@ -84,16 +102,8 @@ exports.articleUpdate = async (req, res, next) => {
     try {
         let parms = req.body
         let sql = $systemSqlMap.articleOpt.update
-        let data = [
-            parms.isPublish,
-            parms.title,
-            parms.summary, parms.commentsCount, parms.img,
-            parms.content, parms.isTop, parms.isHot, parms.pubTime,
-            parms.insertTime,
-            tools.getDate(),
-            parms.id,
-        ]
-        conn.query(sql, data, function (err, result) {
+        let queryClassData = $systemSqlMap.articleClassOpt.list + ` WHERE id='${parms.classId}'`
+        conn.query(queryClassData, function (err, result) {
             if (err) {
                 console.log("错误", err)
                 let data = {
@@ -104,13 +114,39 @@ exports.articleUpdate = async (req, res, next) => {
                 res.json(data)
             }
             if (result) {
-                let data = {
-                    error: 0,
-                    msg: '更新成功!'
-                }
-                res.json(data) //以json的方式返回客户端
+                let data = [
+                    result[0].id,
+                    result[0].className,
+                    result[0].classValue,
+                    parms.isPublish,
+                    parms.title,
+                    parms.summary, parms.commentsCount, parms.img,
+                    parms.content, parms.isTop, parms.isHot, parms.pubTime,
+                    parms.insertTime,
+                    tools.getDate(),
+                    parms.id,
+                ]
+                conn.query(sql, data, function (err, result) {
+                    if (err) {
+                        console.log("错误", err)
+                        let data = {
+                            error: 1,
+                            errMsg: '修改错误',
+                            data: err
+                        }
+                        res.json(data)
+                    }
+                    if (result) {
+                        let data = {
+                            error: 0,
+                            msg: '更新成功!'
+                        }
+                        res.json(data) //以json的方式返回客户端
+                    }
+                })
             }
         })
+
     } catch (err) {
         next(err)
     }

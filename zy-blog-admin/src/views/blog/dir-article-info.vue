@@ -193,15 +193,15 @@ export default {
       },
       //列表渲染数据列
       fields: [
-        {key: 'id', name: 'ID', show: true, width: '180', enableSort: false, align: "center", fixed: false},
+        {key: 'id', name: 'ID', show: true, width: '180', enableSort: true, align: "center", fixed: false},
         {key: 'title', name: '文章标题', show: true, width: '180', enableSort: false, align: "center", fixed: false},
         {key: 'summary', name: '文章简介', show: true, width: '180', enableSort: false, align: "center", fixed: false},
         {key: 'img', name: '文章图片', show: true, width: '180', enableSort: false, align: "center", fixed: false},
-        // {key: 'content', name: '文章内容', show: true, width: '180', enableSort: false, align: "center", fixed: false},
         {key: 'isTop', name: '是否置顶', show: true, width: '80', enableSort: false, align: "center", fixed: false},
         {key: 'isHot', name: '是否火热', show: true, width: '80', enableSort: false, align: "center", fixed: false},
         {key: 'commentsCount', name: '评论数', show: true, width: '120', enableSort: true, align: "center", fixed: false},
         {key: 'viewsCount', name: '浏览人数', show: true, width: '180', enableSort: true, align: "center", fixed: false},
+        {key: 'className', name: '文章类型', show: true, width: '180', enableSort: false, align: "center", fixed: false},
         {key: 'isPublish', name: '是否发布', show: true, width: '80', enableSort: false, align: "center", fixed: 'right'},
         {key: 'pubTime', name: '发布时间', show: true, width: '180', enableSort: true, align: "center", fixed: false},
         {key: 'insertTime', name: '插入时间',sort:true, show: true, width: '180', enableSort: true, align: "center", fixed: false},
