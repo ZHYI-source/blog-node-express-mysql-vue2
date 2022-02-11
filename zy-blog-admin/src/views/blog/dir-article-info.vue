@@ -46,7 +46,11 @@
                               @delete="goDelete(scope.row)"
                               :dis-edit="!btnPerm.updateBtn"
                               :dis-delete="!btnPerm.updateBtn"
+                              show-back
+                              back-text="发布"
+                              @back="goPublish(scope.row)"
               >
+<!--                <el-button @click="goPublish(scope.row)"></el-button>-->
               </lk-tool-button>
             </template>
           </el-table-column>
@@ -191,7 +195,7 @@ export default {
         {key: 'pubTime', name: '发布时间', show: true, width: '180', enableSort: false, align: "center", fixed: false},
         {key: 'insertTime', name: '插入时间',sort:true, show: true, width: '180', enableSort: true, align: "center", fixed: false},
         {key: 'updateTime', name: '修改时间', show: true, width: '180', enableSort: true, align: "center", fixed: false},
-        {key: 'toolButton', name: '操作', show: true, width: '200', enableSort: false, align: "center", fixed: 'right'},
+        {key: 'toolButton', name: '操作', show: true, width: '250', enableSort: false, align: "center", fixed: 'right'},
       ]
     }
   },
@@ -290,6 +294,36 @@ export default {
     goEdit(data) {
       this.show.edit = true
       this.updateData = data || {}
+    },
+    goPublish(data) {
+      let p = {
+        id:data.id
+      }
+      let that = this
+      this.toast.confirm('立即发布该条文章么？').then(res=>{
+        this.request('api_blog_article_publish',p).then(res=>{
+          if (res.error){
+            this.$message({
+              message: res.errMsg,
+              type: 'error'
+            });
+            return
+          }
+          this.$message({
+            message: '发布成功！',
+            type: 'success'
+          });
+          that.goPage(1)
+        }).catch(err=>{
+          this.$message({
+            message: err.errMsg,
+            type: 'error'
+          });
+        })
+      }).catch(err=>{
+
+      })
+
     },
     //关闭编辑
     closeEdit() {

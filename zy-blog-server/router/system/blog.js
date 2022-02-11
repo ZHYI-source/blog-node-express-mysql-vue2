@@ -15,5 +15,7 @@ router.post('/zy-server/article/update', blogCtrl.articleUpdate) //文章更新
 //
 router.post('/zy-server/article/delete', blogCtrl.articleDelete) //文章删除
 
+router.post('/zy-server/article/publish', blogCtrl.articlePublish) //文章发布
+
 
 module.exports = router

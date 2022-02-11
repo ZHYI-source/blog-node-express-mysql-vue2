@@ -49,7 +49,7 @@ exports.articleCreate = async (req, res, next) => {
         let parms = req.body
         let sql = $systemSqlMap.articleOpt.create
         let data = [
-            tools.createRandomId(), parms.title,
+            tools.createRandomId(), parms.title,parms.isPublish,
             parms.summary, parms.commentsCount, parms.img,
             parms.content, parms.isTop, parms.isHot, '',
             tools.getDate(),
@@ -83,6 +83,7 @@ exports.articleUpdate = async (req, res, next) => {
         let parms = req.body
         let sql = $systemSqlMap.articleOpt.update
         let data = [
+            parms.isPublish,
             parms.title,
             parms.summary, parms.commentsCount, parms.img,
             parms.content, parms.isTop, parms.isHot, '',
@@ -140,4 +141,35 @@ exports.articleDelete = async (req, res, next) => {
         next(err)
     }
 }
-
+//发布文章
+exports.articlePublish = async (req, res, next) => {
+    try {
+        let parms = req.body
+        let sql = $systemSqlMap.articleOpt.publish
+        let data = [
+            1,
+            tools.getDate(),
+            parms.id,
+        ]
+        conn.query(sql, data, function (err, result) {
+            if (err) {
+                console.log("错误", err)
+                let data = {
+                    error: 1,
+                    errMsg: '发布失败',
+                    data: err
+                }
+                res.json(data)
+            }
+            if (result) {
+                let data = {
+                    error: 0,
+                    msg: '发布成功!'
+                }
+                res.json(data) //以json的方式返回客户端
+            }
+        })
+    } catch (err) {
+        next(err)
+    }
+}
