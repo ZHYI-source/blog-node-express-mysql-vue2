@@ -11,12 +11,14 @@ exports.articleList = async (req, res, next) => {
         let parms = req.body
         let sql = ''
         //多条件查询
-        if (parms.params.id && parms.params.title){
-            sql = $systemSqlMap.articleOpt.list + ` WHERE id='${parms.params.id}' AND title='${parms.params.title}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
+        if (parms.params.id && parms.params.title && parms.params.classId){
+            sql = $systemSqlMap.articleOpt.list + ` WHERE id='${parms.params.id}' AND title='${parms.params.title}' AND classId='${parms.params.classId}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
         } else if (parms.params.id){
             sql = $systemSqlMap.articleOpt.list + ` WHERE id='${parms.params.id}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
         }else if (parms.params.title){
             sql = $systemSqlMap.articleOpt.list + ` WHERE title='${parms.params.title}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
+        }else if (parms.params.classId){
+            sql = $systemSqlMap.articleOpt.list + ` WHERE classId='${parms.params.classId}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
         }else {
             sql = $systemSqlMap.articleOpt.list + ` ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
         }
@@ -32,6 +34,7 @@ exports.articleList = async (req, res, next) => {
                 res.json(data)
             }
             if (result) {
+                console.log(total)
                 let data = {
                     current: parms.current,
                     records: result,

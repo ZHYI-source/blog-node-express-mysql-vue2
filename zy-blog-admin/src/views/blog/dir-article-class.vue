@@ -131,7 +131,7 @@ export default {
         deleteBtn: false,
       },
       //返回数据列表
-      datas: [{}],
+      datas: [],
       //临时变量
       temp: {
         //数据总条数

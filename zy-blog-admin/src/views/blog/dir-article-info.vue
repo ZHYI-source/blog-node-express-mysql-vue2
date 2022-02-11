@@ -19,6 +19,9 @@
                     @clear="goPage(1)" @keyup.enter.native="goPage(1)"
           ></el-input>
         </el-form-item>
+        <el-form-item class="inline-item" prop="classId">
+          <lk-select-class v-model.trim="query.params.classId" @clear="goPage(1)" @change="goPage(1)" placeholder="选择文章类型搜索"/>
+        </el-form-item>
       </lk-search-form>
 
       <div class="table-operate">
@@ -125,10 +128,12 @@ import Tools from "@/libs/tool";
 import GetArticleInfo from "@/views/blog/get-article-info";
 import ViewArticleInfo from "@/views/blog/view-article-info";
 import {setSortType} from "@/utils/sortUtil";
+import LkSelectClass from "@/components/common/lk-select-class";
 
 export default {
   name: 'dir-article-info',
   components: {
+    LkSelectClass,
     ViewArticleInfo,
     GetArticleInfo,
   },
@@ -163,7 +168,8 @@ export default {
         orderType: 'DESC',
         params: {
           id: '',
-          title:''
+          title:'',
+          classId:'',
         }
       },
       btnPerm: {

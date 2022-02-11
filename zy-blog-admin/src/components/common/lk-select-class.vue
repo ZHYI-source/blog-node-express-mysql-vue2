@@ -5,6 +5,8 @@
       :filterable="filterable"
       :clearable="clearable"
       :multiple="multiple"
+      @clear="$emit('clear')"
+      @change="$emit('change')"
       size="mini"
       class="input-one"
       :placeholder="placeholder">
