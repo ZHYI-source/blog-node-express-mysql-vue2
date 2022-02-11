@@ -12,18 +12,18 @@
         :on-success="handleSuccess"
         :before-upload="beforeUpload"
         class="editor-slide-upload"
-        action="https://httpbin.org/post"
+        action="/zy-server/upload/v1"
         list-type="picture-card"
       >
         <el-button size="small" type="primary">
-          Click upload
+          上传
         </el-button>
       </el-upload>
-      <el-button @click="dialogVisible = false">
-        Cancel
+      <el-button @click="dialogVisible = false" size="mini">
+        取消
       </el-button>
-      <el-button type="primary" @click="handleSubmit">
-        Confirm
+      <el-button type="primary" @click="handleSubmit" size="mini">
+        提交
       </el-button>
     </el-dialog>
   </div>
@@ -63,11 +63,12 @@ export default {
       this.dialogVisible = false
     },
     handleSuccess(response, file) {
+      console.log(file)
       const uid = file.uid
       const objKeyArr = Object.keys(this.listObj)
       for (let i = 0, len = objKeyArr.length; i < len; i++) {
         if (this.listObj[objKeyArr[i]].uid === uid) {
-          this.listObj[objKeyArr[i]].url = response.files.file
+          this.listObj[objKeyArr[i]].url = file.response.url
           this.listObj[objKeyArr[i]].hasSuccess = true
           return
         }

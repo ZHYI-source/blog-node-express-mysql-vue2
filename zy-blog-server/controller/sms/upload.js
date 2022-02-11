@@ -55,7 +55,7 @@ exports.upload = async (req, res, next) => {
     // 解析错误事件
     busboy.on('error', function (err) {
         console.log('文件上出错')
-        reject(result)
+
     })
     return req.pipe(busboy);
 };
