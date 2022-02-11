@@ -5,7 +5,12 @@
       <el-form ref="formAdd" :model="form" :rules="rules" label-width="100px">
         <lk-get-row>
           <el-form-item label="文章标题" prop="title">
-            <el-input clearable v-model.trim="form.title" class="input-one" size="mini" placeholder="请输入文章标题"/>
+            <el-input type="textarea"
+                      placeholder="请输入文章标题"
+                      :autosize="{ minRows: 3}"
+                      v-model="form.title" style="width: 610px;"
+            ></el-input>
+
           </el-form-item>
         </lk-get-row>
         <lk-get-row>
@@ -138,7 +143,7 @@ export default {
         if (valid) {
           let api = this.isAdd ? 'api_blog_article_create' : 'api_blog_article_update'
           this.request(api, this.form).then(res => {
-            this.toast.success(this.isAdd ? '发布成功！' : '修改成功！')
+            this.toast.success(this.isAdd ? '创建成功！' : '修改成功！')
             this.$emit('close');
           }).catch(err => {
             console.log(err)

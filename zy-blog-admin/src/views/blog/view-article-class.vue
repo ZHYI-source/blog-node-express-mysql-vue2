@@ -3,28 +3,16 @@
     <section class="task-view-box">
       <section class="task-info">
         <lk-view-row>
-          <lk-view-item title="文章标题" label-width="70">
-            <div class="art-head">{{ form.title }}</div>
+          <lk-view-item title="分类名称" label-width="70">
+            {{ form.className}}
           </lk-view-item>
         </lk-view-row>
         <lk-view-row>
-          <lk-view-item title="是否置顶" label-width="70">
-            <el-tag type="success" v-if="form.isTop == 1">已发布</el-tag>
-            <el-tag type="info" v-else>草稿</el-tag>
+          <lk-view-item title="分类值" label-width="70">
+            {{ form.classValue}}
           </lk-view-item>
         </lk-view-row>
         <lk-view-row>
-          <lk-view-item title="是否置顶" label-width="70">{{ form.isTop == 0 ? '否' : '是' }}</lk-view-item>
-          <lk-view-item title="是否火热" label-width="70">{{ form.isHot == 0 ? '否' : '是' }}</lk-view-item>
-        </lk-view-row>
-        <lk-view-row>
-          <lk-view-item title="评论次数" label-width="70">{{ form.commentsCount}}</lk-view-item>
-          <lk-view-item title="浏览人数" label-width="70">{{ form.viewsCount }}</lk-view-item>
-        </lk-view-row>
-        <lk-view-row>
-          <lk-view-item title="发布时间" label-width="70">
-            <lk-view-date :date="form.pubTime"/>
-          </lk-view-item>
           <lk-view-item title="插入时间" label-width="70">
             <lk-view-date :date="form.insertTime"/>
           </lk-view-item>
@@ -34,17 +22,7 @@
             <lk-view-date :date="form.updateTime"/>
           </lk-view-item>
         </lk-view-row>
-        <lk-view-row>
-          <lk-view-item title="文章简介" label-width="70">
-            <lk-view-textarea :content="form.summary|| '无'"/>
-          </lk-view-item>
-        </lk-view-row>
-        <lk-view-row>
-          <lk-view-item title="文章内容" label-width="70">
-<!--            <lk-view-textarea />-->
-            <lk-view-html :content="form.content || '无'" elWidth="600"/>
-          </lk-view-item>
-        </lk-view-row>
+
       </section>
     </section>
   </section>
@@ -55,10 +33,10 @@ import LkViewHtml from "@/components/common/lk-view-html";
 /**
  *@author ZY
  *@date 2021/12/9
- *@Description:文章详情
+ *@Description:文章分类详情
  */
 export default {
-  name: "view-article-info",
+  name: "view-article-class",
   components: {LkViewHtml},
   data() {
     return {

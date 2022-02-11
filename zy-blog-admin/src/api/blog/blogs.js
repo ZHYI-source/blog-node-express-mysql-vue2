@@ -17,4 +17,13 @@ export const blogApi ={
 
   api_blog_article_publish: {url: '/zy-server/article/publish', method: 'post',},//文章发布
 
+  /**博客文章分类**/
+  api_blog_article_class_list: {url: '/zy-server/article_class/list', method: 'post',},//文章分类列表
+
+  api_blog_article_class_create: {url: '/zy-server/article_class/create', method: 'post',},//文章分类添加
+
+  api_blog_article_class_update: {url: '/zy-server/article_class/update', method: 'post',},//文章分类修改
+
+  api_blog_article_class_delete: {url: '/zy-server/article_class/delete', method: 'post',},//文章分类删除
+
 }

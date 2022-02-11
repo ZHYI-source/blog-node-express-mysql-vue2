@@ -15,7 +15,7 @@ const tools = require('../../utils/tools') // 引入工具模块
 /**
  * 获取上传文件的后缀名
  * @param  {string} fileName 获取上传文件的后缀名
- * @return {string}          文件后缀名
+ * @return {string} 文件后缀名
  */
 function getSuffixName(fileName) {
     let nameList = fileName.split('.')

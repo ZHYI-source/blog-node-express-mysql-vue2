@@ -48,22 +48,36 @@ export const constantRoutes = [
 
 export const asyncRoutes = [
   {
-    path: '',
+    path: '/',
     component: Layout,
     redirect: 'dir-article-info',
     meta: { title: '博客管理', icon: 'icon'},
     children: [
       {
         path: "dir-article-info",
-        name: "article",
+        name: "article-info",
         component: () =>
           import("@/views/blog/dir-article-info"),
         meta: {
           title: '文章信息',
           perms: [
-            'POST /admin/operate/worker/list',
-            'POST /admin/operate/worker/import',
-            'POST /admin/operate/worker/create',
+            // 'POST /admin/operate/worker/list',
+            // 'POST /admin/operate/worker/import',
+            // 'POST /admin/operate/worker/create',
+          ]
+        },
+      },
+      {
+        path: "dir-article-class",
+        name: "article-class",
+        component: () =>
+          import("@/views/blog/dir-article-class"),
+        meta: {
+          title: '文章分类',
+          perms: [
+            // 'POST /admin/operate/worker/list',
+            // 'POST /admin/operate/worker/import',
+            // 'POST /admin/operate/worker/create',
           ]
         },
       },
@@ -71,7 +85,7 @@ export const asyncRoutes = [
     ]
   },
   {
-    path: '',
+    path: '/employee',
     component: Layout,
     redirect: 'employee',
     meta: { title: '运营管理', icon: 'peoples'},

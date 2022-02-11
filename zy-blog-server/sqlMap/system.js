@@ -20,6 +20,19 @@ const systemSqlMap = {
 
         publish:"UPDATE zy_article SET isPublish=?,pubTime=? WHERE id=?",
     },
+    //博文分类管理
+    articleClassOpt: {
+        list: "SELECT * FROM zy_article_class ",
+
+        count: "SELECT COUNT(id) FROM zy_article_class;",
+
+        create:"INSERT INTO zy_article_class (id,className,classValue,insertTime,updateTime) VALUES (?,?,?,?,?)",
+
+        delete:"DELETE FROM zy_article_class WHERE id=?",
+
+        update:"UPDATE zy_article_class SET className=?,classValue=?,insertTime=?,updateTime=? WHERE id=?",
+
+    },
 
    }
 module.exports = systemSqlMap
