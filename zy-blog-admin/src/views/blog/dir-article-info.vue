@@ -73,6 +73,16 @@
               </div>
             </template>
           </el-table-column>
+          <el-table-column v-else-if="field.key=='isPublish'" :align="field.align" :label="field.name"
+                           :width="field.width" :fixed="field.fixed"
+          >
+            <template slot-scope="scope">
+              <div class="col-tags">
+                <el-tag class="tags" type="success" v-if="scope.row.isPublish == 1">已发布</el-tag>
+                <el-tag class="tags" type="info" v-if="scope.row.isPublish == 0">草稿</el-tag>
+              </div>
+            </template>
+          </el-table-column>
           <el-table-column v-else-if="field.key=='isHot'" :align="field.align" :label="field.name"
                            :width="field.width" :fixed="field.fixed"
           >
@@ -186,13 +196,14 @@ export default {
         {key: 'id', name: 'ID', show: true, width: '180', enableSort: false, align: "center", fixed: false},
         {key: 'title', name: '文章标题', show: true, width: '180', enableSort: false, align: "center", fixed: false},
         {key: 'summary', name: '文章简介', show: true, width: '180', enableSort: false, align: "center", fixed: false},
-        {key: 'commentsCount', name: '评论数', show: true, width: '120', enableSort: true, align: "center", fixed: false},
-        {key: 'viewsCount', name: '浏览人数', show: true, width: '180', enableSort: true, align: "center", fixed: false},
         {key: 'img', name: '文章图片', show: true, width: '180', enableSort: false, align: "center", fixed: false},
-        {key: 'content', name: '文章内容', show: true, width: '180', enableSort: false, align: "center", fixed: false},
+        // {key: 'content', name: '文章内容', show: true, width: '180', enableSort: false, align: "center", fixed: false},
         {key: 'isTop', name: '是否置顶', show: true, width: '80', enableSort: false, align: "center", fixed: false},
         {key: 'isHot', name: '是否火热', show: true, width: '80', enableSort: false, align: "center", fixed: false},
-        {key: 'pubTime', name: '发布时间', show: true, width: '180', enableSort: false, align: "center", fixed: false},
+        {key: 'commentsCount', name: '评论数', show: true, width: '120', enableSort: true, align: "center", fixed: false},
+        {key: 'viewsCount', name: '浏览人数', show: true, width: '180', enableSort: true, align: "center", fixed: false},
+        {key: 'isPublish', name: '是否发布', show: true, width: '80', enableSort: false, align: "center", fixed: 'right'},
+        {key: 'pubTime', name: '发布时间', show: true, width: '180', enableSort: true, align: "center", fixed: false},
         {key: 'insertTime', name: '插入时间',sort:true, show: true, width: '180', enableSort: true, align: "center", fixed: false},
         {key: 'updateTime', name: '修改时间', show: true, width: '180', enableSort: true, align: "center", fixed: false},
         {key: 'toolButton', name: '操作', show: true, width: '250', enableSort: false, align: "center", fixed: 'right'},

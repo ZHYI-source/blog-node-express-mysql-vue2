@@ -49,7 +49,7 @@ exports.articleCreate = async (req, res, next) => {
         let parms = req.body
         let sql = $systemSqlMap.articleOpt.create
         let data = [
-            tools.createRandomId(), parms.title,parms.isPublish,
+            tools.createRandomId(), parms.title,0,
             parms.summary, parms.commentsCount, parms.img,
             parms.content, parms.isTop, parms.isHot, '',
             tools.getDate(),

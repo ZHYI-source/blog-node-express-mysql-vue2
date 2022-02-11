@@ -4,6 +4,10 @@
       <section class="task-info">
         <lk-view-row>
           <lk-view-item title="文章标题" label-width="70">{{ form.title }}</lk-view-item>
+          <lk-view-item title="是否置顶" label-width="70">
+            <el-tag type="success" v-if="form.isTop == 1">已发布</el-tag>
+            <el-tag type="info" v-else>草稿</el-tag>
+            </lk-view-item>
         </lk-view-row>
         <lk-view-row>
           <lk-view-item title="是否置顶" label-width="70">{{ form.isTop == 0 ? '否' : '是' }}</lk-view-item>

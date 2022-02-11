@@ -19,7 +19,12 @@
         </lk-get-row>
         <lk-get-row>
           <el-form-item label="文章图片" prop="img">
-            <lk-img-list :key="commonKey+2" v-if="form.img" :urls="[form.img]"/>
+            <el-image
+              :key="commonKey+2" v-if="form.img"
+              style="width: 100px; height: 100px;border-radius: 5px"
+              :src="form.img"
+              :preview-src-list="[form.img]">
+            </el-image>
             <el-upload
               class="avatar-uploader"
               action="/zy-server/upload/v1"
