@@ -1,4 +1,3 @@
-
 /**
  *@author ZY
  *@date 2022/2/10
@@ -6,17 +5,14 @@
  */
 
 const webSqlMap = {
+    //web端博文查询
+    articleOpt: {
+        list: "SELECT * FROM zy_article ",
 
-    article: {
-        all: "SELECT * FROM zy_article"
+        count: "SELECT COUNT(id) FROM zy_article;",
+
+        update: "UPDATE zy_article SET classId=?,className=?,classValue=?,isPublish=?,title=?,summary=?,commentsCount=?,viewsCount=?,img=?,content=?,isTop=?,isHot=?,pubTime=?,insertTime=?,updateTime=? WHERE id=?",
+
     },
-    // //全局字典
-    // dict: {
-    //     add: "INSERT INTO mk_dict (id,name,description,createdTime,modifyTime,codeName) VALUES (?,?,?,?,?,?)",//增加字典
-    //     all: 'SELECT * FROM sys_dict',//查询所有字典
-    //     del: 'DELETE FROM mk_dict WHERE id=?',// 删除字典
-    //     update:'UPDATE mk_dict SET name=?,description=?,createdTime=?,modifyTime=?,codeName=? WHERE id = ?',
-    //     query: 'SELECT * FROM mk_dict WHERE id=?',//详情查询
-    // },
-   }
+}
 module.exports = webSqlMap

@@ -8,8 +8,7 @@ let router = express.Router()
 const webBlogCtrl = require('../../controller/web/web-blog')
 
 /*博文数据*/
-
-router.post('/zy-server/article/list', webBlogCtrl.articleList) //文章列表
+router.post('/zy-server/web/article/list', webBlogCtrl.webArticleList) //文章列表
 
 
 
