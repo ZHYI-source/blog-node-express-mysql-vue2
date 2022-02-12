@@ -11,6 +11,4 @@ const webBlogCtrl = require('../../controller/web/web-blog')
 router.post('/zy-server/web/article/list', webBlogCtrl.webArticleList) //文章列表
 
 
-
-
 module.exports = router

@@ -6,4 +6,4 @@
 import {post} from "./http";
 //文章
 export const dirArticle = (data) =>
-    post("/zy_blog/dir_article", data);
+    post("/zy-server/web/article/list", data);

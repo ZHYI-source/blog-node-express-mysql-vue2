@@ -11,18 +11,12 @@ let tools = require('../../utils/tools') // 引入工具模块
 exports.webArticleList = async (req, res, next) => {
     try {
         let params = req.body, sql = '', total = 0;
-        let queryTotal = $webSqlMap.articleOpt.count
+        let queryTotal = $webSqlMap.articleOpt.count + ` WHERE isPublish=1`
         //多条件查询
-        if (params.params.id && params.params.title && params.params.classId) {
-            sql = $webSqlMap.articleOpt.list + ` WHERE id='${params.params.id}' AND title='${params.params.title}' AND classId='${params.params.classId}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
-        } else if (params.params.id) {
-            sql = $webSqlMap.articleOpt.list + ` WHERE id='${params.params.id}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
-        } else if (params.params.title) {
-            sql = $webSqlMap.articleOpt.list + ` WHERE title='${params.params.title}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
-        } else if (params.params.classId) {
-            sql = $webSqlMap.articleOpt.list + ` WHERE classId='${params.params.classId}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
-        } else {
-            sql = $webSqlMap.articleOpt.list + ` ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
+        if (params.params.title) {
+            sql = $webSqlMap.articleOpt.list + ` WHERE isPublish='${1}' AND title='${params.params.title}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
+        }else {
+            sql = $webSqlMap.articleOpt.list + ` WHERE isPublish='${1}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
         }
         comMethods.queryCount(queryTotal).then(data => {
             total = data

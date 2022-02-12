@@ -45,13 +45,27 @@
     import SmallIco from '@/components/small-ico'
     import Quote from '@/components/quote'
     import {fetchFocus, fetchList} from '../api'
-    import {dirArticle} from "../api/article";
+    import {dirArticle} from "../api/web-blog";
 
     export default {
         name: 'Home',
         props: ['cate', 'words'],
         data() {
             return {
+                //查询条件
+                query: {
+                    size: 20,
+                    current: 1,
+                    //排序字段
+                    orderBy: 'isTop',
+                    //排序类型
+                    orderType: 'DESC',
+                    params: {
+                        id: '',
+                        title:'',
+                        classId:'',
+                    }
+                },
                 features: [
                   {
                     id: 1,
@@ -100,10 +114,9 @@
         methods: {
             getDataList(){
               let that = this
-              console.log('文字列表',)
-              dirArticle({}).then(res=>{
+              dirArticle(this.query).then(res=>{
                 console.log('文字列表',res)
-                that.postList  = res.data || []
+                that.postList  = res.records || []
               }).catch(err=>{
                 console.log(err)
               })
