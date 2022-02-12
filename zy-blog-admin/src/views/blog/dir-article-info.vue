@@ -62,7 +62,8 @@
           >
             <template slot-scope="scope">
               <div class="col-tags">
-               <a :href="scope.row.img" target="_blank" style="color: #0a76a4">查看</a>
+               <a :href="scope.row.img" v-if="scope.row.img" target="_blank" style="color: #0a76a4">查看图片</a>
+              <span v-else> - </span>
               </div>
             </template>
           </el-table-column>

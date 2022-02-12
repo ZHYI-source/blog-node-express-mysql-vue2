@@ -29,7 +29,7 @@ exports.upload = async (req, res, next) => {
     const busboy = Busboy({headers: req.headers});
     // 解析请求文件事件
     busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
-        console.log(filename)
+        // console.log(filename)
         let fileNames = ''
         let _uploadFilePath = '' //存放的完整路径
         // 多图上传
