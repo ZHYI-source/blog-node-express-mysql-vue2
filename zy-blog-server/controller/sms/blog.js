@@ -222,9 +222,9 @@ exports.articleClassList = async (req, res, next) => {
 //添加
 exports.articleClassCreate = async (req, res, next) => {
     try {
-        let parms = req.body
-        let sql = $systemSqlMap.articleClassOpt.create
-        let query = $systemSqlMap.articleClassOpt.list + ` WHERE classValue='${parms.classValue}' OR className='${parms.className}'`
+        let parms = req.body,
+            sql = $systemSqlMap.articleClassOpt.create,
+            query = $systemSqlMap.articleClassOpt.list + ` WHERE classValue='${parms.classValue}' OR className='${parms.className}'`
 
         let data = [
             tools.createRandomId(),
@@ -233,6 +233,11 @@ exports.articleClassCreate = async (req, res, next) => {
             tools.getDate(),
             '',
         ]
+        comMethods.commonQuery().then(data => {
+
+        })
+
+
         conn.query(query, function (err, result) {
             if (err) {
                 console.log("错误", err)
