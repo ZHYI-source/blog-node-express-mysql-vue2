@@ -2,9 +2,12 @@ let $systemSqlMap = require('../../sqlMap/system') // sql语句
 let comMethods = require('../../utils/common') // 引入公共连接池
 let conn = require('../../common') // 引入公共连接池
 let tools = require('../../utils/tools') // 引入工具模块
-/*
-* 文章管理
-* */
+
+/**
+ *@author ZY
+ *@date 2022/2/12 15:11
+ *@Description:文章管理
+ */
 //查询文章列表
 exports.articleList = async (req, res, next) => {
     try {
@@ -140,9 +143,12 @@ exports.articlePublish = async (req, res, next) => {
         next(err)
     }
 }
-/*
-* 分类管理
-* */
+
+/**
+ *@author ZY
+ *@date 2022/2/12 15:11
+ *@Description:文章分类管理
+ */
 exports.articleClassList = async (req, res, next) => {
     try {
         let parms = req.body, sql = '', total = 0,
