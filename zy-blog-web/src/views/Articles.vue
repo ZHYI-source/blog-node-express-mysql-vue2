@@ -126,7 +126,17 @@
                             createTime: '2022-12-10 10:22',
                             toUserId: '1',
                             toUserName: '梁朝伟',
-                            toUserAvatar: 'http://localhost:5220/zy-server/public/images?id=1644655142222f250f577a67bf.jpg',}]
+                            toUserAvatar: 'http://localhost:5220/zy-server/public/images?id=1644655142222f250f577a67bf.jpg',},
+                            {postId: 1,
+                                parentId: 1,
+                                fromUserId: '3',
+                                fromUserName: '张家辉',
+                                fromUserAvatar: 'http://localhost:5220/zy-server/public/images?id=1644655142222f250f577a67bf.jpg',
+                                content: '真是太棒了！今天就去学习...',
+                                createTime: '2022-12-10 10:22',
+                                toUserId: '1',
+                                toUserName: '梁朝伟',
+                                toUserAvatar: 'http://localhost:5220/zy-server/public/images?id=1644655142222f250f577a67bf.jpg',}]
                     },
                     {
                         comment: {
