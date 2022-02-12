@@ -11,9 +11,11 @@ const comMethods = {
             conn.query(sql, params, function (err, result) {
                 result ?
                     resolve({
-                        current: params.current,
+                        error: 0,
+                        current: params.current || 1,
                         records: result,
-                        size: params.size,
+                        size: params.size || 20,
+                        errMsg: '操作错误'
                     })
                     :
                     console.log("错误", err)

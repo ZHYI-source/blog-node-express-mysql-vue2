@@ -140,6 +140,7 @@ export default {
         title: [{required: true, message: '请输入文章标题', trigger: 'blur'},],
         summary: [{required: true, message: '请输入文章简介', trigger: 'blur'},],
         content: [{required: true, message: '请输入文章内容', trigger: 'blur'},],
+        classId: [{required: true, message: '请选择文章类型', trigger: 'blur'},],
       }
     }
   },

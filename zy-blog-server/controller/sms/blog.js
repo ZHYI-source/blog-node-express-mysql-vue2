@@ -40,57 +40,36 @@ exports.articleList = async (req, res, next) => {
 //添加文章
 exports.articleCreate = async (req, res, next) => {
     try {
-        let parms = req.body
-        let sql = $systemSqlMap.articleOpt.create
-        let queryClassData = $systemSqlMap.articleClassOpt.list + ` WHERE id='${parms.classId}'`
+        let parms = req.body,
+            sql = $systemSqlMap.articleOpt.create,
+            queryClassData = $systemSqlMap.articleClassOpt.list + ` WHERE id='${parms.classId}'`
         //查询分类数据
-        comMethods.commonQuery(queryClassData).then(data=>{
-            console.log('s',data)
-        }).catch(err=>{
-            console.log('--添加文章错误--',err)
+        comMethods.commonQuery(queryClassData).then(data => {
+            let resData = data || {}
+            if (data.error) {
+                res.json(resData)
+            } else {
+                //正常添加文章
+                let params = [
+                    tools.createRandomId(),
+                    resData.records[0].id,
+                    resData.records[0].className,
+                    resData.records[0].classValue,
+                    parms.title, 0,
+                    parms.summary, parms.commentsCount, parms.img,
+                    parms.content, parms.isTop, parms.isHot, '',
+                    tools.getDate(),
+                    '',
+                ]
+                comMethods.commonQuery(sql, params).then(data => {
+                    let realRes = data || {}
+                    res.json(realRes)
+                })
+            }
+
+        }).catch(err => {
+            console.log('--添加文章分类错误--', err)
         })
-        // //查询分类数据
-        // conn.query(queryClassData, function (err, result) {
-        //     if (err) {
-        //         console.log("错误", err)
-        //         let data = {
-        //             error: 1,
-        //             errMsg: '添加错误',
-        //             data: err
-        //         }
-        //         res.json(data)
-        //     }
-        //     if (result) {
-        //         console.log(result[0])
-        //         let data = [
-        //             tools.createRandomId(), result[0].id, result[0].className, result[0].classValue, parms.title, 0,
-        //             parms.summary, parms.commentsCount, parms.img,
-        //             parms.content, parms.isTop, parms.isHot, '',
-        //             tools.getDate(),
-        //             '',
-        //         ]
-        //         conn.query(sql, data, function (err, result) {
-        //             if (err) {
-        //                 console.log("错误", err)
-        //                 let data = {
-        //                     error: 1,
-        //                     errMsg: '添加错误',
-        //                     data: err
-        //                 }
-        //                 res.json(data)
-        //             }
-        //             if (result) {
-        //                 let data = {
-        //                     error: 0,
-        //                     msg: '添加成功!'
-        //                 }
-        //                 res.json(data) //以json的方式返回客户端
-        //             }
-        //         })
-        //     }
-        // })
-
-
     } catch (err) {
         next(err)
     }
