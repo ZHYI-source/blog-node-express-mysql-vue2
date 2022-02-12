@@ -3,7 +3,7 @@
         <banner></banner>
         <div class="site-content animate">
             <!-- 文章目录 -->
-            <div id="article-menus">
+            <div id="article-menus" v-if="menus.length">
                 <menu-tree :menus="menus" child-label="child"></menu-tree>
             </div>
             <main class="site-main">
@@ -18,7 +18,7 @@
                         </div>
                     </header>
                     <!-- 正文输出 -->
-                    <div class="entry-content" v-html="form.content"/>
+                    <div class="entry-content" ref="entry-content" v-html="form.content"/>
                     <!-- 文章底部 -->
                     <section-title>
                         <footer class="post-footer">
@@ -33,14 +33,16 @@
                             <div class="donate" @click="showDonate=!showDonate">
                                 <span>赏</span>
                                 <ul class="donate_inner" :class="{'show':showDonate}">
-                                    <li class="wedonate"><img src="http://cdn.fengziy.cn/gblog/wexin_pay.png"><p>微信</p></li>
-                                    <li class="alidonate"><img src="http://cdn.fengziy.cn/gblog/ali_pay.jpg"><p>支付宝</p></li>
+                                    <li class="wedonate"><img src="../assets/images/vx.jpg">
+                                        <p>微信</p></li>
+                                    <li class="alidonate"><img src="../assets/images/zfb.jpg">
+                                        <p>支付宝</p></li>
                                 </ul>
                             </div>
-                            <!-- 文章标签 -->
+                            <!-- 文章类型 -->
                             <div class="post-tags">
                                 <i class="iconfont iconcategory"></i>
-                                <router-link to="/category/web">Web</router-link>
+                                <router-link to="/">{{form.className||'其他'}}</router-link>
                             </div>
                         </footer>
                     </section-title>
@@ -48,7 +50,7 @@
                     <!--声明-->
                     <div class="open-message">
                         <p>声明：ZYBlog博客|版权所有，违者必究|如未注明，均为原创</p>
-                        <p>转载：转载请注明原文链接 - <a href="/">看一遍闭着眼都会安装Lua了</a></p>
+                        <p>转载：转载请注明原文链接 - <a href="#">{{form.title || 'ZYBlog'}}</a></p>
                     </div>
                     <!--评论-->
                     <div class="comments">
@@ -71,15 +73,89 @@
     import menuTree from '@/components/menu-tree'
     import {fetchComment} from '../api'
     import {getArticleDetail} from "../api/web-blog";
+
     export default {
         name: 'articles',
-        data(){
-          return{
-              showDonate: false,
-              comments: [],
-              menus: [],
-              form:{}
-          }
+        data() {
+            return {
+                showDonate: false,
+                comments: [
+                    {
+                        comment: {
+                            postId: 1,
+                            parentId: 1,
+                            fromUserId: '3',
+                            fromUserName: '梁朝伟',
+                            fromUserAvatar: 'http://localhost:5220/zy-server/public/images?id=164466183089025c842ff5fae3.jpg',
+                            content: '忽如一夜春风来，千树万树梨花开。',
+                            createTime: '2022-12-10 10:22',
+                            toUserId: '',
+                            toUserName: '',
+                            toUserAvatar: 'http://localhost:5220/zy-server/public/images?id=164466183089025c842ff5fae3.jpg',
+                        },
+                        reply: [{postId: 1,
+                            parentId: 1,
+                            fromUserId: '3',
+                            fromUserName: '张家辉',
+                            fromUserAvatar: 'http://localhost:5220/zy-server/public/images?id=1644655142222f250f577a67bf.jpg',
+                            content: '真是太棒了！今天就去学习...',
+                            createTime: '2022-12-10 10:22',
+                            toUserId: 1,
+                            toUserName: '梁朝伟',
+                            toUserAvatar: 'http://localhost:5220/zy-server/public/images?id=1644655142222f250f577a67bf.jpg',}]
+                    },
+                    {
+                        comment: {
+                            postId: 1,
+                            parentId: 1,
+                            fromUserId: '3',
+                            fromUserName: '梁朝伟',
+                            fromUserAvatar: 'http://localhost:5220/zy-server/public/images?id=164466183089025c842ff5fae3.jpg',
+                            content: '忽如一夜春风来，千树万树梨花开。',
+                            createTime: '2022-12-10 10:22',
+                            toUserId: '',
+                            toUserName: '',
+                            toUserAvatar: 'http://localhost:5220/zy-server/public/images?id=164466183089025c842ff5fae3.jpg',
+                        },
+                        reply: [{postId: 1,
+                            parentId: 1,
+                            fromUserId: '3',
+                            fromUserName: '张家辉',
+                            fromUserAvatar: 'http://localhost:5220/zy-server/public/images?id=1644655142222f250f577a67bf.jpg',
+                            content: '真是太棒了！今天就去学习...',
+                            createTime: '2022-12-10 10:22',
+                            toUserId: '1',
+                            toUserName: '梁朝伟',
+                            toUserAvatar: 'http://localhost:5220/zy-server/public/images?id=1644655142222f250f577a67bf.jpg',}]
+                    },
+                    {
+                        comment: {
+                            postId: 1,
+                            parentId: 1,
+                            fromUserId: '3',
+                            fromUserName: '梁朝伟',
+                            fromUserAvatar: 'http://localhost:5220/zy-server/public/images?id=164466183089025c842ff5fae3.jpg',
+                            content: '忽如一夜春风来，千树万树梨花开。',
+                            createTime: '2022-12-10 10:22',
+                            toUserId: '',
+                            toUserName: '',
+                            toUserAvatar: 'http://localhost:5220/zy-server/public/images?id=164466183089025c842ff5fae3.jpg',
+                        },
+                        reply: [{postId: 1,
+                            parentId: 1,
+                            fromUserId: '3',
+                            fromUserName: '张家辉',
+                            fromUserAvatar: 'http://localhost:5220/zy-server/public/images?id=1644655142222f250f577a67bf.jpg',
+                            content: '真是太棒了！今天就去学习...',
+                            createTime: '2022-12-10 10:22',
+                            toUserId: 1,
+                            toUserName: '梁朝伟',
+                            toUserAvatar: 'http://localhost:5220/zy-server/public/images?id=1644655142222f250f577a67bf.jpg',}]
+                    }
+                ],
+                menus: [],
+                form: {}
+            }
         },
         components: {
             Banner,
@@ -89,54 +165,62 @@
         },
 
         methods: {
-          //  加载文章详情
-            getDataList(idx){
-                getArticleDetail({id:idx}).then(res=>{
+            //  加载文章详情
+            getDataList(idx) {
+                getArticleDetail({id: idx}).then(res => {
                     this.form = res.records[0] || {}
-                    console.log(this.form)
                 })
             },
 
-          //  加载评论
-          getComment(){
-              fetchComment().then(res => {
-                  this.comments = res.data || []
-              }).catch(err => {
-                  console.log(err)
-              })
-          },
-          //  加载文章标题
-          fetchH(arr,left,right){
-              if (right) {
-                  return arr.filter(item => item.offsetTop > left && item.offsetTop < right)
-              }else {
-                  return arr.filter(item => item.offsetTop > left)
-              }
-          },
-          // 生成目录
-          createMenus(){
-              let arr = []
-              for(let i=6;i>0;i--){
-                  let temp = []
-                  let e = document.querySelector(".entry-content").querySelectorAll(`h${i}`)
-                  for (let j=0;j<e.length;j++){
-                      let child = this.fetchH(arr,e[j].offsetTop,(j+1 === e.length)?undefined:e[j+1].offsetTop)
-                      temp.push({
-                          h: i,
-                          title: e[j].innerText,
-                          id: e[j].id,
-                          offsetTop: e[j].offsetTop,
-                          child
-                      })
-                  }
-                  if (temp.length){
-                      arr = temp
-                  }
-              }
-              this.menus = arr
-          }
+            //  加载评论
+            getComment() {
+                fetchComment().then(res => {
+                    // this.comments = res.data || []
+                }).catch(err => {
+                    console.log(err)
+                })
+            },
+            //  加载文章标题
+            fetchH(arr, left, right) {
+                if (right) {
+                    return arr.filter(item => item.offsetTop > left && item.offsetTop < right)
+                } else {
+                    return arr.filter(item => item.offsetTop > left)
+                }
+            },
+            // 生成目录
+            createMenus() {
+                this.$nextTick(() => {
+                    let h = document.getElementsByClassName('entry-content')[0].children
+                    console.log(h)
+                    let arr = []
+                    for (let i = 6; i > 0; i--) {
+                        let temp = []
+                        let e = this.$refs['entry-content'].getElementsByTagName(`h${i}`)
+                        // console.log('Dom',document.getElementsByClassName('entry-content')[0])
+                        if (e.length) {
+                            for (let j = 0; j < e.length; j++) {
+                                // console.log(e[j])
+                                let child = this.fetchH(arr, e[j].offsetTop, (j + 1 === e.length) ? undefined : e[j + 1].offsetTop)
+                                temp.push({
+                                    h: i,
+                                    title: e[j].innerText,
+                                    id: e[j].id,
+                                    offsetTop: e[j].offsetTop,
+                                    child
+                                })
+                            }
+                            if (temp.length) {
+                                arr = temp
+                            }
+                        }
+                    }
+                    this.menus = arr
+                })
+
+            }
         },
-        mounted(){
+        mounted() {
             this.createMenus()
         },
         created() {
@@ -149,11 +233,13 @@
 <style scoped lang="less">
     .site-content {
         position: relative;
+
         .site-main {
             padding: 80px 0 0 0;
         }
     }
-    #article-menus{
+
+    #article-menus {
         position: sticky;
         top: 0;
         box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
@@ -163,6 +249,7 @@
         transform: translateX(-120%) translateY(150px);
         font-size: 14px;
     }
+
     article.hentry {
         .entry-header {
             .entry-title {
@@ -170,6 +257,7 @@
                 font-weight: 600;
                 color: #737373;
                 margin: 0.67em 0;
+                cursor: default;
 
                 &:before {
                     content: "#";
@@ -195,7 +283,8 @@
             }
         }
 
-        .entry-content {}
+        .entry-content {
+        }
 
         footer.post-footer {
             width: 100%;
@@ -203,10 +292,12 @@
             margin-top: 30px;
             height: 65px;
             position: relative;
-            i{
+
+            i {
                 font-size: 18px;
                 margin-right: 5px;
             }
+
             .post-like {
                 float: right;
                 margin: 7px 0 0 20px;
@@ -225,12 +316,15 @@
                 -webkit-border-radius: 100%;
                 -moz-border-radius: 100%;
                 border: 1px solid #2B2B2B;
-                &:hover{
+
+                &:hover {
                     border: 1px solid goldenrod;
-                    span{
+
+                    span {
                         color: goldenrod;
                     }
                 }
+
                 span {
                     color: #2B2B2B;
                     padding: 10px;
@@ -250,9 +344,11 @@
                     border: 1px solid #ddd;
                     box-shadow: 0 2px 6px rgba(0, 0, 0, .08);
                     border-radius: 3px;
-                    &.show{
+
+                    &.show {
                         display: block;
                     }
+
                     li {
                         float: left;
                     }
@@ -260,6 +356,7 @@
                     img {
                         width: 100px;
                     }
+
                     p {
                         text-align: center;
                         font-size: 15px;
@@ -290,11 +387,13 @@
                 margin: 7px 0 0 20px;
                 float: left;
                 text-transform: uppercase;
-                a:hover{
+
+                a:hover {
                     color: #ff6d6d;
                 }
             }
         }
+
         .open-message {
             margin: 50px 0;
             position: relative;
@@ -303,6 +402,7 @@
             border-radius: 3px;
             font-size: 14px;
             color: #fff;
+
             &:after {
                 content: "";
                 border-left: 10px solid transparent;
@@ -312,12 +412,14 @@
                 top: -8px;
                 left: 48%;
             }
+
             p {
                 margin: 10px 0;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
             }
+
             a {
                 color: #A0DAD0;
                 padding: 0 5px;

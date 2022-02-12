@@ -49,7 +49,7 @@ const router = new VueRouter({
     routes
 })
 router.beforeEach((to, from, next) => {
-    let title = 'Gblog'
+    let title = 'ZYblog'
     if (to.meta.params){
         title = `${to.meta.title}:${to.params[to.meta.params] || ''} - ${title}`
     }else {
@@ -65,6 +65,6 @@ router.afterEach((to, from) => {
     // 最多延迟 关闭 loading
     setTimeout(() => {
         store.dispatch('setLoading', false);
-    }, 1500)
+    }, 300)
 })
 export default router

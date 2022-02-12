@@ -5,7 +5,7 @@ import {fetchSocial,fetchSiteInfo} from '@/api'
 
 Vue.use(Vuex)
 // 略:后台获取系统运行时间
-const runAt = '1589878800000';
+const runAt = '1644422400000'; //2022-02-10 00:00:00
 let timer = null;
 const state = {
     loading: false,

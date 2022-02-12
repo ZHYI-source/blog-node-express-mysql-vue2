@@ -36,7 +36,7 @@
         name: "comment",
         props: {
           comment: {
-              type: Object
+              type: Object,
           }
         },
         data(){

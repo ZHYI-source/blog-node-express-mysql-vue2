@@ -36,11 +36,20 @@ exports.webArticleList = async (req, res, next) => {
 //查询文章详情
 exports.webArticleDetail = async (req, res, next) => {
     try {
-        let params = req.body, sql = $webSqlMap.articleOpt.list + ` WHERE id='${params.id}'`
-
+        let params = req.body, sql = $webSqlMap.articleOpt.list + ` WHERE id='${params.id}'`,
+            addViewsCountsql = $webSqlMap.articleOpt.addViewsCount
+        //查到具体文章
         comMethods.commonQuery(sql).then(data => {
             let resData = data || {}
-            res.json(resData)
+            //记录实时浏览次数
+            let num = resData.records[0].viewsCount +1
+            comMethods.commonQuery(addViewsCountsql,[num,params.id]).then(data => {
+                //重新查询文章返回
+                comMethods.commonQuery(sql).then(data => {
+                    res.json(data || {})
+                })
+
+            })
         }).catch(err => {
             console.log('--查询文章详情错误--', err)
         })

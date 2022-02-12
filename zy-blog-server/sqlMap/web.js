@@ -11,7 +11,7 @@ const webSqlMap = {
 
         count: "SELECT COUNT(id) FROM zy_article",
 
-        update: "UPDATE zy_article SET classId=?,className=?,classValue=?,isPublish=?,title=?,summary=?,commentsCount=?,viewsCount=?,img=?,content=?,isTop=?,isHot=?,pubTime=?,insertTime=?,updateTime=? WHERE id=?",
+        addViewsCount: "UPDATE zy_article SET viewsCount=? WHERE id=?",
 
     },
 }

@@ -3,13 +3,7 @@
         <div class="post-entry">
             <div class="feature">
                 <router-link :to="`/article/${post.id}`">
-                    <el-image
-                            class="article-logo"
-                            fill="contain"
-                            style="width: 100px; height: 100px"
-                            :src="post.img?post.img:require('@/assets/images/head.jpg')"
-                            >
-                    </el-image>
+                    <img class="article-logo" :src="post.img?post.img:'@/assets/images/head.jpg'"/>
                 </router-link>
             </div>
             <h1 class="entry-title">
@@ -193,7 +187,7 @@
     }
     @media (max-width: 800px) {
         .post-entry {
-            .feature img {
+            .feature .article-logo {
                 width: 50px;
                 height: 50px;
             }

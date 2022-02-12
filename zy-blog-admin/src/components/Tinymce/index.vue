@@ -118,7 +118,7 @@ export default {
         selector: `#${this.tinymceId}`,
         language: this.languageTypeList['zh'],
         height: this.height,
-        body_class: 'panel-body ',
+        body_class: 'panel-body',
         object_resizing: false,
         toolbar: this.toolbar.length > 0 ? this.toolbar : toolbar,
         menubar: this.menubar,
