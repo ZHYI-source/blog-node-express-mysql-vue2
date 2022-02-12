@@ -8,24 +8,24 @@ let tools = require('../../utils/tools') // 引入工具模块
 //查询文章列表
 exports.articleList = async (req, res, next) => {
     try {
-        let parms = req.body, sql = '', total = 0;
+        let params = req.body, sql = '', total = 0;
         let queryTotal = $systemSqlMap.articleOpt.count
         //多条件查询
-        if (parms.params.id && parms.params.title && parms.params.classId) {
-            sql = $systemSqlMap.articleOpt.list + ` WHERE id='${parms.params.id}' AND title='${parms.params.title}' AND classId='${parms.params.classId}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
-        } else if (parms.params.id) {
-            sql = $systemSqlMap.articleOpt.list + ` WHERE id='${parms.params.id}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
-        } else if (parms.params.title) {
-            sql = $systemSqlMap.articleOpt.list + ` WHERE title='${parms.params.title}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
-        } else if (parms.params.classId) {
-            sql = $systemSqlMap.articleOpt.list + ` WHERE classId='${parms.params.classId}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
+        if (params.params.id && params.params.title && params.params.classId) {
+            sql = $systemSqlMap.articleOpt.list + ` WHERE id='${params.params.id}' AND title='${params.params.title}' AND classId='${params.params.classId}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
+        } else if (params.params.id) {
+            sql = $systemSqlMap.articleOpt.list + ` WHERE id='${params.params.id}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
+        } else if (params.params.title) {
+            sql = $systemSqlMap.articleOpt.list + ` WHERE title='${params.params.title}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
+        } else if (params.params.classId) {
+            sql = $systemSqlMap.articleOpt.list + ` WHERE classId='${params.params.classId}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
         } else {
-            sql = $systemSqlMap.articleOpt.list + ` ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
+            sql = $systemSqlMap.articleOpt.list + ` ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
         }
         comMethods.queryCount(queryTotal).then(data => {
             total = data
         })
-        comMethods.commonQuery(sql, parms).then(data => {
+        comMethods.commonQuery(sql, params).then(data => {
             let resData = data || {}
             resData.total = total
             res.json(resData)
@@ -40,9 +40,9 @@ exports.articleList = async (req, res, next) => {
 //添加文章
 exports.articleCreate = async (req, res, next) => {
     try {
-        let parms = req.body,
+        let params = req.body,
             sql = $systemSqlMap.articleOpt.create,
-            queryClassData = $systemSqlMap.articleClassOpt.list + ` WHERE id='${parms.classId}'`
+            queryClassData = $systemSqlMap.articleClassOpt.list + ` WHERE id='${params.classId}'`
         //查询分类数据
         comMethods.commonQuery(queryClassData).then(data => {
             let resData = data || {}
@@ -50,18 +50,18 @@ exports.articleCreate = async (req, res, next) => {
                 res.json(resData)
             } else {
                 //正常添加文章
-                let params = [
+                let createParams = [
                     tools.createRandomId(),
                     resData.records[0].id,
                     resData.records[0].className,
                     resData.records[0].classValue,
-                    parms.title, 0,
-                    parms.summary, parms.commentsCount, parms.img,
-                    parms.content, parms.isTop, parms.isHot, '',
+                    params.title, 0,
+                    params.summary, params.commentsCount, params.img,
+                    params.content, params.isTop, params.isHot, '',
                     tools.getDate(),
                     '',
                 ]
-                comMethods.commonQuery(sql, params).then(data => {
+                comMethods.commonQuery(sql, createParams).then(data => {
                     let realRes = data || {}
                     res.json(realRes)
                 })
@@ -222,65 +222,29 @@ exports.articleClassList = async (req, res, next) => {
 //添加
 exports.articleClassCreate = async (req, res, next) => {
     try {
-        let parms = req.body,
+        let params = req.body,
             sql = $systemSqlMap.articleClassOpt.create,
-            query = $systemSqlMap.articleClassOpt.list + ` WHERE classValue='${parms.classValue}' OR className='${parms.className}'`
-
-        let data = [
-            tools.createRandomId(),
-            parms.className,
-            parms.classValue,
-            tools.getDate(),
-            '',
-        ]
-        comMethods.commonQuery().then(data => {
-
-        })
-
-
-        conn.query(query, function (err, result) {
-            if (err) {
-                console.log("错误", err)
-                let data = {
-                    error: 1,
-                    errMsg: '添加错误',
-                    data: err
-                }
-                res.json(data)
-            }
-            if (result) {
-
-                if (result.length > 0) {
-                    let data = {
-                        error: 1,
-                        errMsg: '分类值或分类名已存在',
-                        data: err
-                    }
-                    res.json(data)
-                    return
-                }
-                conn.query(sql, data, function (err, result) {
-                    if (err) {
-                        console.log("错误", err)
-                        let data = {
-                            error: 1,
-                            errMsg: '添加错误',
-                            data: err
-                        }
-                        res.json(data)
-                    }
-                    if (result) {
-                        let data = {
-                            error: 0,
-                            msg: '添加成功!'
-                        }
-                        res.json(data) //以json的方式返回客户端
-                    }
+            queryRepeatClass = $systemSqlMap.articleClassOpt.list + ` WHERE classValue='${params.classValue}' OR className='${params.className}'`,
+            createParams = [
+                tools.createRandomId(),
+                params.className,
+                params.classValue,
+                tools.getDate(),
+                '',
+            ]
+        //查询是否有重复的分类数据
+        comMethods.commonQuery(queryRepeatClass).then(data => {
+            let resData = data || {}
+            if (data.error || resData.records.length > 0) {
+                resData.errMsg = '分类值或分类名已存在'
+                res.json(resData)
+            } else {
+                comMethods.commonQuery(sql, createParams).then(data => {
+                    let realRes = data || {}
+                    res.json(realRes)
                 })
-
             }
         })
-
     } catch (err) {
         next(err)
     }

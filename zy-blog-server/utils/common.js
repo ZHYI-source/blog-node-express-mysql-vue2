@@ -15,13 +15,13 @@ const comMethods = {
                         current: params.current || 1,
                         records: result,
                         size: params.size || 20,
-                        errMsg: '操作错误'
+                        errMsg: '操作成功！'
                     })
                     :
                     console.log("错误", err)
                     reject({
                         error: 1,
-                        errMsg: '错误'
+                        errMsg: '操作错误！'
                     })
             })
         })
