@@ -10,5 +10,7 @@ const webBlogCtrl = require('../../controller/web/web-blog')
 /*博文数据*/
 router.post('/zy-server/web/article/list', webBlogCtrl.webArticleList) //文章列表
 
+router.post('/zy-server/web/article/detail', webBlogCtrl.webArticleDetail) //文章详情
+
 
 module.exports = router

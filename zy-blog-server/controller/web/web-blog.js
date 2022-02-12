@@ -33,6 +33,22 @@ exports.webArticleList = async (req, res, next) => {
         next(err)
     }
 }
+//查询文章详情
+exports.webArticleDetail = async (req, res, next) => {
+    try {
+        let params = req.body, sql = $webSqlMap.articleOpt.list + ` WHERE id='${params.id}'`
+
+        comMethods.commonQuery(sql).then(data => {
+            let resData = data || {}
+            res.json(resData)
+        }).catch(err => {
+            console.log('--查询文章详情错误--', err)
+        })
+
+    } catch (err) {
+        next(err)
+    }
+}
 //修改文章
 exports.webArticleUpdate = async (req, res, next) => {
     try {

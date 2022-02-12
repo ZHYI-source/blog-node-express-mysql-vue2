@@ -125,7 +125,7 @@ export default {
     }
   },
   created() {
-    console.log(this.updateData)
+
     if (this.updateData && this.updateData.id) {
       this.form = this.updateData
       this.isAdd = false
