@@ -1,16 +1,16 @@
 <template>
   <div class="dashboard-editor-container">
 
-    <div class="app-table-query">
-      <el-date-picker
-              v-model="query.month"
-              type="month"
-              placeholder="时间"
-              value-format="timestamp">
-      </el-date-picker>
-      <el-button @click="doQuery()" icon="el-icon-search">查询</el-button>
-      <el-button @click="toMax" icon="el-icon-view">大屏</el-button>
-    </div>
+<!--    <div class="app-table-query">-->
+<!--      <el-date-picker-->
+<!--              v-model="query.month"-->
+<!--              type="month"-->
+<!--              placeholder="时间"-->
+<!--              value-format="timestamp">-->
+<!--      </el-date-picker>-->
+<!--      <el-button @click="doQuery()" icon="el-icon-search">查询</el-button>-->
+<!--      <el-button @click="toMax" icon="el-icon-view">大屏</el-button>-->
+<!--    </div>-->
     <day-group :groupData="newVisitis.todayData" @router-push="routerPush" ref="todayGroupId" />
 
     <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">

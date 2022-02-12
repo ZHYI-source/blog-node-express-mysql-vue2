@@ -4,9 +4,8 @@
     <div class="user_mid fixed-font">{{userName}}</div>
     <div class="user_bottom fixed-font">{{userName}}</div>-->
     <div class="title-row">
-      <!--<img class="logo" src="@/icons/logo.png"/>-->
+      <img class="logo" src="@/icons/logo.png"/>
       <div class="title-company" v-if="title">{{title}}</div>
-      <!--<div class="title-name"> &#45;&#45;智能环卫监管一体化平台&#45;&#45;</div>-->
       <right-menu/>
     </div>
     <div class="title-row-background"></div>
@@ -19,9 +18,9 @@
           <tags-view v-if="needTagsView"/>
         </div>
         <app-main/>
-        <!--<right-panel v-if="showSettings">
+        <right-panel v-if="showSettings">
           <settings />
-        </right-panel>-->
+        </right-panel>
       </div>
     </div>
   </div>
@@ -93,9 +92,11 @@
   .logo{
     width: 40px;
     height: 40px;
-    margin-left: 20px;
+    margin-left: 7px;
     margin-top: 10px;
     line-height: 60px;
+    border-radius: 5px;
+
   }
   .title-row-background{
     height: 50px;
@@ -123,9 +124,10 @@
     font-weight: bold;
     color: #ffffff;
     font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif ;
-    margin-left: 30px;
+    margin-left: 20px;
     line-height: 60px;
     height: 100%;
+    cursor: default;
   }
 
   .title-name{

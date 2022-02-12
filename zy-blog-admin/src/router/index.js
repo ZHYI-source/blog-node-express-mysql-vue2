@@ -50,6 +50,31 @@ export const asyncRoutes = [
   {
     path: '/',
     component: Layout,
+    redirect: 'index',
+    meta: { title: '首页', icon: 'dashboard'},
+    children: [
+      {
+        path: "index",
+        name: "index",
+        component: () =>
+          import("@/views/dashboard/index.vue"),
+        meta: {
+          title: '首页',
+          perms: [
+            // 'POST /admin/operate/worker/list',
+            // 'POST /admin/operate/worker/import',
+            // 'POST /admin/operate/worker/create',
+          ]
+        },
+      },
+
+
+    ]
+  },
+
+  {
+    path: '/article',
+    component: Layout,
     redirect: 'dir-article-info',
     meta: { title: '博客管理', icon: 'icon'},
     children: [
