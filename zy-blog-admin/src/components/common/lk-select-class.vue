@@ -94,7 +94,7 @@
       getDataList() {
         this.request('api_blog_article_class_list', this.query).then(res => {
           this.datas = res.records || [];
-          console.log(res.records)
+          // console.log(res.records)
         })
 
       }

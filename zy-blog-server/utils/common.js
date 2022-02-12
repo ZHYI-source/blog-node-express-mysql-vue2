@@ -2,13 +2,42 @@
  *@author ZY
  *@date 2022/2/10
  *@Description:公共查询方法
-*/
+ */
 let conn = require('../common') // 引入公共连接池
 
- const queryCount = (querySql)=>{
-    conn.query(querySql, function (err, rows1, result) {
-        return rows1[0]['COUNT(id)']
-    })
+const comMethods = {
+    commonQuery: (sql, params = []) => {
+        return new Promise((resolve, reject) => {
+            conn.query(sql, params, function (err, result) {
+                result ?
+                    resolve({
+                        current: params.current,
+                        records: result,
+                        size: params.size,
+                    })
+                    :
+                    console.log("错误", err)
+                    reject({
+                        error: 1,
+                        errMsg: '错误'
+                    })
+            })
+        })
+    },
+    //查询数据总条数
+    queryCount: (querySql) => {
+        return new Promise((resolve, reject) => {
+            conn.query(querySql, function (err, rows1, result) {
+                if (err) {
+                    reject(err)
+                    return
+                }
+                resolve(rows1[0]['COUNT(id)'])
+            })
+
+        })
+    }
 }
 
-module.exports=queryCount
+
+module.exports = comMethods

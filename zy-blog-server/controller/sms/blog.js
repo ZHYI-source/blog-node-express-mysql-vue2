@@ -1,5 +1,5 @@
 let $systemSqlMap = require('../../sqlMap/system') // sql语句
-let queryCount = require('../../utils/common') // 引入公共连接池
+let comMethods = require('../../utils/common') // 引入公共连接池
 let conn = require('../../common') // 引入公共连接池
 let tools = require('../../utils/tools') // 引入工具模块
 /*
@@ -8,42 +8,31 @@ let tools = require('../../utils/tools') // 引入工具模块
 //查询文章列表
 exports.articleList = async (req, res, next) => {
     try {
-        let parms = req.body
-        let sql = ''
+        let parms = req.body, sql = '', total = 0;
+        let queryTotal = $systemSqlMap.articleOpt.count
         //多条件查询
-        if (parms.params.id && parms.params.title && parms.params.classId){
+        if (parms.params.id && parms.params.title && parms.params.classId) {
             sql = $systemSqlMap.articleOpt.list + ` WHERE id='${parms.params.id}' AND title='${parms.params.title}' AND classId='${parms.params.classId}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
-        } else if (parms.params.id){
+        } else if (parms.params.id) {
             sql = $systemSqlMap.articleOpt.list + ` WHERE id='${parms.params.id}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
-        }else if (parms.params.title){
+        } else if (parms.params.title) {
             sql = $systemSqlMap.articleOpt.list + ` WHERE title='${parms.params.title}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
-        }else if (parms.params.classId){
+        } else if (parms.params.classId) {
             sql = $systemSqlMap.articleOpt.list + ` WHERE classId='${parms.params.classId}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
-        }else {
+        } else {
             sql = $systemSqlMap.articleOpt.list + ` ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
         }
-        let queryTotal = $systemSqlMap.articleOpt.count
-        let total = queryCount(queryTotal)
-        conn.query(sql, function (err, result) {
-            if (err) {
-                console.log("错误", err)
-                let data = {
-                    error: 1,
-                    errMsg: '查询错误'
-                }
-                res.json(data)
-            }
-            if (result) {
-                console.log(total)
-                let data = {
-                    current: parms.current,
-                    records: result,
-                    size: parms.size,
-                    total: total,
-                }
-                res.json(data) //以json的方式返回客户端
-            }
+        comMethods.queryCount(queryTotal).then(data => {
+            total = data
         })
+        comMethods.commonQuery(sql, parms).then(data => {
+            let resData = data || {}
+            resData.total = total
+            res.json(resData)
+        }).catch(err => {
+            console.log('--查询文章列表错误--', err)
+        })
+
     } catch (err) {
         next(err)
     }
@@ -55,45 +44,51 @@ exports.articleCreate = async (req, res, next) => {
         let sql = $systemSqlMap.articleOpt.create
         let queryClassData = $systemSqlMap.articleClassOpt.list + ` WHERE id='${parms.classId}'`
         //查询分类数据
-        conn.query(queryClassData, function (err, result) {
-            if (err) {
-                console.log("错误", err)
-                let data = {
-                    error: 1,
-                    errMsg: '添加错误',
-                    data: err
-                }
-                res.json(data)
-            }
-            if (result) {
-                console.log(result[0])
-                let data = [
-                    tools.createRandomId(),result[0].id,result[0].className,result[0].classValue, parms.title,0,
-                    parms.summary, parms.commentsCount, parms.img,
-                    parms.content, parms.isTop, parms.isHot, '',
-                    tools.getDate(),
-                    '',
-                ]
-                conn.query(sql, data, function (err, result) {
-                    if (err) {
-                        console.log("错误", err)
-                        let data = {
-                            error: 1,
-                            errMsg: '添加错误',
-                            data: err
-                        }
-                        res.json(data)
-                    }
-                    if (result) {
-                        let data = {
-                            error: 0,
-                            msg: '添加成功!'
-                        }
-                        res.json(data) //以json的方式返回客户端
-                    }
-                })
-            }
+        comMethods.commonQuery(queryClassData).then(data=>{
+            console.log('s',data)
+        }).catch(err=>{
+            console.log('--添加文章错误--',err)
         })
+        // //查询分类数据
+        // conn.query(queryClassData, function (err, result) {
+        //     if (err) {
+        //         console.log("错误", err)
+        //         let data = {
+        //             error: 1,
+        //             errMsg: '添加错误',
+        //             data: err
+        //         }
+        //         res.json(data)
+        //     }
+        //     if (result) {
+        //         console.log(result[0])
+        //         let data = [
+        //             tools.createRandomId(), result[0].id, result[0].className, result[0].classValue, parms.title, 0,
+        //             parms.summary, parms.commentsCount, parms.img,
+        //             parms.content, parms.isTop, parms.isHot, '',
+        //             tools.getDate(),
+        //             '',
+        //         ]
+        //         conn.query(sql, data, function (err, result) {
+        //             if (err) {
+        //                 console.log("错误", err)
+        //                 let data = {
+        //                     error: 1,
+        //                     errMsg: '添加错误',
+        //                     data: err
+        //                 }
+        //                 res.json(data)
+        //             }
+        //             if (result) {
+        //                 let data = {
+        //                     error: 0,
+        //                     msg: '添加成功!'
+        //                 }
+        //                 res.json(data) //以json的方式返回客户端
+        //             }
+        //         })
+        //     }
+        // })
 
 
     } catch (err) {
@@ -219,38 +214,27 @@ exports.articlePublish = async (req, res, next) => {
 * */
 exports.articleClassList = async (req, res, next) => {
     try {
-        let parms = req.body
-        let sql = ''
+        let parms = req.body, sql = '', total = 0;
+        let queryTotal = $systemSqlMap.articleClassOpt.count
         //多条件查询
-        if (parms.params.id && parms.params.className){
+        if (parms.params.id && parms.params.className) {
             sql = $systemSqlMap.articleClassOpt.list + ` WHERE id='${parms.params.id}' AND className='${parms.params.className}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
-        } else if (parms.params.id){
+        } else if (parms.params.id) {
             sql = $systemSqlMap.articleClassOpt.list + ` WHERE id='${parms.params.id}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
-        }else if (parms.params.className){
+        } else if (parms.params.className) {
             sql = $systemSqlMap.articleClassOpt.list + ` WHERE className='${parms.params.className}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
-        }else {
+        } else {
             sql = $systemSqlMap.articleClassOpt.list + ` ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
         }
-        let queryTotal = $systemSqlMap.articleClassOpt.count
-        let total = queryCount(queryTotal)
-        conn.query(sql, function (err, result) {
-            if (err) {
-                console.log("错误", err)
-                let data = {
-                    error: 1,
-                    errMsg: '查询错误'
-                }
-                res.json(data)
-            }
-            if (result) {
-                let data = {
-                    current: parms.current,
-                    records: result,
-                    size: parms.size,
-                    total: total,
-                }
-                res.json(data) //以json的方式返回客户端
-            }
+        comMethods.queryCount(queryTotal).then(data => {
+            total = data
+        })
+        comMethods.commonQuery(sql, parms).then(data => {
+            let resData = data || {}
+            resData.total = total
+            res.json(resData)
+        }).catch(err => {
+            console.log('--查询文章分类错误--', err)
         })
     } catch (err) {
         next(err)
@@ -261,7 +245,7 @@ exports.articleClassCreate = async (req, res, next) => {
     try {
         let parms = req.body
         let sql = $systemSqlMap.articleClassOpt.create
-        let query = $systemSqlMap.articleClassOpt.list+` WHERE classValue='${parms.classValue}' OR className='${parms.className}'`
+        let query = $systemSqlMap.articleClassOpt.list + ` WHERE classValue='${parms.classValue}' OR className='${parms.className}'`
 
         let data = [
             tools.createRandomId(),
@@ -270,7 +254,7 @@ exports.articleClassCreate = async (req, res, next) => {
             tools.getDate(),
             '',
         ]
-        conn.query(query,function (err, result) {
+        conn.query(query, function (err, result) {
             if (err) {
                 console.log("错误", err)
                 let data = {
@@ -282,7 +266,7 @@ exports.articleClassCreate = async (req, res, next) => {
             }
             if (result) {
 
-                if (result.length>0){
+                if (result.length > 0) {
                     let data = {
                         error: 1,
                         errMsg: '分类值或分类名已存在',
