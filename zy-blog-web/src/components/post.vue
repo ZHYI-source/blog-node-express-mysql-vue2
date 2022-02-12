@@ -3,7 +3,14 @@
         <div class="post-entry">
             <div class="feature">
                 <router-link :to="`/article/${post.id}`">
-                    <img :src="post.img"/>
+<!--                    <img class="article-logo"  src="../assets/images/head.jpg"/>-->
+                    <el-image
+                            class="article-logo"
+                            fill="contain"
+                            style="width: 100px; height: 100px"
+                            :src="post.img?post.img:require('@/assets/images/head.jpg')"
+                            >
+                    </el-image>
                 </router-link>
             </div>
             <h1 class="entry-title">
@@ -57,12 +64,12 @@
             position: absolute;
             margin-top: 10px;
 
-            img {
+            .article-logo {
                 width: 100px;
                 height: 100px;
                 object-fit: cover;
                 border-radius: 50%;
-                padding: 2px;
+
                 border: 1px solid #DADADA;
                 position: relative;
                 transition: all 0.2s linear;
@@ -70,6 +77,7 @@
                 &:hover {
                     transform: scale(1.1, 1.1);
                     filter: contrast(130%);
+                    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)
                 }
             }
         }

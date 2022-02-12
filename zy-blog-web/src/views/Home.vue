@@ -147,8 +147,6 @@
         },
         mounted() {
             this.getDataList();
-            // this.fetchFocus();
-            // this.fetchList();
         },
     }
 </script>
