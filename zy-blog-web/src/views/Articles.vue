@@ -18,16 +18,14 @@
                         </div>
                     </header>
                     <!-- 正文输出 -->
-                    <div class="entry-content" v-html="form.content">
-
-                    </div>
+                    <div class="entry-content" v-html="form.content"/>
                     <!-- 文章底部 -->
                     <section-title>
                         <footer class="post-footer">
                             <!-- 阅读次数 -->
                             <div class="post-like">
                                 <i class="iconfont iconeyes"></i>
-                                <span class="count">685</span>
+                                <span class="count">{{form.viewsCount || 0}}</span>
                             </div>
                             <!-- 分享按钮 -->
 
@@ -49,7 +47,7 @@
 
                     <!--声明-->
                     <div class="open-message">
-                        <p>声明：Gblog博客|版权所有，违者必究|如未注明，均为原创|本网站采用<a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">BY-NC-SA</a>协议进行授权</p>
+                        <p>声明：ZYBlog博客|版权所有，违者必究|如未注明，均为原创</p>
                         <p>转载：转载请注明原文链接 - <a href="/">看一遍闭着眼都会安装Lua了</a></p>
                     </div>
                     <!--评论-->

@@ -3,7 +3,6 @@
         <div class="post-entry">
             <div class="feature">
                 <router-link :to="`/article/${post.id}`">
-<!--                    <img class="article-logo"  src="../assets/images/head.jpg"/>-->
                     <el-image
                             class="article-logo"
                             fill="contain"
@@ -202,6 +201,7 @@
                 font-size: 16px;
                 line-height: 30px;
                 margin: 0 0 0 65px;
+                cursor: default;
             }
             .p-time {
                 position: relative;
