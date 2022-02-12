@@ -162,19 +162,17 @@ export default {
       });
     },
     handleAvatarSuccessLicenseUrl(res, file) {
-      console.log(res)
       this.form.img = res.url;
       this.commonKey+=1
     },
     beforeAvatarUpload(file) {
-      console.log(file)
-      const isLt2M = file.size / 1024 / 1024 < 2;
+      const isLt2M = file.size / 1024 / 1024 < 20;
       if (!(file.type === 'image/png' || file.type === 'image/gif' || file.type === 'image/jpg' || file.type === 'image/jpeg')) {
         this.$message.error('请上传格式为image/png, image/gif, image/jpg, image/jpeg的图片');
         return
       }
       if (!isLt2M) {
-        this.$message.error('上传头像图片大小不能超过 2MB!');
+        this.$message.error('上传头像图片大小不能超过 20MB!');
       }
       return isLt2M;
     },
