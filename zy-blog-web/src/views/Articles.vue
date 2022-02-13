@@ -60,12 +60,12 @@
                                 <i class="el-icon-edit-outline"></i>
                                 文章评论
                             </h2>
-                            <comment-message-editor :inline="false" buttonText="提交" @focus=""
+                            <comment-message-editor :key="form.content" :inline="false" buttonText="提交" @focus=""
                                                     @submit="toSubmitComment"></comment-message-editor>
                         </div>
-                        <comment v-for="item in comments" :key="item.comment.id" :comment="item.comment">
+                        <comment v-for="item in comments" :key="item.comment.id" :comment="item.comment" @reply="getDataList">
                             <template v-if="item.reply.length">
-                                <comment v-for="(reply,index) in item.reply"  :key="index" :comment="reply.comment"></comment>
+                                <comment v-for="(reply,index) in item.reply"  :key="reply.comment.id" :comment="reply.comment" @reply="getDataList"></comment>
                             </template>
                         </comment>
                     </div>
@@ -81,7 +81,6 @@
     import sectionTitle from '@/components/section-title'
     import comment from '@/components/comment'
     import menuTree from '@/components/menu-tree'
-    import {fetchComment} from '../api'
     import {dirComment, getArticleDetail, getCreateComment} from "../api/web-blog";
 
     export default {
@@ -124,17 +123,21 @@
                 let p = {
                     postId: this.postId,//文章id
                     parentId: 0,//父级id
-                    fromUserId: '3',//用户ID
+                    fromUserId: '',//用户ID
                     fromUserName: '匿名',//用户名称
                     fromUserAvatar: 'http://localhost:5220/zy-server/public/images?id=164466183089025c842ff5fae3.jpg',//用户头像
                     content: val,//评论内容
-                    createTime: '',//评论时间
                     toUserId: '',//回复对象ID
-                    toUserName: '回复对象',//回复对象名称
-                    toUserAvatar: 'http://localhost:5220/zy-server/public/images?id=164466183089025c842ff5fae3.jpg',//回复对象头像
+                    toUserName: '',//回复对象名称
+                    toUserAvatar: '',//回复对象头像
                 }
                 getCreateComment(p).then(res => {
-                    console.log('提交评论', res)
+                    this.$message({
+                        message: '评论成功！',
+                        type: 'success'
+                    });
+                    this.form.content = ''
+                    this.getDataList(this.postId)
                 })
             },
             //  加载文章详情
