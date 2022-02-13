@@ -25,7 +25,7 @@
                             <!-- 阅读次数 -->
                             <div class="post-like">
                                 <i class="iconfont iconeyes" title="阅读次数"></i>
-                                <span class="count" >{{form.viewsCount || 0}}</span>
+                                <span class="count">{{form.viewsCount || 0}}</span>
                             </div>
                             <!-- 分享按钮 -->
 
@@ -42,7 +42,8 @@
                             <!-- 文章类型 -->
                             <div class="post-tags">
                                 <i class="iconfont iconcategory"></i>
-                                <router-link title="分类" :to="`/category/${form.className}`">{{form.className||'其他'}}</router-link>
+                                <router-link title="分类" :to="`/category/${form.className}`">{{form.className||'其他'}}
+                                </router-link>
                             </div>
                         </footer>
                     </section-title>
@@ -63,9 +64,11 @@
                             <comment-message-editor :key="form.content" :inline="false" buttonText="提交" @focus=""
                                                     @submit="toSubmitComment"></comment-message-editor>
                         </div>
-                        <comment v-for="item in comments" :key="item.comment.id" :comment="item.comment" @reply="getDataList">
+                        <comment v-for="item in comments" :key="item.comment.id" :comment="item.comment"
+                                 @reply="getDataList">
                             <template v-if="item.reply.length">
-                                <comment v-for="(reply,index) in item.reply"  :key="reply.comment.id" :comment="reply.comment" @reply="getDataList"></comment>
+                                <comment v-for="(reply,index) in item.reply" :key="reply.comment.id"
+                                         :comment="reply.comment" @reply="getDataList"></comment>
                             </template>
                         </comment>
                     </div>
@@ -101,7 +104,7 @@
                         id: '',
                     }
                 },
-                postId:'',//文章ID
+                postId: '',//文章ID
                 //提交评论
                 addCommentData: {},
                 comments: [],
@@ -152,18 +155,18 @@
             getCommentList(idx) {
                 // 首先调用initTree方法查找所有parent_id为-1的（-1认为是第一级）
                 this.query.params.id = idx || ''
-                dirComment(this.query).then(res=>{
+                dirComment(this.query).then(res => {
                     let params = res.records || []
                     const initTree = (parentId) => {
                         const child = params.filter(item => item.parentId == parentId)
                         return child.map(item => ({
-                            comment:{...item},
+                            comment: {...item},
                             reply: initTree(item.id)
                         }))
                     }
                     this.comments = initTree(0)
-                    console.log('评论列表',this.comments)
-                }).catch(err=>{
+                    console.log('评论列表', this.comments)
+                }).catch(err => {
                     console.log(err)
                 })
 
