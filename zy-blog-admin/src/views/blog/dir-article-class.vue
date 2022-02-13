@@ -153,6 +153,8 @@ export default {
         {key: 'id', name: 'ID', show: true, width: '', enableSort: false, align: "center", fixed: false},
         {key: 'className', name: '分类名称', show: true, width: '', enableSort: false, align: "center", fixed: false},
         {key: 'classValue', name: '分类值', show: true, width: '', enableSort: false, align: "center", fixed: false},
+        {key: 'path', name: '路径', show: true, width: '', enableSort: false, align: "center", fixed: false},
+        {key: 'query', name: '参数', show: true, width: '', enableSort: false, align: "center", fixed: false},
         {key: 'insertTime', name: '插入时间',sort:true, show: true, width: '', enableSort: true, align: "center", fixed: false},
         {key: 'updateTime', name: '修改时间', show: true, width: '', enableSort: true, align: "center", fixed: false},
         {key: 'toolButton', name: '操作', show: true, width: '250', enableSort: false, align: "center", fixed: 'right'},

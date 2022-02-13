@@ -82,6 +82,10 @@
                     toUserName: this.form.fromUserName,//回复对象名称
                     toUserAvatar: this.form.fromUserAvatar,//回复对象头像
                 }
+                if (this.form.toUserId) {
+                    p.parentId=this.form.parentId
+                }
+
                 getCreateComment(p).then(res => {
                     this.$message({
                         message: '回复成功！',

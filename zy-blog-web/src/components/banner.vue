@@ -70,17 +70,19 @@
         margin-top: 80px;
         width: 100%;
         height: 500px;
+        overflow: hidden;
         .banner-img{
             width: inherit;
             height: inherit;
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
-            transition: all 0.2s linear;
+            transition: all 0.5s linear;
             overflow: hidden;
+            background-image: url('../assets/images/bg1.jpg');
             &:hover {
-                transform: scale(1.1, 1.1);
-                filter: contrast(130%);
+                transform: scale(1.1);
+                filter: contrast(110%),brightness(87%),saturate(74%);
             }
         }
         &.home-banner {

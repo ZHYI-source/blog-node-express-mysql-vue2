@@ -13,6 +13,16 @@
             <el-input v-model.number="form.classValue" size="mini" class="input-one" clearable placeholder="请输入分类值"></el-input>
           </el-form-item>
         </lk-get-row>
+        <lk-get-row>
+          <el-form-item label="页面路径" prop="path">
+            <el-input v-model="form.path" size="mini" class="input-one" clearable placeholder="例如：/category/"></el-input>
+          </el-form-item>
+        </lk-get-row>
+        <lk-get-row>
+          <el-form-item label="路径参数" prop="query">
+            <el-input v-model.number="form.query" size="mini" class="input-one" clearable placeholder="例如：vue.js"></el-input>
+          </el-form-item>
+        </lk-get-row>
         <el-divider/>
         <lk-get-button @save="save" @close="close(true)"/>
       </el-form>
@@ -61,6 +71,8 @@ export default {
       rules: {
         className: [{required: true, message: '请输入文章分类名称', trigger: 'blur'},],
         classValue: [{required: true, message: '请输入文章分类值', trigger: 'blur'},],
+        path: [{required: true, message: '请输入页面路径', trigger: 'blur'},],
+        query: [{required: true, message: '请输入路径参数', trigger: 'blur'},],
       }
     }
   },

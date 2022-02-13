@@ -2307,6 +2307,13 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001286:
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001310.tgz#da02cd07432c9eece6992689d1b84ca18139eea8"
   integrity sha512-cb9xTV8k9HTIUA3GnPUJCk0meUnrHL5gy5QePfDjxHyNBcnzPzrHFv5GqfP7ue5b1ZyzZL0RJboD6hQlPXjhjg==
 
+canvas-nest.js@2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/canvas-nest.js/-/canvas-nest.js-2.0.3.tgz#1ee967d977a7a301b8e3eefd16702b812b8ed7f3"
+  integrity sha512-zL+AN9alP5fl/Ek2gZMpWS4Hoz5jMf1NonYPvdsU5SV++m8/b45EUnTje6GUs1998q6wGISYYRHiWho1JXGM6w==
+  dependencies:
+    size-sensor "^0.2.0"
+
 case-sensitive-paths-webpack-plugin@^2.3.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/case-sensitive-paths-webpack-plugin/-/case-sensitive-paths-webpack-plugin-2.4.0.tgz#db64066c6422eed2e08cc14b986ca43796dbc6d4"
@@ -6989,6 +6996,11 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
+size-sensor@^0.2.0:
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/size-sensor/-/size-sensor-0.2.6.tgz#6fe43afd570786f097171834002a97fe0b19a3da"
+  integrity sha512-0EZ0tXXjyRl9R9+JpoBdH57Xpnbf5NTyDdj7fnFL6KqCsdKyah286ShMflnV2SonnrSFH4OAT/52Jy8qqnoerg==
+
 slash@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/slash/-/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
@@ -7819,6 +7831,13 @@ vm-browserify@^1.0.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
+
+vue-canvas-nest@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/vue-canvas-nest/-/vue-canvas-nest-2.0.0.tgz#427326fcb66ae7f13b515781864dc2cabee8667c"
+  integrity sha512-YUKwbDDEB36NlEvU/Et6S68LaP+RQatEQIJZuL1f0nGIp5h8r+WjsWmwAZK/pt2c7FeXvWWNmuHUcY+539EPbA==
+  dependencies:
+    canvas-nest.js "2.0.3"
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.4"

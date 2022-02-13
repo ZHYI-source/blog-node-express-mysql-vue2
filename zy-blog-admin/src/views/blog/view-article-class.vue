@@ -13,6 +13,16 @@
           </lk-view-item>
         </lk-view-row>
         <lk-view-row>
+          <lk-view-item title="页面路径" label-width="70">
+            {{ form.path }}
+          </lk-view-item>
+        </lk-view-row>
+        <lk-view-row>
+          <lk-view-item title="路由参数" label-width="70">
+            {{ form.query }}
+          </lk-view-item>
+        </lk-view-row>
+        <lk-view-row>
           <lk-view-item title="插入时间" label-width="70">
             <lk-view-date :date="form.insertTime"/>
           </lk-view-item>
