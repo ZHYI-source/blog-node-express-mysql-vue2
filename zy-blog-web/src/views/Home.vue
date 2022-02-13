@@ -5,8 +5,8 @@
             <!--通知栏-->
             <div class="notify">
                 <div class="search-result" v-if="hideSlogan">
-                    <span v-if="searchWords">搜索结果："{{searchWords}}" 相关文章</span>
-                    <span v-else-if="category">分类 "{{category}}" 相关文章  ({{postList.length}})</span>
+                    <span v-if="searchWords">搜索结果："{{searchWords}}" 相关文章 ({{postList.length}})</span>
+                    <span v-else-if="category">分类 "{{category}}" 相关文章 ({{postList.length}})</span>
                 </div>
                 <quote v-else>{{notice}}</quote>
             </div>
@@ -66,7 +66,8 @@
                         id: '',
                         title: '',
                         classId: '',
-                        className:''
+                        className:'',
+                        keyword:''
                     }
                 },
                 features: [
@@ -101,14 +102,24 @@
         },
         watch: {
             '$route': function (val) {
+                console.log(val)
                 if (val.params.cate) {
                     this.getDataList(val.params.cate)
+                    return
                 }
+                if (val.params.words) {
+                    this.getDataList('',val.params.words)
+                    return
+                }
+
+                this.query.params.className=''
+                this.query.params.keyword=''
+                this.getDataList()
             }
         },
         computed: {
             searchWords() {
-                return this.$route.params.classId
+                return this.$route.params.words
             },
             category() {
                 return this.$route.params.cate
@@ -122,10 +133,13 @@
             }
         },
         methods: {
-            getDataList(val) {
+            getDataList(val,keyword) {
                 let that = this
                 if (val) {
                     this.query.params.className = val
+                }
+                if (keyword){
+                    this.query.params.keyword = keyword
                 }
                 dirArticle(this.query).then(res => {
                     that.postList = res.records || []
@@ -158,9 +172,14 @@
             }
         },
         mounted() {
-            let val = this.$route.params.cate
-            if (val){
-                this.getDataList(val);
+            let cate = this.$route.params.cate
+            let words = this.$route.params.words
+            if (cate){
+                this.getDataList(cate);
+                return
+            }
+            if (words){
+                this.getDataList('',words);
                 return
             }
             this.getDataList();

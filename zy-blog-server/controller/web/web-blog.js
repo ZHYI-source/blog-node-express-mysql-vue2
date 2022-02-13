@@ -4,20 +4,6 @@ let tools = require('../../utils/tools') // 引入工具模块
 
 
 /**
- * 生成tree
- * @param parentId 父id
- */
-// const initTree = (arrays,parentId='0') => {
-//     console.log(arrays)
-//     const child = arrays.filter(item => item.parentId === parentId)
-//     return child.map(item => ({
-//         comment:{...item},
-//         reply: initTree(item.fromUserId)
-//     }))
-// }
-
-
-/**
  *@author ZY
  *@date 2022/2/12 15:11
  *@Description:web端博文
@@ -32,6 +18,8 @@ exports.webArticleList = async (req, res, next) => {
             sql = $webSqlMap.articleOpt.list + ` WHERE isPublish='${1}' AND title='${params.params.title}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
         }else if (params.params.classId) {
             sql = $webSqlMap.articleOpt.list + ` WHERE isPublish='${1}' AND classId='${params.params.classId}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
+        }else if (params.params.keyword) {
+            sql = $webSqlMap.articleOpt.list + ` WHERE isPublish='${1}' AND title LIKE '%${params.params.keyword}%' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
         }else if (params.params.className) {
             sql = $webSqlMap.articleOpt.list + ` WHERE isPublish='${1}' AND className='${params.params.className}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
         } else {
