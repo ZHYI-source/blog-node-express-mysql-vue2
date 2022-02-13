@@ -24,8 +24,8 @@
                         <footer class="post-footer">
                             <!-- 阅读次数 -->
                             <div class="post-like">
-                                <i class="iconfont iconeyes"></i>
-                                <span class="count">{{form.viewsCount || 0}}</span>
+                                <i class="iconfont iconeyes" title="阅读次数"></i>
+                                <span class="count" >{{form.viewsCount || 0}}</span>
                             </div>
                             <!-- 分享按钮 -->
 
@@ -42,7 +42,7 @@
                             <!-- 文章类型 -->
                             <div class="post-tags">
                                 <i class="iconfont iconcategory"></i>
-                                <router-link to="/">{{form.className||'其他'}}</router-link>
+                                <router-link title="分类" :to="`/category/${form.className}`">{{form.className||'其他'}}</router-link>
                             </div>
                         </footer>
                     </section-title>
