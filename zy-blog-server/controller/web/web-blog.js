@@ -142,6 +142,8 @@ exports.webCommentCreate = async (req, res, next) => {
     try {
         let params = req.body,
             sql = $webSqlMap.commentOpt.create,
+            querySql = $webSqlMap.articleOpt.list + ` WHERE id='${params.postId}'`,
+            postSql = $webSqlMap.commentOpt.addCommentCount,
             createParams = [
                 tools.createRandomId(),
                 params.postId,
@@ -156,10 +158,21 @@ exports.webCommentCreate = async (req, res, next) => {
                 tools.getDate(),
                 '',
             ]
-        comMethods.commonQuery(sql, createParams).then(data => {
-            let realRes = data || {}
-            res.json(realRes)
+        //记录评论数
+        //查询哪条文章
+        comMethods.commonQuery(querySql).then(data => {
+            let realRest = data || {}
+            let num = realRest.records[0].commentsCount + 1
+            //更新评论数
+            comMethods.commonQuery(postSql, [num,params.postId]).then(data => {
+                //创建评论
+                comMethods.commonQuery(sql, createParams).then(data => {
+                    let realRes = data || {}
+                    res.json(realRes)
+                })
+            })
         })
+
     } catch (err) {
         next(err)
     }

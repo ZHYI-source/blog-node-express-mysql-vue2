@@ -33,6 +33,8 @@ const webSqlMap = {
 
         addViewsCount: "UPDATE zy_comments SET viewsCount=? WHERE id=?",
 
+        addCommentCount: "UPDATE zy_article SET commentsCount=? WHERE id=?",
+
     },
 }
 module.exports = webSqlMap
