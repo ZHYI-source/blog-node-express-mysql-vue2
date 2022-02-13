@@ -31,7 +31,10 @@ const tools = {
     //获取实时时间
     getDate:()=>{
        return new Date().Format("yyyy-MM-dd hh:mm:ss")
-    }
+    },
+
+
+
 }
 
 module.exports = tools

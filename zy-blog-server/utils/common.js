@@ -38,7 +38,8 @@ const comMethods = {
             })
 
         })
-    }
+    },
+
 }
 
 

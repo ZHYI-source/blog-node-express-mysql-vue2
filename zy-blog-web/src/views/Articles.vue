@@ -52,11 +52,20 @@
                         <p>声明：ZYBlog博客|版权所有，违者必究|如未注明，均为原创</p>
                         <p>转载：转载请注明原文链接 - <a href="#">{{form.title || 'ZYBlog'}}</a></p>
                     </div>
+
                     <!--评论-->
                     <div class="comments">
+                        <div class="comments-head">
+                            <h2 class="comments-h-t">
+                                <i class="el-icon-edit-outline"></i>
+                                文章评论
+                            </h2>
+                            <comment-message-editor :inline="false" buttonText="提交" @focus=""
+                                                    @submit="toSubmitComment"></comment-message-editor>
+                        </div>
                         <comment v-for="item in comments" :key="item.comment.id" :comment="item.comment">
                             <template v-if="item.reply.length">
-                                <comment v-for="reply in item.reply" :key="reply.id" :comment="reply"></comment>
+                                <comment v-for="(reply,index) in item.reply"  :key="index" :comment="reply.comment"></comment>
                             </template>
                         </comment>
                     </div>
@@ -67,107 +76,42 @@
 </template>
 
 <script>
+    import commentMessageEditor from 'comment-message-editor'
     import Banner from '@/components/banner'
     import sectionTitle from '@/components/section-title'
     import comment from '@/components/comment'
     import menuTree from '@/components/menu-tree'
     import {fetchComment} from '../api'
-    import {getArticleDetail} from "../api/web-blog";
+    import {dirComment, getArticleDetail, getCreateComment} from "../api/web-blog";
 
     export default {
         name: 'articles',
+
         data() {
             return {
                 showDonate: false,
-                comments: [
-                    {
-                        comment: {
-                            postId: 1,
-                            parentId: 1,
-                            fromUserId: '3',
-                            fromUserName: '梁朝伟',
-                            fromUserAvatar: 'http://localhost:5220/zy-server/public/images?id=164466183089025c842ff5fae3.jpg',
-                            content: '忽如一夜春风来，千树万树梨花开。',
-                            createTime: '2022-12-10 10:22',
-                            toUserId: '',
-                            toUserName: '',
-                            toUserAvatar: 'http://localhost:5220/zy-server/public/images?id=164466183089025c842ff5fae3.jpg',
-                        },
-                        reply: [{postId: 1,
-                            parentId: 1,
-                            fromUserId: '3',
-                            fromUserName: '张家辉',
-                            fromUserAvatar: 'http://localhost:5220/zy-server/public/images?id=1644655142222f250f577a67bf.jpg',
-                            content: '真是太棒了！今天就去学习...',
-                            createTime: '2022-12-10 10:22',
-                            toUserId: 1,
-                            toUserName: '梁朝伟',
-                            toUserAvatar: 'http://localhost:5220/zy-server/public/images?id=1644655142222f250f577a67bf.jpg',}]
-                    },
-                    {
-                        comment: {
-                            postId: 1,
-                            parentId: 1,
-                            fromUserId: '3',
-                            fromUserName: '梁朝伟',
-                            fromUserAvatar: 'http://localhost:5220/zy-server/public/images?id=164466183089025c842ff5fae3.jpg',
-                            content: '忽如一夜春风来，千树万树梨花开。',
-                            createTime: '2022-12-10 10:22',
-                            toUserId: '',
-                            toUserName: '',
-                            toUserAvatar: 'http://localhost:5220/zy-server/public/images?id=164466183089025c842ff5fae3.jpg',
-                        },
-                        reply: [{postId: 1,
-                            parentId: 1,
-                            fromUserId: '3',
-                            fromUserName: '张家辉',
-                            fromUserAvatar: 'http://localhost:5220/zy-server/public/images?id=1644655142222f250f577a67bf.jpg',
-                            content: '真是太棒了！今天就去学习...',
-                            createTime: '2022-12-10 10:22',
-                            toUserId: '1',
-                            toUserName: '梁朝伟',
-                            toUserAvatar: 'http://localhost:5220/zy-server/public/images?id=1644655142222f250f577a67bf.jpg',},
-                            {postId: 1,
-                                parentId: 1,
-                                fromUserId: '3',
-                                fromUserName: '张家辉',
-                                fromUserAvatar: 'http://localhost:5220/zy-server/public/images?id=1644655142222f250f577a67bf.jpg',
-                                content: '真是太棒了！今天就去学习...',
-                                createTime: '2022-12-10 10:22',
-                                toUserId: '1',
-                                toUserName: '梁朝伟',
-                                toUserAvatar: 'http://localhost:5220/zy-server/public/images?id=1644655142222f250f577a67bf.jpg',}]
-                    },
-                    {
-                        comment: {
-                            postId: 1,
-                            parentId: 1,
-                            fromUserId: '3',
-                            fromUserName: '梁朝伟',
-                            fromUserAvatar: 'http://localhost:5220/zy-server/public/images?id=164466183089025c842ff5fae3.jpg',
-                            content: '忽如一夜春风来，千树万树梨花开。',
-                            createTime: '2022-12-10 10:22',
-                            toUserId: '',
-                            toUserName: '',
-                            toUserAvatar: 'http://localhost:5220/zy-server/public/images?id=164466183089025c842ff5fae3.jpg',
-                        },
-                        reply: [{postId: 1,
-                            parentId: 1,
-                            fromUserId: '3',
-                            fromUserName: '张家辉',
-                            fromUserAvatar: 'http://localhost:5220/zy-server/public/images?id=1644655142222f250f577a67bf.jpg',
-                            content: '真是太棒了！今天就去学习...',
-                            createTime: '2022-12-10 10:22',
-                            toUserId: 1,
-                            toUserName: '梁朝伟',
-                            toUserAvatar: 'http://localhost:5220/zy-server/public/images?id=1644655142222f250f577a67bf.jpg',}]
+                //查询条件
+                query: {
+                    size: 20,
+                    current: 1,
+                    //排序字段
+                    orderBy: 'createTime',
+                    //排序类型
+                    orderType: 'DESC',
+                    params: {
+                        id: '',
                     }
-                ],
+                },
+                postId:'',//文章ID
+                //提交评论
+                addCommentData: {},
+                comments: [],
                 menus: [],
                 form: {}
             }
         },
         components: {
+            commentMessageEditor,
             Banner,
             sectionTitle,
             comment,
@@ -175,20 +119,51 @@
         },
 
         methods: {
+            // 提交评论
+            toSubmitComment(val) {
+                let p = {
+                    postId: this.postId,//文章id
+                    parentId: 0,//父级id
+                    fromUserId: '3',//用户ID
+                    fromUserName: '匿名',//用户名称
+                    fromUserAvatar: 'http://localhost:5220/zy-server/public/images?id=164466183089025c842ff5fae3.jpg',//用户头像
+                    content: val,//评论内容
+                    createTime: '',//评论时间
+                    toUserId: '',//回复对象ID
+                    toUserName: '回复对象',//回复对象名称
+                    toUserAvatar: 'http://localhost:5220/zy-server/public/images?id=164466183089025c842ff5fae3.jpg',//回复对象头像
+                }
+                getCreateComment(p).then(res => {
+                    console.log('提交评论', res)
+                })
+            },
             //  加载文章详情
             getDataList(idx) {
                 getArticleDetail({id: idx}).then(res => {
                     this.form = res.records[0] || {}
                 })
+                this.getCommentList(idx)
             },
 
-            //  加载评论
-            getComment() {
-                fetchComment().then(res => {
-                    // this.comments = res.data || []
-                }).catch(err => {
+            //  加载评论列表
+            getCommentList(idx) {
+                // 首先调用initTree方法查找所有parent_id为-1的（-1认为是第一级）
+                this.query.params.id = idx || ''
+                dirComment(this.query).then(res=>{
+                    let params = res.records || []
+                    const initTree = (parentId) => {
+                        const child = params.filter(item => item.parentId == parentId)
+                        return child.map(item => ({
+                            comment:{...item},
+                            reply: initTree(item.id)
+                        }))
+                    }
+                    this.comments = initTree(0)
+                    console.log('评论列表',this.comments)
+                }).catch(err=>{
                     console.log(err)
                 })
+
             },
             //  加载文章标题
             fetchH(arr, left, right) {
@@ -235,8 +210,8 @@
         },
         created() {
             let id = this.$route.params.id || ''
+            this.postId = id || ''
             this.getDataList(id)
-            this.getComment()
         }
     }
 </script>
@@ -434,6 +409,19 @@
                 color: #A0DAD0;
                 padding: 0 5px;
             }
+        }
+    }
+
+    .comments-head {
+        border-top: 1px dashed #ECECEC;
+        padding: 15px 0;
+        padding-left: 10px;
+        margin-bottom: 25px;
+
+        .comments-h-t {
+            line-height: 40px;
+            padding-bottom: 10px;
+
         }
     }
 </style>

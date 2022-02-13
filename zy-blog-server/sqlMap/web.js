@@ -14,5 +14,16 @@ const webSqlMap = {
         addViewsCount: "UPDATE zy_article SET viewsCount=? WHERE id=?",
 
     },
+    //web端博文评论
+    commentOpt: {
+        list: "SELECT * FROM zy_comments ",
+
+        create:"INSERT INTO zy_comments (id,postId,parentId,fromUserId,fromUserName,fromUserAvatar,content,toUserId,toUserName,toUserAvatar,createTime,updateTime) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",
+
+        count: "SELECT COUNT(id) FROM zy_comments",
+
+        addViewsCount: "UPDATE zy_comments SET viewsCount=? WHERE id=?",
+
+    },
 }
 module.exports = webSqlMap
