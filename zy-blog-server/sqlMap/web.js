@@ -14,6 +14,15 @@ const webSqlMap = {
         addViewsCount: "UPDATE zy_article SET viewsCount=? WHERE id=?",
 
     },
+    //web端博文分类查询
+    articleClassOpt: {
+        list: "SELECT * FROM zy_article_class ",
+
+        count: "SELECT COUNT(id) FROM zy_article",
+
+        addViewsCount: "UPDATE zy_article SET viewsCount=? WHERE id=?",
+
+    },
     //web端博文评论
     commentOpt: {
         list: "SELECT * FROM zy_comments ",

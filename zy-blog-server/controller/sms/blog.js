@@ -187,6 +187,8 @@ exports.articleClassCreate = async (req, res, next) => {
                 tools.createRandomId(),
                 params.className,
                 params.classValue,
+                params.path,
+                params.query,
                 tools.getDate(),
                 '',
             ]
@@ -217,6 +219,8 @@ exports.articleClassUpdate = async (req, res, next) => {
             updateParams = [
                 params.className,
                 params.classValue,
+                params.path,
+                params.query,
                 params.insertTime,
                 tools.getDate(),
                 params.id,

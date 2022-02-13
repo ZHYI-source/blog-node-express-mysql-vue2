@@ -6,14 +6,16 @@
             <div class="notify">
                 <div class="search-result" v-if="hideSlogan">
                     <span v-if="searchWords">搜索结果："{{searchWords}}" 相关文章</span>
-                    <span v-else-if="category">分类 "{{category}}" 相关文章</span>
+                    <span v-else-if="category">分类 "{{category}}" 相关文章  ({{postList.length}})</span>
                 </div>
                 <quote v-else>{{notice}}</quote>
             </div>
             <!--焦点图-->
             <div class="top-feature" v-if="!hideSlogan">
                 <section-title>
-                    <div style="display: flex;align-items: flex-end;">聚焦<small-ico></small-ico></div>
+                    <div style="display: flex;align-items: flex-end;">聚焦
+                        <small-ico></small-ico>
+                    </div>
                 </section-title>
                 <div class="feature-content">
                     <div class="feature-item" v-for="item in features" :key="item.title">
@@ -62,26 +64,27 @@
                     orderType: 'DESC',
                     params: {
                         id: '',
-                        title:'',
-                        classId:'',
+                        title: '',
+                        classId: '',
+                        className:''
                     }
                 },
                 features: [
-                  {
-                    id: 1,
-                    title: 'Akina',
-                    img: 'https://s1.ax1x.com/2020/05/14/YDfRnU.jpg'
-                  },
-                  {
-                    id: 2,
-                    title: '使用说明',
-                    img: 'https://s1.ax1x.com/2020/05/14/YDf4AJ.jpg'
-                  },
-                  {
-                    id: 3,
-                    title: '文章归档',
-                    img: 'https://s1.ax1x.com/2020/05/14/YDfT91.jpg'
-                  }
+                    {
+                        id: 1,
+                        title: 'Akina',
+                        img: 'https://s1.ax1x.com/2020/05/14/YDfRnU.jpg'
+                    },
+                    {
+                        id: 2,
+                        title: '使用说明',
+                        img: 'https://s1.ax1x.com/2020/05/14/YDf4AJ.jpg'
+                    },
+                    {
+                        id: 3,
+                        title: '文章归档',
+                        img: 'https://s1.ax1x.com/2020/05/14/YDfT91.jpg'
+                    }
                 ],
                 postList: [],
                 currPage: 1,
@@ -96,9 +99,16 @@
             SmallIco,
             Quote
         },
+        watch: {
+            '$route': function (val) {
+                if (val.params.cate) {
+                    this.getDataList(val.params.cate)
+                }
+            }
+        },
         computed: {
             searchWords() {
-                return this.$route.params.words
+                return this.$route.params.classId
             },
             category() {
                 return this.$route.params.cate
@@ -112,14 +122,16 @@
             }
         },
         methods: {
-            getDataList(){
-              let that = this
-              dirArticle(this.query).then(res=>{
-                console.log('文字列表',res)
-                that.postList  = res.records || []
-              }).catch(err=>{
-                console.log(err)
-              })
+            getDataList(val) {
+                let that = this
+                if (val) {
+                    this.query.params.className = val
+                }
+                dirArticle(this.query).then(res => {
+                    that.postList = res.records || []
+                }).catch(err => {
+                    console.log(err)
+                })
             },
             fetchFocus() {
                 // fetchFocus().then(res => {
@@ -138,7 +150,7 @@
                 // })
             },
             loadMore() {
-                fetchList({page:this.currPage+1}).then(res => {
+                fetchList({page: this.currPage + 1}).then(res => {
                     this.postList = this.postList.concat(res.data.items || [])
                     this.currPage = res.data.page
                     this.hasNextPage = res.data.hasNextPage
@@ -146,6 +158,11 @@
             }
         },
         mounted() {
+            let val = this.$route.params.cate
+            if (val){
+                this.getDataList(val);
+                return
+            }
             this.getDataList();
         },
     }
@@ -156,6 +173,7 @@
         .notify {
             margin: 60px 0;
             border-radius: 3px;
+
             & > div {
                 padding: 20px;
             }
@@ -197,9 +215,10 @@
         }
     }
 
-    .more{
+    .more {
         margin: 50px 0;
-        .more-btn{
+
+        .more-btn {
             width: 100px;
             height: 40px;
             line-height: 40px;
@@ -209,7 +228,8 @@
             border-radius: 20px;
             margin: 0 auto;
             cursor: pointer;
-            &:hover{
+
+            &:hover {
                 color: #8fd0cc;
                 border: 1px dashed #8fd0cc;
             }

@@ -26,10 +26,14 @@ let tools = require('../../utils/tools') // 引入工具模块
 exports.webArticleList = async (req, res, next) => {
     try {
         let params = req.body, sql = '', total = 0;
-        let queryTotal = $webSqlMap.articleOpt.count + ` WHERE isPublish=1`
+        let queryTotal = $webSqlMap.articleOpt.count + ` WHERE isPublish=1 `
         //多条件查询
         if (params.params.title) {
             sql = $webSqlMap.articleOpt.list + ` WHERE isPublish='${1}' AND title='${params.params.title}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
+        }else if (params.params.classId) {
+            sql = $webSqlMap.articleOpt.list + ` WHERE isPublish='${1}' AND classId='${params.params.classId}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
+        }else if (params.params.className) {
+            sql = $webSqlMap.articleOpt.list + ` WHERE isPublish='${1}' AND className='${params.params.className}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
         } else {
             sql = $webSqlMap.articleOpt.list + ` WHERE isPublish='${1}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
         }
@@ -110,7 +114,19 @@ exports.webArticleUpdate = async (req, res, next) => {
         next(err)
     }
 }
-
+exports.webArticleClassList = async (req, res, next) => {
+    try {
+        let sql = $webSqlMap.articleClassOpt.list
+        comMethods.commonQuery(sql).then(data => {
+            let resData = data || {}
+            res.json(resData)
+        }).catch(err => {
+            console.log('--查询文章分类错误--', err)
+        })
+    } catch (err) {
+        next(err)
+    }
+}
 //查询文章评论列表
 exports.webCommentList = async (req, res, next) => {
     try {

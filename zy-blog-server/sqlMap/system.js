@@ -26,11 +26,11 @@ const systemSqlMap = {
 
         count: "SELECT COUNT(id) FROM zy_article_class;",
 
-        create:"INSERT INTO zy_article_class (id,className,classValue,insertTime,updateTime) VALUES (?,?,?,?,?)",
+        create:"INSERT INTO zy_article_class (id,className,classValue,path,query,insertTime,updateTime) VALUES (?,?,?,?,?,?,?)",
 
         delete:"DELETE FROM zy_article_class WHERE id=?",
 
-        update:"UPDATE zy_article_class SET className=?,classValue=?,insertTime=?,updateTime=? WHERE id=?",
+        update:"UPDATE zy_article_class SET className=?,classValue=?,path=?,query=?,insertTime=?,updateTime=? WHERE id=?",
 
     },
 

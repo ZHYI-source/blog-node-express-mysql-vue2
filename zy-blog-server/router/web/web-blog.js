@@ -12,6 +12,8 @@ router.post('/zy-server/web/article/list', webBlogCtrl.webArticleList) //文章�
 
 router.post('/zy-server/web/article/detail', webBlogCtrl.webArticleDetail) //文章详情
 
+router.get('/zy-server/web/article_class/list', webBlogCtrl.webArticleClassList) //文章分类列表
+
 router.post('/zy-server/web/comment/list', webBlogCtrl.webCommentList) //文章评论
 
 router.post('/zy-server/web/comment/create', webBlogCtrl.webCommentCreate) //创建评论
