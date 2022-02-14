@@ -3,7 +3,7 @@
         <div class="site-logo">
             <router-link to="/">
                 <img src="@/assets/site-logo.svg" alt="">
-                <p class="site-name">ZYblog</p>
+                <p class="site-name">ZY'blog</p>
             </router-link>
         </div>
         <div class="menus-btn" @click.stop="mobileShow=!mobileShow">

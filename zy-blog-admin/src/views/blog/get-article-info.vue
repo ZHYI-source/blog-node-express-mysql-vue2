@@ -24,12 +24,8 @@
         </lk-get-row>
         <lk-get-row>
           <el-form-item label="文章图片" prop="img">
-            <el-image
-              :key="commonKey+2" v-if="form.img"
-              style="width: 100px; height: 100px;border-radius: 5px"
-              :src="form.img"
-              :preview-src-list="[form.img]">
-            </el-image>
+            <el-input placeholder="请输入文章图片地址"
+                      v-model="form.img" size="mini" class="input-one"></el-input>
             <el-upload
               class="avatar-uploader"
               action="/zy-server/upload/v1"
@@ -38,6 +34,16 @@
               :before-upload="beforeAvatarUpload">
               <el-button  size="mini" icon="el-icon-upload2" type="primary">点击上传</el-button>
             </el-upload>
+          </el-form-item>
+        </lk-get-row>
+        <lk-get-row   v-if="form.img" >
+          <el-form-item>
+            <el-image
+              style="width: 100px; height: 100px;border-radius: 5px"
+              :src="form.img"
+              :key="commonKey"
+              :preview-src-list="[form.img]">
+            </el-image>
           </el-form-item>
         </lk-get-row>
         <lk-get-row>
