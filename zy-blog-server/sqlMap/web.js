@@ -12,6 +12,10 @@ const webSqlMap = {
     webSocials: {
         list: "SELECT * FROM zy_web_socials ",
     },
+    //关于
+    webAbout: {
+        list: "SELECT * FROM zy_web_about ",
+    },
     //web端博文查询
     articleOpt: {
         list: "SELECT * FROM zy_article ",

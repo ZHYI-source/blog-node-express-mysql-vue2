@@ -31,5 +31,15 @@ router.post('/zy-server/article_comments/list', blogCtrl.articleCommentList) //�
 //
 router.post('/zy-server/article_comments/delete', blogCtrl.articleCommentDelete) //文章评论删除
 
+/*web站点关于我*/
+router.post('/zy-server/web_about/list', blogCtrl.webAboutList) //关于我列表
+//
+router.post('/zy-server/web_about/create', blogCtrl.webAboutCreate) //关于我增加
+//
+router.post('/zy-server/web_about/update', blogCtrl.webAboutUpdate) //关于我更新
+//
+router.post('/zy-server/web_about/delete', blogCtrl.webAboutDelete) //关于我删除
+
+
 
 module.exports = router

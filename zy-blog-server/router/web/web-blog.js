@@ -11,6 +11,8 @@ router.post('/zy-server/web/site/info', webBlogCtrl.webSiteInfo) //站点信息
 
 router.post('/zy-server/web/socials', webBlogCtrl.webSocials) //站点社交方式
 
+router.post('/zy-server/web/about', webBlogCtrl.webAbout) //关于
+
 /*博文数据*/
 router.post('/zy-server/web/article/list', webBlogCtrl.webArticleList) //文章列表
 

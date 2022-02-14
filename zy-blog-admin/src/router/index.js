@@ -124,6 +124,41 @@ export const asyncRoutes = [
     ]
   },
   {
+    path: '/web',
+    component: Layout,
+    redirect: 'dir-web-about',
+    meta: { title: '站点管理', icon: 'international'},
+    children: [
+      {
+        path: "dir-web-about",
+        name: "web-about",
+        component: () =>
+          import("@/views/blog/dir-web-about"),
+        meta: {
+          title: '关于信息',
+          perms: [
+            // 'POST /admin/operate/worker/list',
+            // 'POST /admin/operate/worker/import',
+            // 'POST /admin/operate/worker/create',
+          ]
+        },
+      },{
+        path: "dir-web-site",
+        name: "web-site",
+        component: () =>
+          import("@/views/blog/dir-web-site"),
+        meta: {
+          title: '站点信息',
+          perms: [
+            // 'POST /admin/operate/worker/list',
+            // 'POST /admin/operate/worker/import',
+            // 'POST /admin/operate/worker/create',
+          ]
+        },
+      },
+    ]
+  },
+  {
     path: '/employee',
     component: Layout,
     redirect: 'employee',

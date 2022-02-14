@@ -11,6 +11,9 @@ export const getSiteInfo = (data) =>
 //站点社交信息
 export const getSiteSocials = (data) =>
     post("/zy-server/web/socials", data);
+//站点关于
+export const getSiteAbout = (data) =>
+    post("/zy-server/web/about", data);
 
 //文章列表
 export const dirArticle = (data) =>

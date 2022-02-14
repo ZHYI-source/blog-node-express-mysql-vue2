@@ -6,6 +6,19 @@
 */
 
 const systemSqlMap = {
+    //web站点关于我
+    webAboutOpt: {
+        list: "SELECT * FROM zy_web_about ",
+
+        count: "SELECT COUNT(id) FROM zy_web_about;",
+
+        create:"INSERT INTO zy_web_about (id,aboutTitle,aboutContent,insertTime,updateTime) VALUES (?,?,?,?,?)",
+
+        delete:"DELETE FROM zy_web_about WHERE id=?",
+
+        update:"UPDATE zy_web_about SET aboutTitle=?,aboutContent=?,insertTime=?,updateTime=? WHERE id=?",
+
+    },
     //博文管理
     articleOpt: {
         list: "SELECT * FROM zy_article ",

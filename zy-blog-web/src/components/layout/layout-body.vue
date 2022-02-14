@@ -3,7 +3,7 @@
     <router-view></router-view>
     <back-top></back-top>
     <div class="play-miusc" :style="{left:show?0+'px':-70+'px'}">
-      <aplayer :audio="audio"   :showLrc="false" :float="true" mini :lrcType="1" />
+      <aplayer :audio="audio"  :showLrc="false" :float="true" mini :lrcType="1" />
       <div class="play-line" @click="show=!show"></div>
     </div>
   </div>
@@ -16,6 +16,33 @@ export default {
   data() {
     return {
       audio: [
+        {
+          name: "Lawrence",
+          artist: " Lawrence",
+          url:'http://f3.htqyy.com/play9/900/mp3/6',
+          cover: '', // prettier-ignore
+          lrc: "",
+        },
+        {
+          name: "安静",
+          artist: " Lawrence",
+          url:'http://f3.htqyy.com/play9/236/mp3/6',
+          cover: '', // prettier-ignore
+          lrc: "",
+        }, {
+          name: "Lawrence",
+          artist: " Lawrence",
+          url:'http://f3.htqyy.com/play9/759/mp3/6',
+          cover: '', // prettier-ignore
+          lrc: "",
+        }, {
+          name: "这一路走来 (cover: 杨宗纬) - 竹之颜",
+          artist: " 杨宗纬",
+          url:
+                  "http://www.170mv.com/kw/antiserver.kuwo.cn/anti.s?rid=MUSIC_150691890&response=res&format=mp3|aac&type=convert_url&br=128kmp3&agent=iPhone&callback=getlink&jpcallback=getlink.mp3",
+          cover: 'https://p1.music.126.net/K0-IPcIQ9QFvA0jXTBqoWQ==/109951163636756693.jpg?param=300y300', // prettier-ignore
+          lrc: "",
+        },
         {
           name: "听妈妈的话",
           artist: "周杰伦",
@@ -42,14 +69,7 @@ export default {
           cover: 'https://p1.music.126.net/K0-IPcIQ9QFvA0jXTBqoWQ==/109951163636756693.jpg?param=300y300', // prettier-ignore
           lrc: "",
         },
-        {
-          name: "这一路走来 (cover: 杨宗纬) - 竹之颜",
-          artist: " 杨宗纬",
-          url:
-              "http://www.170mv.com/kw/antiserver.kuwo.cn/anti.s?rid=MUSIC_150691890&response=res&format=mp3|aac&type=convert_url&br=128kmp3&agent=iPhone&callback=getlink&jpcallback=getlink.mp3",
-          cover: 'https://p1.music.126.net/K0-IPcIQ9QFvA0jXTBqoWQ==/109951163636756693.jpg?param=300y300', // prettier-ignore
-          lrc: "",
-        },
+
         {
           name: "一定要爱你",
           artist: " 孙露",
@@ -92,7 +112,7 @@ export default {
     display: flex;
     justify-content: left;
     align-items: center;
-    position: absolute;
+    position: fixed;
     left:-70px;
     bottom: 0px;
     transition: all .2s linear;

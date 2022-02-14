@@ -31,4 +31,14 @@ export const blogApi = {
 
   api_blog_article_comments_delete: {url: '/zy-server/article_comments/delete', method: 'post',},//文章评论删除
 
+  /*web站点信息设置*/
+
+  api_blog_web_about_list: {url: '/zy-server/web_about/list', method: 'post',},//web站点关于列表
+
+  api_blog_web_about_create: {url: '/zy-server/web_about/create', method: 'post',},//web站点关于添加
+
+  api_blog_web_about_update: {url: '/zy-server/web_about/update', method: 'post',},//web站点关于修改
+
+  api_blog_web_about_delete: {url: '/zy-server/web_about/delete', method: 'post',},//web站点关于删除
+
 }

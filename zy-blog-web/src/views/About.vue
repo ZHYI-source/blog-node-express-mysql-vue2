@@ -2,41 +2,10 @@
   <div class="about">
     <div class="site-content">
       <div class="content-warp">
-        <div class="about-site about-info">
-          <section-title><span>❤</span>关于本站</section-title>
-          <div class="info-card">
-            <p>偶然之间看见了<a target="_blank" class="out-link" href="https://www.fengziy.cn">Fengziy</a>博客的模板，风格很是喜欢。</p>
-            <p>然后就开始用Vue搭建这种风格的博客，在此呢也将这套模板开放给大家。</p>
-            <p><a target="_blank" href="https://gitee.com/fengziy/Gblog" style="color: #ff6d6d;">Gitee仓库</a> | <a
-                target="_blank" href="https://github.com/fengziye/Gblog" style="color: #ff6d6d;">Github仓库</a>记得star★哟
-            </p>
+        <div class="about-site about-info" v-for="item in list" :key="item.id">
+          <section-title><span>❤</span>{{item.aboutTitle || '关于'}}</section-title>
+          <div class="info-card entry-content"  v-html="item.aboutContent || '没有人真正关注你。每个人都忙关注他们自己'">
           </div>
-        </div>
-        <div class="about-me about-info">
-          <section-title id="Guestbook"><span>❤</span>关于博主</section-title>
-          <div class="info-card">
-            <p>偶然之间看见了<a target="_blank" class="out-link" href="https://www.fengziy.cn">Fengziy</a>博客的模板，风格很是喜欢。</p>
-            <p>然后就开始用Vue搭建这种风格的博客，在此呢也将这套模板开放给大家。</p>
-            <p><a target="_blank" href="https://gitee.com/fengziy/Gblog" style="color: #ff6d6d;">Gitee仓库</a> | <a
-                target="_blank" href="https://github.com/fengziye/Gblog" style="color: #ff6d6d;">Github仓库</a>记得star★哟
-            </p>
-          </div>
-          <!--                    <div class="info-card">-->
-          <!--                        <div class="contactForm">-->
-          <!--                            <div class="form-item">-->
-          <!--                                <label for="mail">邮箱</label>-->
-          <!--                                <input class="v" type="email" name="mail" id="mail">-->
-          <!--                            </div>-->
-          <!--                            <div class="form-item">-->
-          <!--                                <label for="content">内容</label>-->
-          <!--                                <textarea class="v" id="content" name="content"></textarea>-->
-          <!--                            </div>-->
-          <!--                            <div class="form-item">-->
-          <!--                                <label></label>-->
-          <!--                                <button>提交</button>-->
-          <!--                            </div>-->
-          <!--                        </div>-->
-          <!--                    </div>-->
         </div>
       </div>
     </div>
@@ -45,13 +14,14 @@
 <script>
 import sectionTitle from '@/components/section-title'
 import {getTime, getTimeInterval} from '@/utils'
+import {getSiteAbout} from "../api/web-blog";
 // import Quote from "@/components/quote";
 // import {fetchFriend} from '../api'
 export default {
   name: "About",
   data() {
     return {
-
+      form:{},
       list: []
     }
   },
@@ -59,8 +29,16 @@ export default {
     // Quote,
     sectionTitle
   },
-  methods: {},
+  methods: {
+    getDataList(){
+      getSiteAbout().then(res=>{
+        this.list = res.records || []
+        console.log(res)
+      })
+    }
+  },
   mounted() {
+    this.getDataList()
   }
 }
 </script>
@@ -82,10 +60,10 @@ export default {
 
     .info-card {
       min-height: 100px;
-      padding: 20px;
+      padding: 5px;
       border-radius: 3px;
-      margin: 30px 0 50px 0;
-      //box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+      margin: 10px 0 30px 0;
+      /*box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);*/
       p {
         line-height: 1.7rem;
       }

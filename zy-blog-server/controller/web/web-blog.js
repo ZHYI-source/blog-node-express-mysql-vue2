@@ -39,7 +39,20 @@ exports.webSocials = async (req, res, next) => {
         next(err)
     }
 }
-
+//关于
+exports.webAbout = async (req, res, next) => {
+    try {
+        let sql = $webSqlMap.webAbout.list
+        comMethods.commonQuery(sql).then(data => {
+            let resData = data || {}
+            res.json(resData)
+        }).catch(err => {
+            console.log('--查询关于数据错误--', err)
+        })
+    } catch (err) {
+        next(err)
+    }
+}
 
 //查询文章列表
 exports.webArticleList = async (req, res, next) => {
@@ -73,7 +86,6 @@ exports.webArticleList = async (req, res, next) => {
         next(err)
     }
 }
-
 //查询文章详情
 exports.webArticleDetail = async (req, res, next) => {
     try {
@@ -149,6 +161,7 @@ exports.webArticleClassList = async (req, res, next) => {
         next(err)
     }
 }
+
 //查询文章评论列表
 exports.webCommentList = async (req, res, next) => {
     try {
