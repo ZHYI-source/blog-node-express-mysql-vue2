@@ -24,9 +24,9 @@
                     </div>
                 </div>
             </div>
-            <div class="menu-item">
-                <router-link to="/friend">友链</router-link>
-            </div>
+<!--            <div class="menu-item">-->
+<!--                <router-link to="/friend">友链</router-link>-->
+<!--            </div>-->
             <div class="menu-item">
                 <router-link to="/about">关于</router-link>
             </div>

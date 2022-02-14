@@ -50,7 +50,7 @@
     background-color: #FFFFFF;
     position: fixed;
     right: 3rem;
-    bottom: 8rem;
+    bottom: 4rem;
     border-radius: 25px;
     cursor: pointer;
     opacity: .3;
@@ -58,8 +58,8 @@
     text-align: center;
     z-index: 99;
     img{
-        width: 60px;
-        height: 60px;
+        width: 40px;
+        height: 40px;
     }
     .img2{
         display: none;
@@ -73,7 +73,9 @@
 }
 @media (max-width: 600px){
     .back-top{
-        display: none;
+        //display: none;
+      bottom: 17rem;
+      right: 0.5rem;
     }
 }
 </style>
