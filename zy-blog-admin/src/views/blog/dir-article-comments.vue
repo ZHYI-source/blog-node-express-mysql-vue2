@@ -303,7 +303,7 @@ export default {
     //跳转到查看详情
     goView(data) {
       let datas = data ? data : {};
-      this.toast.showMiniModal('文章评论详情', ViewArticleComments, {datas})
+      this.toast.showSmallModal('文章评论详情', ViewArticleComments, {datas})
     },
     //删除文章
     goDelete(data) {
