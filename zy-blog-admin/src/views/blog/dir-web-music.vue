@@ -275,7 +275,7 @@ export default {
     //跳转到查看详情
     goView(data) {
       let datas = data ? data : {};
-      this.toast.showMiniModal('web音乐详情', ViewWebMusic, {datas})
+      this.toast.showSmallModal('web音乐详情', ViewWebMusic, {datas})
     },
     //删除文章
     goDelete(data) {

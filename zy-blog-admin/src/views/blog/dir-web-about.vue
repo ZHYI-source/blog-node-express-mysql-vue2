@@ -278,7 +278,7 @@ export default {
     //跳转到查看详情
     goView(data) {
       let datas = data ? data : {};
-      this.toast.showMiniModal('web关于详情', ViewWebAbout, {datas})
+      this.toast.showSmallModal('web关于详情', ViewWebAbout, {datas})
     },
     //删除文章
     goDelete(data) {
