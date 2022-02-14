@@ -248,3 +248,64 @@ exports.articleClassDelete = async (req, res, next) => {
         next(err)
     }
 }
+
+/**
+ *@author ZY
+ *@date 2022/2/12 15:11
+ *@Description:文章评论管理
+ */
+exports.articleCommentList = async (req, res, next) => {
+    try {
+        let parms = req.body, sql = '', total = 0,
+            queryTotal = $systemSqlMap.articleCommentsOpt.count
+        //多条件查询
+        if (parms.params.postId && parms.params.fromUserName) {
+            sql = $systemSqlMap.articleCommentsOpt.list + ` WHERE postId='${parms.params.postId}' AND fromUserName='${parms.params.fromUserName}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
+        } else if (parms.params.postId) {
+            sql = $systemSqlMap.articleCommentsOpt.list + ` WHERE postId='${parms.params.postId}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
+        } else if (parms.params.fromUserName) {
+            sql = $systemSqlMap.articleCommentsOpt.list + ` WHERE fromUserName='${parms.params.fromUserName}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
+        } else {
+            sql = $systemSqlMap.articleCommentsOpt.list + ` ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
+        }
+        comMethods.queryCount(queryTotal).then(data => {
+            total = data
+        })
+        comMethods.commonQuery(sql, parms).then(data => {
+            let resData = data || {}
+            resData.total = total
+            res.json(resData)
+        }).catch(err => {
+            console.log('--查询文章评论错误--', err)
+        })
+    } catch (err) {
+        next(err)
+    }
+}
+
+//删除
+exports.articleCommentDelete = async (req, res, next) => {
+    try {
+        let params = req.body,
+            sql = $systemSqlMap.articleCommentsOpt.delete,
+            subSql = $systemSqlMap.articleCommentsOpt.subCommentCount,
+            querySql = $systemSqlMap.articleOpt.list  + ` WHERE id='${params.postId}'`,
+            deleteParams = [params.id]
+        //记录评论数
+        //查询哪条文章
+        comMethods.commonQuery(querySql).then(data => {
+            let realRest = data || {}
+            let num = realRest.records[0].commentsCount - 1
+            //更新评论数
+            comMethods.commonQuery(subSql, [num,params.postId]).then(data => {
+                //创建评论
+                comMethods.commonQuery(sql, deleteParams).then(data => {
+                    let realRes = data || {}
+                    res.json(realRes)
+                })
+            })
+        })
+    } catch (err) {
+        next(err)
+    }
+}

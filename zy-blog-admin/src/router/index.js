@@ -106,6 +106,20 @@ export const asyncRoutes = [
           ]
         },
       },
+      {
+        path: "dir-article-comments",
+        name: "article-comments",
+        component: () =>
+          import("@/views/blog/dir-article-comments"),
+        meta: {
+          title: '文章评论',
+          perms: [
+            // 'POST /admin/operate/worker/list',
+            // 'POST /admin/operate/worker/import',
+            // 'POST /admin/operate/worker/create',
+          ]
+        },
+      },
 
     ]
   },

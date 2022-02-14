@@ -3,8 +3,8 @@
  *@date 2021/12/9
  *@Description:中智项目web管理端api
  * 注意：如果是导出的话一定要注意responseType设置为blob
-*/
-export const blogApi ={
+ */
+export const blogApi = {
 
   /**博客文章管理**/
   api_blog_article_list: {url: '/zy-server/article/list', method: 'post',},//文章列表
@@ -25,5 +25,10 @@ export const blogApi ={
   api_blog_article_class_update: {url: '/zy-server/article_class/update', method: 'post',},//文章分类修改
 
   api_blog_article_class_delete: {url: '/zy-server/article_class/delete', method: 'post',},//文章分类删除
+
+  /**博客文章分类**/
+  api_blog_article_comments_list: {url: '/zy-server/article_comments/list', method: 'post',},//文章评论列表
+
+  api_blog_article_comments_delete: {url: '/zy-server/article_comments/delete', method: 'post',},//文章评论删除
 
 }

@@ -33,6 +33,16 @@ const systemSqlMap = {
         update:"UPDATE zy_article_class SET className=?,classValue=?,path=?,query=?,insertTime=?,updateTime=? WHERE id=?",
 
     },
+    //博文评论管理
+    articleCommentsOpt: {
+        list: "SELECT * FROM zy_comments ",
 
+        count: "SELECT COUNT(id) FROM zy_comments;",
+
+        delete:"DELETE FROM zy_comments WHERE id=?",
+
+        subCommentCount: "UPDATE zy_article SET commentsCount=? WHERE id=?",
+
+    },
    }
 module.exports = systemSqlMap

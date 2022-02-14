@@ -26,5 +26,10 @@ router.post('/zy-server/article_class/update', blogCtrl.articleClassUpdate) //�
 //
 router.post('/zy-server/article_class/delete', blogCtrl.articleClassDelete) //文章删除
 
+// /*文章评论*/
+router.post('/zy-server/article_comments/list', blogCtrl.articleCommentList) //文章评论列表
+//
+router.post('/zy-server/article_comments/delete', blogCtrl.articleCommentDelete) //文章评论删除
+
 
 module.exports = router

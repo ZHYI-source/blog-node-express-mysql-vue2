@@ -102,6 +102,7 @@ exports.webArticleUpdate = async (req, res, next) => {
         next(err)
     }
 }
+//文章类型列表
 exports.webArticleClassList = async (req, res, next) => {
     try {
         let sql = $webSqlMap.articleClassOpt.list
