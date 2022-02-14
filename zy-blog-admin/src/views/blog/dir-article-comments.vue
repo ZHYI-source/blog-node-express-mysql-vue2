@@ -113,10 +113,12 @@ import Tools from "@/libs/tool";
 import GetArticleClass from "@/views/blog/get-article-class";
 import ViewArticleClass from "@/views/blog/view-article-class";
 import {setSortType} from "@/utils/sortUtil";
+import ViewArticleComments from "@/views/blog/view-article-comments";
 
 export default {
   name: 'dir-article-comments',
   components: {
+    ViewArticleComments,
     ViewArticleClass,
     GetArticleClass,
   },
@@ -301,7 +303,7 @@ export default {
     //跳转到查看详情
     goView(data) {
       let datas = data ? data : {};
-      this.toast.showMiniModal('文章分类详情', ViewArticleClass, {datas})
+      this.toast.showMiniModal('文章评论详情', ViewArticleComments, {datas})
     },
     //删除文章
     goDelete(data) {

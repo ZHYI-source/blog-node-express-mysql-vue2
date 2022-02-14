@@ -3,36 +3,57 @@
     <section class="task-view-box">
       <section class="task-info">
         <lk-view-row>
-          <lk-view-item title="分类名称" label-width="70">
-            {{ form.className}}
+          <lk-view-item title="评论ID" label-width="70">
+            {{ form.id}}
           </lk-view-item>
         </lk-view-row>
         <lk-view-row>
-          <lk-view-item title="分类值" label-width="70">
-            {{ form.classValue}}
+          <lk-view-item title="文章ID" label-width="70">
+            {{ form.postId}}
           </lk-view-item>
         </lk-view-row>
         <lk-view-row>
-          <lk-view-item title="页面路径" label-width="70">
-            {{ form.path }}
+          <lk-view-item title="评论人" label-width="70">
+            {{ form.fromUserName }}
           </lk-view-item>
         </lk-view-row>
         <lk-view-row>
-          <lk-view-item title="路由参数" label-width="70">
-            {{ form.query }}
+          <lk-view-item title="评论人头像" label-width="70">
+            <el-image
+              v-if="form.fromUserAvatar"
+              style="width: 50px; height: 50px;border-radius: 8px"
+              :src="form.fromUserAvatar"
+              :preview-src-list="[form.fromUserAvatar]">
+            </el-image>
+            <span v-else>-</span>
+          </lk-view-item>
+        </lk-view-row>
+        <lk-view-row>
+          <lk-view-item title="回复对象" label-width="70">
+            {{ form.toUserName || '-' }}
+          </lk-view-item>
+        </lk-view-row>
+        <lk-view-row>
+          <lk-view-item title="对象头像" label-width="70">
+            <el-image
+              v-if="form.toUserAvatar"
+              style="width: 50px; height: 50px;border-radius: 8px"
+              :src="form.toUserAvatar"
+              :preview-src-list="[form.toUserAvatar]">
+            </el-image>
+            <span v-else>-</span>
           </lk-view-item>
         </lk-view-row>
         <lk-view-row>
           <lk-view-item title="插入时间" label-width="70">
-            <lk-view-date :date="form.insertTime"/>
+            <lk-view-date :date="form.createTime"/>
           </lk-view-item>
         </lk-view-row>
         <lk-view-row>
-          <lk-view-item title="修改时间" label-width="70">
-            <lk-view-date :date="form.updateTime"/>
+          <lk-view-item title="评论内容" label-width="70">
+           <lk-view-html :content="form.content"></lk-view-html>
           </lk-view-item>
         </lk-view-row>
-
       </section>
     </section>
   </section>
@@ -46,7 +67,7 @@ import LkViewHtml from "@/components/common/lk-view-html";
  *@Description:文章分类详情
  */
 export default {
-  name: "view-article-class",
+  name: "view-article-comments",
   components: {LkViewHtml},
   data() {
     return {
