@@ -14,8 +14,8 @@ export const toast = {
   confirmReset(val) {
     return this.confirm(val || '确认重置表单吗？');
   },
-  confirmDelete() {
-    return this.confirm(`确认删除该条数据吗？`)
+  confirmDelete(val) {
+    return this.confirm(val || `确认删除该条数据吗？`)
   },
   success(content = '保存成功') {
     listen.$message({type: 'success', message: content, duration: 1000});

@@ -41,6 +41,8 @@ const systemSqlMap = {
 
         delete:"DELETE FROM zy_comments WHERE id=?",
 
+        deleteMore:"DELETE FROM zy_comments WHERE parentId=?",
+
         subCommentCount: "UPDATE zy_article SET commentsCount=? WHERE id=?",
 
     },

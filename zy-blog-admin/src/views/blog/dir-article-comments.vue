@@ -309,7 +309,7 @@ export default {
         id: data.id || '',
         postId:data.postId
       }
-      this.toast.confirmDelete().then(() => {
+      this.toast.confirmDelete(data.parentId =='0'?'删除该数据会使子评论都会被删除?':'').then(() => {
         this.request('api_blog_article_comments_delete', p).then(res => {
           this.$message({
             message: '删除成功！',

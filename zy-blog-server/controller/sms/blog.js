@@ -59,7 +59,7 @@ exports.articleCreate = async (req, res, next) => {
                     resData.records[0].className,
                     resData.records[0].classValue,
                     params.title, 0,
-                    params.summary, 0,0, params.img,
+                    params.summary, 0, 0, params.img,
                     params.content, params.isTop, params.isHot, '',
                     tools.getDate(),
                     '',
@@ -96,7 +96,7 @@ exports.articleUpdate = async (req, res, next) => {
                     resData.records[0].classValue,
                     params.isPublish,
                     params.title,
-                    params.summary, 0,0, params.img,
+                    params.summary, 0, 0, params.img,
                     params.content, params.isTop, params.isHot, params.pubTime,
                     params.insertTime,
                     tools.getDate(),
@@ -283,28 +283,62 @@ exports.articleCommentList = async (req, res, next) => {
     }
 }
 
-//删除
+//删除评论
 exports.articleCommentDelete = async (req, res, next) => {
     try {
         let params = req.body,
             sql = $systemSqlMap.articleCommentsOpt.delete,
-            subSql = $systemSqlMap.articleCommentsOpt.subCommentCount,
-            querySql = $systemSqlMap.articleOpt.list  + ` WHERE id='${params.postId}'`,
+            sqlMoreDelete = $systemSqlMap.articleCommentsOpt.deleteMore,
+            subSql = $systemSqlMap.articleCommentsOpt.subCommentCount,//
+            querySql = $systemSqlMap.articleOpt.list + ` WHERE id='${params.postId}'`,//查询哪篇文章
+            queryAllcommentsSql = $systemSqlMap.articleCommentsOpt.list + ` WHERE id='${params.id}'`,
             deleteParams = [params.id]
         //记录评论数
-        //查询哪条文章
-        comMethods.commonQuery(querySql).then(data => {
-            let realRest = data || {}
-            let num = realRest.records[0].commentsCount - 1
-            //更新评论数
-            comMethods.commonQuery(subSql, [num,params.postId]).then(data => {
-                //创建评论
-                comMethods.commonQuery(sql, deleteParams).then(data => {
-                    let realRes = data || {}
-                    res.json(realRes)
+        comMethods.commonQuery(queryAllcommentsSql).then(data => {
+            //删除根评论
+            if (data.records[0].parentId == '0') {
+                //查询出需要删除的相关评论数量
+                let a = $systemSqlMap.articleCommentsOpt.list + ` WHERE parentId='${data.records[0].id}'`
+                comMethods.commonQuery(a).then(rdata => {
+                    let deleNum = rdata.records.length + 1
+                    // 查询哪条文章
+                    comMethods.commonQuery(querySql).then(adata => {
+                        let realRest = adata || {}
+                        let num = realRest.records[0].commentsCount - deleNum
+                        //去文章表更新评论数
+                        comMethods.commonQuery(subSql, [num, params.postId]).then(kdata => {
+                            //删除根评论
+                            comMethods.commonQuery(sql, deleteParams).then(ydata => {
+                                //删除所有条子评论
+                                comMethods.commonQuery(sqlMoreDelete, [data.records[0].id]).then(odata => {
+                                    let realRes = odata || {}
+                                    res.json(realRes)
+                                })
+                            })
+                        })
+                    })
                 })
-            })
+
+            } else {
+                //删除子评论
+                // 查询哪条文章
+                comMethods.commonQuery(querySql).then(data => {
+                    let realRest = data || {}
+                    let num = realRest.records[0].commentsCount - 1
+                    //更新评论数
+                    comMethods.commonQuery(subSql, [num, params.postId]).then(data => {
+                        //删除评论
+                        comMethods.commonQuery(sql, deleteParams).then(data => {
+                            let realRes = data || {}
+                            res.json(realRes)
+                        })
+                    })
+                })
+            }
+
+
         })
+
     } catch (err) {
         next(err)
     }
