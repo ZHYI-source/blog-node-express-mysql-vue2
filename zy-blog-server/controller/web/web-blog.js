@@ -8,6 +8,39 @@ let tools = require('../../utils/tools') // 引入工具模块
  *@date 2022/2/12 15:11
  *@Description:web端博文
  */
+//站点基础信息
+exports.webSiteInfo = async (req, res, next) => {
+    try {
+        let params = req.body,
+        sql = $webSqlMap.webSiteInfo.list
+        comMethods.commonQuery(sql, params).then(data => {
+            let resData = data || {}
+            res.json(resData)
+        }).catch(err => {
+            console.log('--查询网站基础信息错误--', err)
+        })
+
+    } catch (err) {
+        next(err)
+    }
+}
+exports.webSocials = async (req, res, next) => {
+    try {
+        let params = req.body,
+            sql = $webSqlMap.webSocials.list
+        comMethods.commonQuery(sql, params).then(data => {
+            let resData = data || {}
+            res.json(resData)
+        }).catch(err => {
+            console.log('--查询网站社交信息错误--', err)
+        })
+
+    } catch (err) {
+        next(err)
+    }
+}
+
+
 //查询文章列表
 exports.webArticleList = async (req, res, next) => {
     try {
@@ -16,11 +49,11 @@ exports.webArticleList = async (req, res, next) => {
         //多条件查询
         if (params.params.title) {
             sql = $webSqlMap.articleOpt.list + ` WHERE isPublish='${1}' AND title='${params.params.title}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
-        }else if (params.params.classId) {
+        } else if (params.params.classId) {
             sql = $webSqlMap.articleOpt.list + ` WHERE isPublish='${1}' AND classId='${params.params.classId}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
-        }else if (params.params.keyword) {
+        } else if (params.params.keyword) {
             sql = $webSqlMap.articleOpt.list + ` WHERE isPublish='${1}' AND title LIKE '%${params.params.keyword}%' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
-        }else if (params.params.className) {
+        } else if (params.params.className) {
             sql = $webSqlMap.articleOpt.list + ` WHERE isPublish='${1}' AND className='${params.params.className}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
         } else {
             sql = $webSqlMap.articleOpt.list + ` WHERE isPublish='${1}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
@@ -165,7 +198,7 @@ exports.webCommentCreate = async (req, res, next) => {
             let realRest = data || {}
             let num = realRest.records[0].commentsCount + 1
             //更新评论数
-            comMethods.commonQuery(postSql, [num,params.postId]).then(data => {
+            comMethods.commonQuery(postSql, [num, params.postId]).then(data => {
                 //创建评论
                 comMethods.commonQuery(sql, createParams).then(data => {
                     let realRes = data || {}

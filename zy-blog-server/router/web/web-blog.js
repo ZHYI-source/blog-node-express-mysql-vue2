@@ -6,6 +6,10 @@
 let express = require('express')
 let router = express.Router()
 const webBlogCtrl = require('../../controller/web/web-blog')
+/*站点基础数据*/
+router.post('/zy-server/web/site/info', webBlogCtrl.webSiteInfo) //站点信息
+
+router.post('/zy-server/web/socials', webBlogCtrl.webSocials) //站点社交方式
 
 /*博文数据*/
 router.post('/zy-server/web/article/list', webBlogCtrl.webArticleList) //文章列表

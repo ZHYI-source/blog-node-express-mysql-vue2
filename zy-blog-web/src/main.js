@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import './assets/css/style.less'
 import './assets/font/iconfont.css'
+import './assets/font/iconfont2.css'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 

@@ -5,6 +5,13 @@
  */
 
 const webSqlMap = {
+    //web端网站配置
+    webSiteInfo: {
+        list: "SELECT * FROM zy_web_site_info ",
+    },
+    webSocials: {
+        list: "SELECT * FROM zy_web_socials ",
+    },
     //web端博文查询
     articleOpt: {
         list: "SELECT * FROM zy_article ",

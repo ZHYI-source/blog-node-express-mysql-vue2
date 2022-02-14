@@ -4,6 +4,14 @@
  *@Description:文章列表
 */
 import {post,get} from "./http";
+
+//站点信息
+export const getSiteInfo = (data) =>
+    post("/zy-server/web/site/info", data);
+//站点社交信息
+export const getSiteSocials = (data) =>
+    post("/zy-server/web/socials", data);
+
 //文章列表
 export const dirArticle = (data) =>
     post("/zy-server/web/article/list", data);

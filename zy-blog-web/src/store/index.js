@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import {getTimeInterval} from '../utils/index'
-import {fetchSocial,fetchSiteInfo} from '@/api'
+import {getSiteInfo, getSiteSocials} from "../api/web-blog";
 
 Vue.use(Vuex)
 // 略:后台获取系统运行时间
@@ -44,7 +44,7 @@ const actions = {
             if (state.websiteInfo){
                 resolve(state.websiteInfo)
             }else {
-                let data = {
+                let datat = {
                     avatar: 'https://s2.ax1x.com/2020/01/17/1SCadg.png',
                     slogan: 'The way up is not crowded, and most chose ease.',
                     name: 'FZY′blog',
@@ -52,14 +52,15 @@ const actions = {
                     notice: '本博客的Demo数据由Mockjs生成',
                     desc: '一个It技术的探索者'
                 }
-                commit('SET_SITE_INFO',data);
-                resolve(data);
-                // fetchSiteInfo().then(res => {
-                //     let data = res.data || {}
-                //
-                // }).catch(err => {
-                //     resolve({});
-                // })
+                // commit('SET_SITE_INFO',data);
+                // resolve(data);
+                getSiteInfo().then(res=>{
+                    let data = res.records[0] || datat
+                    commit('SET_SITE_INFO',data);
+                    resolve(data);
+                }).catch(err =>{
+                    resolve([]);
+                })
             }
         })
     },
@@ -74,6 +75,12 @@ const actions = {
                         title: 'QQ',
                         icon: 'iconqq',
                         color: '#1AB6FF ',
+                        href: 'http://wpa.qq.com/msgrd?v=3&uin=1224971566&site=qq&menu=yes'
+                    },{
+                        id: 1,
+                        title: '微信',
+                        icon: 'icon-weixin',
+                        color: '#00c800 ',
                         href: 'http://wpa.qq.com/msgrd?v=3&uin=1224971566&site=qq&menu=yes'
                     },
                     {
@@ -98,15 +105,15 @@ const actions = {
                         href: 'https://blog.csdn.net/feng_zi_ye'
                     }
                 ]
-                commit('SET_SOCIALS',data);
-                resolve(data);
-                // fetchSocial().then(res =>{
-                //     let data = res.data || []
-                //     commit('SET_SOCIALS',data);
-                //     resolve(data);
-                // }).catch(err =>{
-                //     resolve([]);
-                // })
+                // commit('SET_SOCIALS',data);
+                // resolve(data);
+                getSiteSocials().then(res=>{
+                    let data = res.records || []
+                    commit('SET_SOCIALS',data);
+                    resolve(data);
+                }).catch(err =>{
+                    resolve([]);
+                })
             }
         }))
     }
