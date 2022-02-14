@@ -6,7 +6,19 @@
 */
 
 const systemSqlMap = {
-    //web站点关于我
+    //web站点音乐
+    webMusicOpt: {
+        list: "SELECT * FROM zy_web_music ",
+
+        count: "SELECT COUNT(id) FROM zy_web_music;",
+
+        create:"INSERT INTO zy_web_music (id,name,artist,url,cover,lrc,insertTime,updateTime) VALUES (?,?,?,?,?,?,?,?)",
+
+        delete:"DELETE FROM zy_web_music WHERE id=?",
+
+        update:"UPDATE zy_web_music SET name=?,artist=?,url=?,cover=?,lrc=?,insertTime=?,updateTime=? WHERE id=?",
+
+    },//web站点关于我
     webAboutOpt: {
         list: "SELECT * FROM zy_web_about ",
 

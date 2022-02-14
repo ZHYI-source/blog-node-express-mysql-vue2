@@ -336,6 +336,100 @@ exports.webAboutDelete = async (req, res, next) => {
         next(err)
     }
 }
+/**
+ *@author ZY
+ *@date 2022/2/12 15:11
+ *@Description:站点音乐数据管理
+ */
+exports.webMusicList = async (req, res, next) => {
+    try {
+        let parms = req.body, sql = '', total = 0,
+            queryTotal = $systemSqlMap.webMusicOpt.count
+        //多条件查询
+        if (parms.params.id && parms.params.name) {
+            sql = $systemSqlMap.webMusicOpt.list + ` WHERE id='${parms.params.id}' AND name='${parms.params.name}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
+        } else if (parms.params.id) {
+            sql = $systemSqlMap.webMusicOpt.list + ` WHERE id='${parms.params.id}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
+        } else if (parms.params.aboutTitle) {
+            sql = $systemSqlMap.webMusicOpt.list + ` WHERE name='${parms.params.name}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
+        } else {
+            sql = $systemSqlMap.webMusicOpt.list + ` ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
+        }
+        comMethods.queryCount(queryTotal).then(data => {
+            total = data
+        })
+        comMethods.commonQuery(sql, parms).then(data => {
+            let resData = data || {}
+            resData.total = total
+            res.json(resData)
+        }).catch(err => {
+            console.log('--查询web音乐错误--', err)
+        })
+    } catch (err) {
+        next(err)
+    }
+}
+//添加
+exports.webMusicCreate = async (req, res, next) => {
+    try {
+        let params = req.body,
+            sql = $systemSqlMap.webMusicOpt.create,
+            createParams = [
+                tools.createRandomId(),
+                params.name,
+                params.artist,
+                params.url,
+                params.cover,
+                params.lrc,
+                tools.getDate(),
+                '',
+            ]
+        comMethods.commonQuery(sql, createParams).then(data => {
+            let realRes = data || {}
+            res.json(realRes)
+        })
+    } catch (err) {
+        next(err)
+    }
+}
+//修改
+exports.webMusicUpdate = async (req, res, next) => {
+    try {
+        let params = req.body,
+            sql = $systemSqlMap.webMusicOpt.update,
+            updateParams = [
+                params.name,
+                params.artist,
+                params.url,
+                params.cover,
+                params.lrc,
+                params.insertTime,
+                tools.getDate(),
+                params.id,
+            ]
+        comMethods.commonQuery(sql, updateParams).then(data => {
+            let realRes = data || {}
+            res.json(realRes)
+        })
+
+    } catch (err) {
+        next(err)
+    }
+}
+//删除
+exports.webMusicDelete = async (req, res, next) => {
+    try {
+        let params = req.body,
+            sql = $systemSqlMap.webMusicOpt.delete,
+            deleteParams = [params.id]
+        comMethods.commonQuery(sql, deleteParams).then(data => {
+            let realRes = data || {}
+            res.json(realRes)
+        })
+    } catch (err) {
+        next(err)
+    }
+}
 
 /**
  *@author ZY

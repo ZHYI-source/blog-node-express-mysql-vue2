@@ -40,6 +40,15 @@ router.post('/zy-server/web_about/update', blogCtrl.webAboutUpdate) //关于我�
 //
 router.post('/zy-server/web_about/delete', blogCtrl.webAboutDelete) //关于我删除
 
+/*web站点音乐*/
+router.post('/zy-server/web_music/list', blogCtrl.webMusicList) //音乐列表
+//
+router.post('/zy-server/web_music/create', blogCtrl.webMusicCreate) //音乐增加
+//
+router.post('/zy-server/web_music/update', blogCtrl.webMusicUpdate) //音乐更新
+//
+router.post('/zy-server/web_music/delete', blogCtrl.webMusicDelete) //音乐删除
+
 
 
 module.exports = router

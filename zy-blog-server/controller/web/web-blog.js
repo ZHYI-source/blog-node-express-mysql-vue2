@@ -53,6 +53,20 @@ exports.webAbout = async (req, res, next) => {
         next(err)
     }
 }
+//音乐
+exports.webMusic = async (req, res, next) => {
+    try {
+        let sql = $webSqlMap.webMusic.list
+        comMethods.commonQuery(sql).then(data => {
+            let resData = data || {}
+            res.json(resData)
+        }).catch(err => {
+            console.log('--查询音乐数据错误--', err)
+        })
+    } catch (err) {
+        next(err)
+    }
+}
 
 //查询文章列表
 exports.webArticleList = async (req, res, next) => {

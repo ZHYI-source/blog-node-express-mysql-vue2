@@ -13,6 +13,8 @@ router.post('/zy-server/web/socials', webBlogCtrl.webSocials) //站点社交方�
 
 router.post('/zy-server/web/about', webBlogCtrl.webAbout) //关于
 
+router.post('/zy-server/web/music', webBlogCtrl.webMusic) //音乐
+
 /*博文数据*/
 router.post('/zy-server/web/article/list', webBlogCtrl.webArticleList) //文章列表
 
