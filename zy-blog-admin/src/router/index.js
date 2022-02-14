@@ -155,6 +155,19 @@ export const asyncRoutes = [
             // 'POST /admin/operate/worker/create',
           ]
         },
+      },{
+        path: "dir-web-music",
+        name: "web-music",
+        component: () =>
+          import("@/views/blog/dir-web-music"),
+        meta: {
+          title: '站点音乐',
+          perms: [
+            // 'POST /admin/operate/worker/list',
+            // 'POST /admin/operate/worker/import',
+            // 'POST /admin/operate/worker/create',
+          ]
+        },
       },
     ]
   },

@@ -41,4 +41,12 @@ export const blogApi = {
 
   api_blog_web_about_delete: {url: '/zy-server/web_about/delete', method: 'post',},//web站点关于删除
 
+
+  api_blog_web_music_list: {url: '/zy-server/web_music/list', method: 'post',},//web站点音乐列表
+
+  api_blog_web_music_create: {url: '/zy-server/web_music/create', method: 'post',},//web站点音乐关于添加
+
+  api_blog_web_music_update: {url: '/zy-server/web_music/update', method: 'post',},//web站点音乐关于修改
+
+  api_blog_web_music_delete: {url: '/zy-server/web_music/delete', method: 'post',},//web站点音乐关于删除
 }

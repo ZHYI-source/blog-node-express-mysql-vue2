@@ -350,7 +350,7 @@ exports.webMusicList = async (req, res, next) => {
             sql = $systemSqlMap.webMusicOpt.list + ` WHERE id='${parms.params.id}' AND name='${parms.params.name}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
         } else if (parms.params.id) {
             sql = $systemSqlMap.webMusicOpt.list + ` WHERE id='${parms.params.id}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
-        } else if (parms.params.aboutTitle) {
+        } else if (parms.params.name) {
             sql = $systemSqlMap.webMusicOpt.list + ` WHERE name='${parms.params.name}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
         } else {
             sql = $systemSqlMap.webMusicOpt.list + ` ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
