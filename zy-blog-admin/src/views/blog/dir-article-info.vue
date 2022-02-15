@@ -49,7 +49,7 @@
                               @delete="goDelete(scope.row)"
                               :dis-edit="!btnPerm.updateBtn"
                               :dis-delete="!btnPerm.updateBtn"
-                              show-back
+                              :show-back="scope.row.isPublish !== 1"
                               back-text="发布"
                               @back="goPublish(scope.row)"
               >

@@ -23,7 +23,7 @@ export default {
     elHeight:{
       type:[Number,String],
       default(){
-        return '100'
+        return ''
       }
     }
   },
