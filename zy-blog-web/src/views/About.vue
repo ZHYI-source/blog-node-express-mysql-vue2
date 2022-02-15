@@ -30,6 +30,16 @@ export default {
     sectionTitle
   },
   methods: {
+    getTop() {
+      let timer = setInterval(() => {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+        let speed = Math.ceil(scrollTop / 5)
+        document.documentElement.scrollTop = scrollTop - speed
+        if (scrollTop === 0) {
+          clearInterval(timer)
+        }
+      }, 20)
+    },
     getDataList(){
       getSiteAbout().then(res=>{
         this.list = res.records || []
@@ -38,6 +48,7 @@ export default {
     }
   },
   mounted() {
+    this.getTop()
     this.getDataList()
   }
 }

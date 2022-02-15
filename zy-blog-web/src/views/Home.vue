@@ -128,8 +128,8 @@
                 return this.category || this.searchWords
             },
             notice() {
-                // return this.$store.getters.notice
-                return '人生天地间，忽如远行客.'
+                return this.$store.getters.notice || '人生天地间，忽如远行客.'
+                // return '人生天地间，忽如远行客.'
             }
         },
         methods: {

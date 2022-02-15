@@ -105,8 +105,6 @@ const actions = {
                         href: 'https://blog.csdn.net/feng_zi_ye'
                     }
                 ]
-                // commit('SET_SOCIALS',data);
-                // resolve(data);
                 getSiteSocials().then(res=>{
                     let data = res.records || []
                     commit('SET_SOCIALS',data);
