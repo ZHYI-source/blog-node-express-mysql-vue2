@@ -170,7 +170,7 @@ export default {
           }))
         }
         this.comments = initTree(0)
-        console.log('评论列表', this.comments)
+        // console.log('评论列表', this.comments)
       }).catch(err => {
         console.log(err)
       })

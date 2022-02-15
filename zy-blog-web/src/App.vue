@@ -1,7 +1,7 @@
 <template>
     <div id="app" v-cloak>
         <!--canvas粒子-->
-        <vue-canvas-nest :config="{color:'255,0,0', count: 88,zIndex:2}"  :el="'#app'"></vue-canvas-nest>
+        <vue-canvas-nest :config="{color:'255,0,0', count: 50,zIndex:2}"  :el="'#app'"></vue-canvas-nest>
         <loading></loading>
         <layout-header></layout-header>
         <layout-body></layout-body>

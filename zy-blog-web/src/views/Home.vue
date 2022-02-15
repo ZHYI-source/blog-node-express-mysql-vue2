@@ -103,7 +103,7 @@ export default {
   },
   watch: {
     '$route': function (val) {
-      console.log(val)
+      // console.log(val)
       if (val.params.cate) {
         this.getDataList(val.params.cate)
         return
