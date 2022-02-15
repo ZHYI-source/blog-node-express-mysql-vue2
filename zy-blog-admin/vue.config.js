@@ -49,7 +49,6 @@ module.exports = {
         // target: 'http://localhost:5220' //测试环境
         target: 'http://114.117.164.181:5220' //正式环境
       },
-
     },
     // after: require('./mock/mock-server.js')
   },
