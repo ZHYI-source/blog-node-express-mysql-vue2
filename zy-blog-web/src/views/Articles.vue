@@ -18,7 +18,7 @@
             </div>
           </header>
           <!-- 正文输出 -->
-          <div class="entry-content" ref="entry-content" v-html="form.content"/>
+          <div class="entry-content" ref="entry-content" v-html="form.content"  v-loading="loading"/>
           <!-- 文章底部 -->
           <section-title>
             <footer class="post-footer">
@@ -64,7 +64,7 @@
               <comment-message-editor :key="form.content" :inline="false" buttonText="提交" @focus=""
                                       @submit="toSubmitComment"></comment-message-editor>
             </div>
-            <comment v-for="item in comments" :key="item.comment.id" :comment="item.comment"
+            <comment v-for="item in comments"  :key="item.comment.id" :comment="item.comment"
                      @reply="getDataList">
               <template v-if="item.reply.length">
                 <comment v-for="(reply,index) in item.reply" :key="reply.comment.id"
@@ -92,6 +92,7 @@ export default {
   data() {
     return {
       showDonate: false,
+      loading: false,
       //查询条件
       query: {
         size: 20,
@@ -128,7 +129,7 @@ export default {
         parentId: 0,//父级id
         fromUserId: '',//用户ID
         fromUserName: '匿名',//用户名称
-        fromUserAvatar: 'http://localhost:5220/zy-server/public/images?id=164466183089025c842ff5fae3.jpg',//用户头像
+        fromUserAvatar: 'http://114.117.164.181:5220/zy-server/public/images?id=164466183089025c842ff5fae3.jpg',//用户头像
         content: val,//评论内容
         toUserId: '',//回复对象ID
         toUserName: '',//回复对象名称
@@ -145,8 +146,12 @@ export default {
     },
     //  加载文章详情
     getDataList(idx) {
+      this.loading=true
       getArticleDetail({id: idx}).then(res => {
+        this.loading=false
         this.form = res.records[0] || {}
+      }).catch(err=>{
+        console.log(err)
       })
       this.getCommentList(idx)
     },

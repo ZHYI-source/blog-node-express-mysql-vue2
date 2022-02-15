@@ -97,7 +97,9 @@ export default {
   data() {
     return {
       commonKey:0,
-      form: {},
+      form: {
+        lrc:'暂无歌词'
+      },
       isAdd: true,
       rules: {
         name: [{required: true, message: '请输入音乐名称', trigger: 'blur'},],

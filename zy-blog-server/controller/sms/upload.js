@@ -36,7 +36,8 @@ exports.upload = async (req, res, next) => {
         fileNames = Date.now() + Math.random().toString(16).substr(2) + '.' + getSuffixName(filename.filename)
         _uploadFilePath = path.join('public', '/images', fileNames)
         let saveTo = path.join(_uploadFilePath)
-        let url = 'http://localhost:5220/zy-server/public/images?id=' + fileNames
+        // let url = 'http://localhost:5220/zy-server/public/images?id=' + fileNames
+        let url = 'http://114.117.164.181:5220/zy-server/public/images?id=' + fileNames //线上地址
         // 文件保存到制定路径
         file.pipe(fs.createWriteStream(saveTo));
 
