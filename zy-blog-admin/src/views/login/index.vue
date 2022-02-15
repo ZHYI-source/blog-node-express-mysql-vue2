@@ -42,7 +42,6 @@
                   <div class="login-button" @click="handleLogin">登录</div>
                 </el-form-item>
               </el-form>
-
             </div>
           </div>
           <div class="left-bg"></div>
@@ -50,7 +49,7 @@
       </div>
     </div>
     <div class="login-foot">
-      <div>© 2020-2021 贵州林客科技有限公司  黔ICP备18005268号</div>
+      <div>© 2020-2022  黔ICP备18005268号</div>
     </div>
 
   </div>
