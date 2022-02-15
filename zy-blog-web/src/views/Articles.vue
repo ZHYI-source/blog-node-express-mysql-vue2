@@ -129,7 +129,7 @@ export default {
         parentId: 0,//父级id
         fromUserId: '',//用户ID
         fromUserName: '匿名',//用户名称
-        fromUserAvatar: 'http://114.117.164.181:5220/zy-server/public/images?id=164466183089025c842ff5fae3.jpg',//用户头像
+        fromUserAvatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXSYITOSgSQdTv0Z_Z0KkvwWsBMwadCA2PRA&usqp=CAU',//用户头像
         content: val,//评论内容
         toUserId: '',//回复对象ID
         toUserName: '',//回复对象名称

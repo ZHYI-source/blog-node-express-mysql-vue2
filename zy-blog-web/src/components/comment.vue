@@ -76,7 +76,7 @@
                     parentId: this.form.id,//父级id
                     fromUserId: '',//用户ID
                     fromUserName: '匿名2',//用户名称
-                    fromUserAvatar: 'http://114.117.164.181:5220/zy-server/public/images?id=164466183089025c842ff5fae3.jpg',//用户头像
+                    fromUserAvatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrvkKRSnLqQ1aFJMMaOCeU9TkAxwIB5J_a2A&usqp=CAU',//用户头像
                     content: v || '',//评论内容
                     toUserId: this.form.fromUserId,//回复对象ID
                     toUserName: this.form.fromUserName,//回复对象名称
