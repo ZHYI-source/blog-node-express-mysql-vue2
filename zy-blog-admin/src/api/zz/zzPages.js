@@ -7,7 +7,7 @@
 export const zyApi ={
 
   /**登录模块**/
-  api_sms_captcha: {url: 'zy-server/sms/captcha', method: 'get',},//图片验证码
+  api_sms_captcha: {url: '/zy-server/sms/captcha', method: 'get',},//图片验证码
 
   /**用户模块**/
   api_admin_operate_worker_create: {url: 'zz-server/admin/operate/worker/create', method: 'post',},//新增用户
