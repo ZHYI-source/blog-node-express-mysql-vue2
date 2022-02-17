@@ -197,6 +197,12 @@
                 margin: 0 0 0 65px;
                 cursor: default;
             }
+          blockquote {
+            word-break: break-all;
+          }
+          ul li {
+            line-height: 24px;
+          }
             .p-time {
                 position: relative;
                 margin: -15px 0 0 65px;

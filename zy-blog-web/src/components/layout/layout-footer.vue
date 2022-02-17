@@ -14,7 +14,7 @@
       </div>
       <div class="footer-item">
         <div>本站已苟活 {{ runTimeInterval }}</div>
-        <div><a target="_blank" class="out-link" href="http://114.117.164.181/#/login?redirect=%2Findex">☞后台管理</a></div>
+        <div><a target="_blank" class="out-link" href="http://114.117.164.181:5221/#/login?redirect=%2F">☞后台管理</a></div>
       </div>
     </div>
      <div class="copyright">Copyright © 2022 by ZY-blog
@@ -90,6 +90,8 @@ export default {
 
   .copyright {
     text-align: center;
+    font-size: 12px;
+    line-height: 20px;
   }
 }
 
