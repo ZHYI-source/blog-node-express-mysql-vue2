@@ -49,7 +49,8 @@
       </div>
     </div>
     <div class="login-foot">
-      <div>© 2020-2022  黔ICP备18005268号</div>
+      <div style="font-size: 13px">Copyright © 2022 by ZY-blog
+        . All rights reserved. | 黔ICP备20007526号-1</div>
     </div>
 
   </div>

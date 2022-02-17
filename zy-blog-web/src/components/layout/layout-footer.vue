@@ -17,7 +17,10 @@
         <div><a target="_blank" class="out-link" href="http://114.117.164.181/#/login?redirect=%2Findex">☞后台管理</a></div>
       </div>
     </div>
-    <!-- <div class="copyright">Copyright © 2020 by <a target="_blank" class="out-link" href="https://www.fengziy.cn">fengziy.cn</a> . All rights reserved. | <a target="_blank" class="out-link" href="http://www.beian.miit.gov.cn">渝ICP备17015355号-1</a></div>-->
+     <div class="copyright">Copyright © 2022 by ZY-blog
+       . All rights reserved. | 黔ICP备20007526号-1</div>
+<!--       <a target="_blank" class="out-link" href="https://www.fengziy.cn">fengziy.cn</a> -->
+
   </div>
 </template>
 
