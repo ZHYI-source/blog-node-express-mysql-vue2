@@ -10,8 +10,8 @@ module.exports = {
     devServer: {
         proxy: {
             '/api': {
-                target: 'http://114.117.164.181:5220/',
-                // target: 'http://localhost:5220',//本地服务器
+                // target: 'http://114.117.164.181:5220/',
+                target: 'http://localhost:5220',//本地服务器
                 ws: true,
                 secure: true,
                 changeOrigin: true,

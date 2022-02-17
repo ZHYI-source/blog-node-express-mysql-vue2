@@ -1,16 +1,5 @@
 <template>
   <div class="dashboard-editor-container">
-
-<!--    <div class="app-table-query">-->
-<!--      <el-date-picker-->
-<!--              v-model="query.month"-->
-<!--              type="month"-->
-<!--              placeholder="时间"-->
-<!--              value-format="timestamp">-->
-<!--      </el-date-picker>-->
-<!--      <el-button @click="doQuery()" icon="el-icon-search">查询</el-button>-->
-<!--      <el-button @click="toMax" icon="el-icon-view">大屏</el-button>-->
-<!--    </div>-->
     <day-group :groupData="newVisitis.todayData" @router-push="routerPush" ref="todayGroupId" />
 
     <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">
@@ -22,28 +11,7 @@
     <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">
       <month-chart :chart-data="newVisitis" />
     </el-row>
-    <el-dialog title="处理提示" :visible.sync="superNotice" width="20%">
-      <div @click="routerPush">
-        <div class="div_red title_font" style="margin-top: -10px" v-if="decideOrNoticeNum>0">有{{ decideOrNoticeNum }}条投诉信息待判定</div>
-        <div class="div_yellow title_font" v-if="dealNum>0">有{{ dealNum }}条投诉信息待结案</div>
-      </div>
-      <div slot="footer" class="dialog-footer" style="margin-top: -30px">
-        <el-button type="primary" @click="superNotice = false">
-          确定
-        </el-button>
-      </div>
-    </el-dialog>
-    <el-dialog title="处理提示" :visible.sync="notice" width="20%">
-      <div @click="routerPush">
-        <div class="div_yellow title_font" style="margin-top: -10px" v-if="decideOrNoticeNum>0">有{{ decideOrNoticeNum }}条投诉信息待通知</div>
-        <div class="div_blue title_font" v-if="dealNum>0">有{{ dealNum }}条投诉信息待处理</div>
-      </div>
-      <div slot="footer" class="dialog-footer" style="margin-top: -30px">
-        <el-button type="primary" @click="notice = false">
-          确定
-        </el-button>
-      </div>
-    </el-dialog>
+
   </div>
 </template>
 

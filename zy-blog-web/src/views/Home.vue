@@ -5,8 +5,8 @@
       <!--通知栏-->
       <div class="notify">
         <div class="search-result" v-if="hideSlogan">
-          <span v-if="searchWords">搜索结果："{{ searchWords }}" 相关文章 ({{ postList.length }})</span>
-          <span v-else-if="category">分类 "{{ category }}" 相关文章 ({{ postList.length }})</span>
+          <span v-if="searchWords">搜索结果："{{ searchWords }}" 相关文章 ({{ temp.dataSize }})</span>
+          <span v-else-if="category">分类 "{{ category }}" 相关文章 ({{ temp.dataSize }})</span>
         </div>
         <quote v-else>{{ notice }}</quote>
       </div>
@@ -29,6 +29,16 @@
         <template v-for="item in postList">
           <post :post="item" :key="item.id"></post>
         </template>
+        <div style="display: flex;justify-content: center;padding-bottom: 20px">
+          <el-pagination
+              small
+              hide-on-single-page
+              layout="prev, pager, next,total"
+              :current-page="query.current" :page-size="query.size"
+              :total="temp.dataSize" @size-change="changePageSize" @current-change="goPage">
+          </el-pagination>
+        </div>
+
       </main>
 
       <!--加载更多-->
@@ -48,6 +58,7 @@ import SmallIco from '@/components/small-ico'
 import Quote from '@/components/quote'
 import {fetchFocus, fetchList} from '../api'
 import {dirArticle} from "../api/web-blog";
+import LkPagination from "../components/lk-pagination";
 
 export default {
   name: 'Home',
@@ -56,7 +67,7 @@ export default {
     return {
       //查询条件
       query: {
-        size: 20,
+        size: 8,
         current: 1,
         //排序字段
         orderBy: 'isTop',
@@ -69,6 +80,9 @@ export default {
           className: '',
           keyword: ''
         }
+      },
+      temp:{
+        dataSize:0
       },
       features: [
         {
@@ -94,6 +108,7 @@ export default {
     }
   },
   components: {
+    LkPagination,
     Banner,
     Feature,
     sectionTitle,
@@ -134,6 +149,17 @@ export default {
     }
   },
   methods: {
+    //跳到页
+    goPage(pageNum) {
+      this.query.current = pageNum;
+      this.getDataList();
+    },
+    //改变每页数据量
+    changePageSize(size) {
+      this.query.size = size;
+      this.query.current = 1;
+      this.getDataList();
+    },
     getDataList(val, keyword) {
       let that = this
       this.loading=true
@@ -145,6 +171,7 @@ export default {
       }
       dirArticle(this.query).then(res => {
         that.postList = res.records || []
+        that.temp.dataSize = res.total
         this.loading=false
       }).catch(err => {
         this.loading=false
@@ -284,7 +311,6 @@ export default {
     .notify {
       margin: 30px 0 0 0;
     }
-
     .search-result {
       margin-bottom: 20px;
       font-size: 16px;
@@ -293,4 +319,9 @@ export default {
 }
 
 /******/
+</style>
+<style lang="less">
+  .el-pager .number {
+    color: #ADADAD;
+  }
 </style>
