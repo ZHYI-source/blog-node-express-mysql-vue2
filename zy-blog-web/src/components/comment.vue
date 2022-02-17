@@ -4,7 +4,7 @@
             <div class="user-avatar"><img :src="comment.fromUserAvatar" alt=""></div>
             <div class="head-right">
                 <section-title>
-                    <div style="display: flex;align-items: center;justify-content: space-between;">
+                    <div style="display: flex;align-items: center;justify-content: space-between;flex-wrap: wrap;line-height: 22px">
                         <div>
                             <span class="from-user user-name">{{comment.fromUserName}}</span>
                             <span class="to-user" v-if="comment.toUserId"><span style="margin: 0 5px;">@</span><span

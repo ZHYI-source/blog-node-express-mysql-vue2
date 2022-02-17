@@ -13,6 +13,7 @@
             <!-- 标题输出 -->
             <h1 class="entry-title">{{ form.title || '暂无数据' }}</h1>
             <hr>
+
             <div class="breadcrumbs">
               <div id="crumbs">{{ '最后更新时间：' + form.pubTime }}</div>
             </div>
@@ -51,7 +52,7 @@
           <!--声明-->
           <div class="open-message">
             <p>声明：ZYBlog博客|版权所有，违者必究|如未注明，均为原创</p>
-            <p>转载：转载请注明原文链接 - <a href="#">{{ form.title || 'ZYBlog' }}</a></p>
+            <p>转载：转载请注明原文链接 - <a :href="link">{{ form.title || 'ZYBlog' }}</a></p>
           </div>
 
           <!--评论-->
@@ -106,6 +107,7 @@ export default {
         }
       },
       postId: '',//文章ID
+      link:'',
       //提交评论
       addCommentData: {},
       comments: [],
@@ -227,6 +229,8 @@ export default {
     }
   },
   mounted() {
+    // console.log(window.location.href)
+    this.link=window.location.href
     this.getTop()
     this.createMenus()
   },

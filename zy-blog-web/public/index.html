@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="keywords" content="ZYblog,it子也,www.fengziy.cn">
-    <meta name="description" content="ZYblog一个nice的基于vue的博客模板,www.fengziy.cn">
+    <meta name="keywords" content="ZYblog,个人博客,www.mangok.top">
+    <meta name="description" content="ZYblog是一个nice的基于vue的个人博客,www.mangok.top">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <link rel="stylesheet" href="//at.alicdn.com/t/font_3181735_sjrvevycdv.css">
     <title><%= htmlWebpackPlugin.options.title %></title>
@@ -81,13 +81,13 @@
             + node.innerHTML
             + '<br/><br/>著作权归作者所有。<br/>'
             + '商业转载请联系作者获得授权，非商业转载请注明出处。<br/>'
-            + '作者：it疯子也<br/>'
+            + '作者：ZY<br/>'
             + '来源：http://114.117.164.181<br/><br/>'
             + '</div>';
         var textData = window.getSelection().getRangeAt(0)
             + '\n\n著作权归作者所有。\n'
             + '商业转载请联系作者获得授权，非商业转载请注明出处。\n'
-            + '作者：it疯子也\n'
+            + '作者：ZY\n'
             + '来源：http://114.117.164.181\n\n';
         if (event.clipboardData) {
             event.clipboardData.setData("text/html", htmlData);

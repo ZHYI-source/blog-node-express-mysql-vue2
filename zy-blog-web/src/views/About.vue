@@ -43,7 +43,7 @@ export default {
     getDataList(){
       getSiteAbout().then(res=>{
         this.list = res.records || []
-        console.log(res)
+        // console.log(res)
       })
     }
   },

@@ -72,7 +72,15 @@ exports.webMusic = async (req, res, next) => {
 exports.webArticleList = async (req, res, next) => {
     try {
         let params = req.body, sql = '', total = 0;
-        let queryTotal = $webSqlMap.articleOpt.count + ` WHERE isPublish=1 `
+        let queryTotal =''
+        if (params.params.className){
+            console.log('className',params.params.className)
+            queryTotal = $webSqlMap.articleOpt.count + ` WHERE isPublish=1 AND className='${params.params.className}'`
+        }else if (params.params.keyword) {
+            queryTotal = $webSqlMap.articleOpt.count + ` WHERE isPublish=1 AND className='${params.params.keyword}'`
+        }else {
+            queryTotal=$webSqlMap.articleOpt.count + ` WHERE isPublish=1`
+        }
         //多条件查询
         if (params.params.title) {
             sql = $webSqlMap.articleOpt.list + ` WHERE isPublish='${1}' AND title='${params.params.title}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`

@@ -55,7 +55,7 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$store.state.websiteInfo)
+    // console.log(this.$store.state.websiteInfo)
     this.websiteInfo = this.$store.state.websiteInfo
     window.addEventListener('scroll', this.watchScroll)
     this.fetchCategory()

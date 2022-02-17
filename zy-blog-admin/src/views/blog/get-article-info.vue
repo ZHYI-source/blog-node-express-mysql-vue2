@@ -25,7 +25,8 @@
         <lk-get-row>
           <el-form-item label="文章图片" prop="img">
             <el-input placeholder="请输入文章图片地址"
-                      v-model="form.img" size="mini" class="input-one"></el-input>
+                      clearable
+                      v-model="form.img" size="mini"  style="width: 610px;"  ></el-input>
             <el-upload
               class="avatar-uploader"
               action="/zy-server/upload/v1"
@@ -140,7 +141,17 @@ export default {
   data() {
     return {
       commonKey:0,
-      form: {},
+      imgs:[
+        'https://tse1-mm.cn.bing.net/th/id/OIP-C.ZeQ5h5qmFJdYmGKtrR-I9gAAAA?w=199&h=198&c=7&r=0&o=5&pid=1.7',
+        'https://tse1-mm.cn.bing.net/th/id/R-C.1a163f1fe343d8b6f8a9d9752ee6a387?rik=AZ8xXN6nZS5LRQ&riu=http%3a%2f%2fwww.aqniu.com%2fwp-content%2fuploads%2f2017%2f06%2f20013034943_3034707e74_b-1.jpg&ehk=cHbnpW1foxr%2b1BXncnM3HrK2vs76w5TgBBytOYgpsRY%3d&risl=&pid=ImgRaw&r=0',
+        'https://tse1-mm.cn.bing.net/th/id/R-C.22abcd219fa0ea8f4b1e236f2151c9dd?rik=eZI%2fw5SugjmjCQ&riu=http%3a%2f%2fimg.keaitupian.cn%2fuploads%2f2020%2f12%2f21%2f1573962576495941.jpg&ehk=vT6K7n8ennS%2bxI7dtOTbrH5m%2bBxQBYngjWe9N6bRrgs%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1',
+        'https://tse1-mm.cn.bing.net/th/id/R-C.2200f336cb7cc8f21798e7d9fe9b24f5?rik=6HjanVulzGkvpA&riu=http%3a%2f%2fwww.desktx.com%2fd%2ffile%2fwallpaper%2fscenery%2f20170107%2f080145c3a7460e7fa0369052a11467db.jpg&ehk=ffhPqQk04pZ18gOXu3OrPfkEIoQW046d4EfbUzji9yI%3d&risl=&pid=ImgRaw&r=0',
+      ],
+      form: {
+        img:'http://114.117.164.181:5220/zy-server/public/images?id=164508420659086c5f4f9a6ceb.jpg',
+        isHot:0,
+        isTop:0,
+      },
       isAdd: true,
       rules: {
         title: [{required: true, message: '请输入文章标题', trigger: 'blur'},],
