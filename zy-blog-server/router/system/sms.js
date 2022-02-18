@@ -2,11 +2,11 @@
  *@author ZY
  *@date 2022/2/10
  *@Description:后台系统管理
-*/
+ */
 let express = require('express') // express框架
 let router = express.Router() // express路由
-const captchaCtrl = require ('../../controller/sms/captcha')
-const loginCtrl = require ('../../controller/sms/login')
+const captchaCtrl = require('../../controller/sms/captcha')
+const loginCtrl = require('../../controller/sms/login')
 // 图片验证码
 router.get('/zy-server/sms/captcha', captchaCtrl.queryCaptcha)
 // 后台登录
