@@ -21,7 +21,32 @@ const systemSqlMap = {
 
     },
 
+    //web站点信息
+    webSiteInfoOpt: {
+        list: "SELECT * FROM zy_web_site_info ",
 
+        count: "SELECT COUNT(id) FROM zy_web_site_info;",
+
+        create:"INSERT INTO zy_web_site_info (id,avatar,slogan,name,domain,notice,desc,insertTime,updateTime) VALUES (?,?,?,?,?,?,?,?,?)",
+
+        delete:"DELETE FROM zy_web_site_info WHERE id=?",
+
+        update:"UPDATE zy_web_site_info SET avatar=?,slogan=?,name=?,domain=?,notice=?,desc=?,insertTime=?,updateTime=? WHERE id=?",
+
+    },
+    //web站点社交
+    webSiteSocialsOpt: {
+        list: "SELECT * FROM zy_web_socials ",
+
+        count: "SELECT COUNT(id) FROM zy_web_socials;",
+
+        create:"INSERT INTO zy_web_socials (id,title,icon,color,href,insertTime,updateTime) VALUES (?,?,?,?,?,?,?)",
+
+        delete:"DELETE FROM zy_web_socials WHERE id=?",
+
+        update:"UPDATE zy_web_socials SET title=?,icon=?,color=?,href=?,insertTime=?,updateTime=? WHERE id=?",
+
+    },
     //web站点音乐
     webMusicOpt: {
         list: "SELECT * FROM zy_web_music ",
@@ -34,7 +59,8 @@ const systemSqlMap = {
 
         update:"UPDATE zy_web_music SET name=?,artist=?,url=?,cover=?,lrc=?,insertTime=?,updateTime=? WHERE id=?",
 
-    },//web站点关于我
+    },
+    //web站点关于我
     webAboutOpt: {
         list: "SELECT * FROM zy_web_about ",
 
