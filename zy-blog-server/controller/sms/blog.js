@@ -455,20 +455,13 @@ exports.webMusicDelete = async (req, res, next) => {
 exports.webSiteInfoList = async (req, res, next) => {
     try {
         let params = req.body, sql = '', total = 0,
-            queryTotal = ''
+            queryTotal=$systemSqlMap.webSiteInfoOpt.count
         //多条件查询
-        if (params.params.id && params.params.name) {
-            queryTotal=$systemSqlMap.webMusicOpt.count + ` WHERE id='${params.params.id}' AND name='${params.params.name}'`
-            sql = $systemSqlMap.webMusicOpt.list + ` WHERE id='${params.params.id}' AND name='${params.params.name}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
-        } else if (params.params.id) {
-            queryTotal=$systemSqlMap.webMusicOpt.count + ` WHERE id='${params.params.id}'`
-            sql = $systemSqlMap.webMusicOpt.list + ` WHERE id='${params.params.id}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
-        } else if (params.params.name) {
-            queryTotal=$systemSqlMap.webMusicOpt.count + ` WHERE name='${params.params.name}'`
-            sql = $systemSqlMap.webMusicOpt.list + ` WHERE name='${params.params.name}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
-        } else {
-            queryTotal=$systemSqlMap.webMusicOpt.count
-            sql = $systemSqlMap.webMusicOpt.list + ` ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
+        if (params.params.id) {
+            queryTotal=$systemSqlMap.webSiteInfoOpt.count+ ` WHERE id='${params.params.id}' `
+            sql = $systemSqlMap.webSiteInfoOpt.list + ` WHERE id='${params.params.id}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
+        }   else {
+            sql = $systemSqlMap.webSiteInfoOpt.list + ` ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
         }
         comMethods.queryCount(queryTotal).then(data => {
             total = data
@@ -488,14 +481,15 @@ exports.webSiteInfoList = async (req, res, next) => {
 exports.webSiteInfoCreate = async (req, res, next) => {
     try {
         let params = req.body,
-            sql = $systemSqlMap.webMusicOpt.create,
+            sql = $systemSqlMap.webSiteInfoOpt.create,
             createParams = [
                 tools.createRandomId(),
+                params.avatar,
+                params.slogan,
                 params.name,
-                params.artist,
-                params.url,
-                params.cover,
-                params.lrc,
+                params.domain,
+                params.notice,
+                params.desc,
                 tools.getDate(),
                 '',
             ]
@@ -511,13 +505,14 @@ exports.webSiteInfoCreate = async (req, res, next) => {
 exports.webSiteInfoUpdate = async (req, res, next) => {
     try {
         let params = req.body,
-            sql = $systemSqlMap.webMusicOpt.update,
+            sql = $systemSqlMap.webSiteInfoOpt.update,
             updateParams = [
+                params.avatar,
+                params.slogan,
                 params.name,
-                params.artist,
-                params.url,
-                params.cover,
-                params.lrc,
+                params.domain,
+                params.notice,
+                params.desc,
                 params.insertTime,
                 tools.getDate(),
                 params.id,
@@ -535,7 +530,7 @@ exports.webSiteInfoUpdate = async (req, res, next) => {
 exports.webSiteInfoDelete = async (req, res, next) => {
     try {
         let params = req.body,
-            sql = $systemSqlMap.webMusicOpt.delete,
+            sql = $systemSqlMap.webSiteInfoOpt.delete,
             deleteParams = [params.id]
         comMethods.commonQuery(sql, deleteParams).then(data => {
             let realRes = data || {}
@@ -545,6 +540,97 @@ exports.webSiteInfoDelete = async (req, res, next) => {
         next(err)
     }
 }
+
+/**
+ *@author ZY
+ *@date 2022/2/12 15:11
+ *@Description:站点信息数据管理
+ */
+exports.webSiteSocialsList = async (req, res, next) => {
+    try {
+        let params = req.body, sql = '', total = 0,
+            queryTotal=$systemSqlMap.webSiteSocialsOpt.count
+        //多条件查询
+        if (params.params.title) {
+            queryTotal=$systemSqlMap.webSiteSocialsOpt.count+ ` WHERE title='${params.params.title}' `
+            sql = $systemSqlMap.webSiteSocialsOpt.list + ` WHERE title='${params.params.title}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
+        }  else {
+            sql = $systemSqlMap.webSiteSocialsOpt.list + ` ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
+        }
+        comMethods.queryCount(queryTotal).then(data => {
+            total = data
+        })
+        comMethods.commonQuery(sql, params).then(data => {
+            let resData = data || {}
+            resData.total = total
+            res.json(resData)
+        }).catch(err => {
+            console.log('--查询web音乐错误--', err)
+        })
+    } catch (err) {
+        next(err)
+    }
+}
+//添加
+exports.webSiteSocialsCreate = async (req, res, next) => {
+    try {
+        let params = req.body,
+            sql = $systemSqlMap.webSiteSocialsOpt.create,
+            createParams = [
+                tools.createRandomId(),
+                params.title,
+                params.icon,
+                params.color,
+                params.href,
+                tools.getDate(),
+                '',
+            ]
+        comMethods.commonQuery(sql, createParams).then(data => {
+            let realRes = data || {}
+            res.json(realRes)
+        })
+    } catch (err) {
+        next(err)
+    }
+}
+//修改
+exports.webSiteSocialsUpdate = async (req, res, next) => {
+    try {
+        let params = req.body,
+            sql = $systemSqlMap.webSiteSocialsOpt.update,
+            updateParams = [
+                params.title,
+                params.icon,
+                params.color,
+                params.href,
+                params.insertTime,
+                tools.getDate(),
+                params.id,
+            ]
+        comMethods.commonQuery(sql, updateParams).then(data => {
+            let realRes = data || {}
+            res.json(realRes)
+        })
+
+    } catch (err) {
+        next(err)
+    }
+}
+//删除
+exports.webSiteSocialsDelete = async (req, res, next) => {
+    try {
+        let params = req.body,
+            sql = $systemSqlMap.webSiteSocialsOpt.delete,
+            deleteParams = [params.id]
+        comMethods.commonQuery(sql, deleteParams).then(data => {
+            let realRes = data || {}
+            res.json(realRes)
+        })
+    } catch (err) {
+        next(err)
+    }
+}
+
 
 /**
  *@author ZY
