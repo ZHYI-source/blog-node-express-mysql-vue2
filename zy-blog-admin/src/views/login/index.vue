@@ -29,16 +29,11 @@
                 </el-form-item>
                 <el-form-item>
                   <div class="identifybox">
-                    <div @click="refreshCode">
-                      <img class="captcha-img" v-if="codeImg" :src="codeImg" />
-                    </div>
+                    <div @click="refreshCode" v-html="codeImg"></div>
                     <el-button @click="refreshCode" type='text' class="textbtn">看不清，换一张</el-button>
                   </div>
                 </el-form-item>
                 <el-form-item>
-                  <!--<el-button type="primary" round style="width: 100%" size="mini" @click="handleLogin">-->
-                    <!--登录-->
-                  <!--</el-button>-->
                   <div class="login-button" @click="handleLogin">登录</div>
                 </el-form-item>
               </el-form>
@@ -77,6 +72,7 @@
         }
       }
       return {
+        codeData:{},
         loginForm: {
           loginAccount: 'admin',
           userPassword: 'gzlk@tomcat123',
@@ -127,9 +123,10 @@
     methods: {
       verifycodeData() {
         this.request('api_sms_captcha', {}).then((res) => {
-          console.log(res)
+          console.log('验证码',res)
+          this.codeData = res
           this.loginForm.key = res.key
-          this.codeImg = 'data:image/jpeg;base64,' + res.image
+          this.codeImg =res.image
         }).catch((error) => {
         });
       },
@@ -161,7 +158,15 @@
             confirmButtonText: '确定',
             type: 'error'
           });
-          this.refreshCode ();
+          this.refreshCode();
+          return;
+        }
+        if (this.codeData.text != this.loginForm.verifycode){
+          MessageBox.alert('验证码错误', '警告', {
+            confirmButtonText: '确定',
+            type: 'error'
+          });
+          this.refreshCode();
           return;
         }
 
@@ -349,5 +354,6 @@
     display: flex;
     justify-content: space-between;
     margin:0px 5px;
+
   }
 </style>

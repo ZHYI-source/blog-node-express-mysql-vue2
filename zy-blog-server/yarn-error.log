@@ -1,8 +1,8 @@
 Arguments: 
-  D:\soft\node\node.exe D:\soft\node\node_global\node_modules\yarn\bin\yarn.js add busboy
+  D:\soft\node\node.exe D:\soft\node\ndoe_global\node_modules\yarn\bin\yarn.js add express-session
 
 PATH: 
-  C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;D:\soft\Git\cmd;D:\soft\node\;D:\soft\;D:\soft\微信web开发者工具\dll;C:\Users\Tom\AppData\Local\Microsoft\WindowsApps;D:\soft\WebStorm 2021.1\bin;;D:\soft\node\node_global;;D:\soft\Microsoft VS Code\bin
+  D:\jdk\bin;D:\jdk\jre\bin;D:\soft\node\node_modules;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;D:\soft\Git\cmd;D:\soft\微信web开发者工具\dll;C:\Users\lk\AppData\Local\Microsoft\WindowsApps;C:\Users\lk\AppData\Roaming\npm;D:\soft\node\ndoe_global;D:\soft\idea\IntelliJ IDEA 2021.1\bin;;D:\jdk\bin;D:\jdk\jre\bin;D:\soft\node\;;D:\soft\Microsoft VS Code\bin;D:\soft\DriverGenius;D:\soft\DriverGenius\ksoft
 
 Yarn version: 
   1.22.17
@@ -40,7 +40,8 @@ npm manifest:
       "fs": "^0.0.1-security",
       "jsonwebtoken": "^8.5.1",
       "multer": "^1.4.2",
-      "mysql": "^2.18.1"
+      "mysql": "^2.18.1",
+      "svg-captcha": "^1.4.0"
     }
   }
 
@@ -513,6 +514,13 @@ Lockfile:
     dependencies:
       ee-first "1.1.1"
   
+  opentype.js@^0.7.3:
+    version "0.7.3"
+    resolved "https://registry.yarnpkg.com/opentype.js/-/opentype.js-0.7.3.tgz#40fb8ce18bfd60e74448efdfe442834098397aab"
+    integrity sha1-QPuM4Yv9YOdESO/f5EKDQJg5eqs=
+    dependencies:
+      tiny-inflate "^1.0.2"
+  
   parseurl@~1.3.3:
     version "1.3.3"
     resolved "https://registry.yarnpkg.com/parseurl/-/parseurl-1.3.3.tgz#9da19e7bee8d12dff0513ed5b76957793bc2e8d4"
@@ -664,6 +672,18 @@ Lockfile:
     integrity sha512-n/ShnvDi6FHbbVfviro+WojiFzv+s8MPMHBczVePfUpDJLwoLT0ht1l4YwBCbi8pJAveEEdnkHyPyTP/mzRfwg==
     dependencies:
       safe-buffer "~5.1.0"
+  
+  svg-captcha@^1.4.0:
+    version "1.4.0"
+    resolved "https://registry.yarnpkg.com/svg-captcha/-/svg-captcha-1.4.0.tgz#32ead3c6463936c218bb3bc9ed04fea4eeffe492"
+    integrity sha512-/fkkhavXPE57zRRCjNqAP3txRCSncpMx3NnNZL7iEoyAtYwUjPhJxW6FQTQPG5UPEmCrbFoXS10C3YdJlW7PDg==
+    dependencies:
+      opentype.js "^0.7.3"
+  
+  tiny-inflate@^1.0.2:
+    version "1.0.3"
+    resolved "https://registry.yarnpkg.com/tiny-inflate/-/tiny-inflate-1.0.3.tgz#122715494913a1805166aaf7c93467933eea26c4"
+    integrity sha512-pkY1fj1cKHb2seWDy0B16HeWyczlJA9/WW3u3c4z/NiWDsO3DOU5D7nhTLE9CF0yXv/QZFY7sEJmj24dK+Rrqw==
   
   toidentifier@1.0.1:
     version "1.0.1"
