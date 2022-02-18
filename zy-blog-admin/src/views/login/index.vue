@@ -14,15 +14,16 @@
               <div style="text-align: center;margin-top: 100px;margin-bottom: 15px; font-weight: bold; color: #024A86;">登录平台</div>
               <el-form ref="loginForm" :model="loginForm" :rules="loginRules" v-loading="loading" fullscreen="true">
                 <el-form-item prop="userName">
-                  <el-input v-model="loginForm.loginAccount" placeholder="请输入帐号"></el-input>
+                  <el-input v-model="loginForm.loginAccount" clearable placeholder="请输入帐号"></el-input>
                 </el-form-item>
                 <el-form-item prop="psw">
-                  <el-input v-model="loginForm.userPassword" placeholder="请输入密码" show-password></el-input>
+                  <el-input v-model="loginForm.userPassword" clearable placeholder="请输入密码" show-password></el-input>
                 </el-form-item>
                 <el-form-item prop="verifycode">
                   <!-- 注意：prop与input绑定的值一定要一致，否则验证规则中的value会报undefined，因为value即为绑定的input输入值 -->
                   <el-input v-model="loginForm.verifycode"
                             placeholder="请输入验证码"
+                            clearable
                             @keyup.enter.native="handleLogin"
                             class="identifyinput">
                   </el-input>
@@ -54,6 +55,7 @@
 <script>
   import {validUsername} from '@/utils/validate'
   import {MessageBox} from "element-ui";
+  import {aes} from "@/libs/crypto";
   export default {
     name: 'Login',
     data() {
@@ -123,8 +125,9 @@
     methods: {
       verifycodeData() {
         this.request('api_sms_captcha', {}).then((res) => {
-          console.log('验证码',res)
           this.codeData = res
+          this.codeData.text =aes.en(res.text)
+          // console.log('123',this.codeData)
           this.loginForm.key = res.key
           this.codeImg =res.image
         }).catch((error) => {
@@ -161,17 +164,13 @@
           this.refreshCode();
           return;
         }
-        if (this.codeData.text != this.loginForm.verifycode){
-          MessageBox.alert('验证码错误', '警告', {
-            confirmButtonText: '确定',
-            type: 'error'
-          });
+        if (aes.de(this.codeData.text) != this.loginForm.verifycode){
+          this.$message.error('验证码错误');
           this.refreshCode();
           return;
         }
-
-        let sha256 = require("js-sha256").sha256
-        let password = sha256(this.loginForm.userPassword)
+        //AES 对称秘钥加密
+        let password = aes.en(this.loginForm.userPassword)
 
         let loginData = {
           loginAccount: this.loginForm.loginAccount,
@@ -185,7 +184,7 @@
             console.log('init login')
             this.$store.dispatch('user/login', loginData)
               .then((res) => {
-                console.log('login',res)
+                console.log('login',loginData)
                 console.log(this.redirect || '/')
                 this.$router.push({path: this.redirect || '/', query: this.otherQuery})
                 this.loading = false
