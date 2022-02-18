@@ -33,7 +33,7 @@ function creatDownLoad(fileName, res) {
  */
 Http.install = function (Vue) {
   const config = {
-    baseURL: 'http://114.117.164.181:5220',
+    baseURL: process.env.VUE_APP_BASE_URL,
     // 是否是跨域请求
     // withCredentials: true,
     //返回数据类型

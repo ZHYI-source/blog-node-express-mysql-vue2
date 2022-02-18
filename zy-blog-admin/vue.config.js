@@ -46,19 +46,15 @@ module.exports = {
     },
     proxy: {
       '/zy-server': {
-        // target: 'http://localhost:5220' //测试环境
-        target: 'http://114.117.164.181:5220' //正式环境
+        target: 'http://localhost:5220' //测试环境
+        // target: 'http://114.117.164.181:5220' //正式环境
       },
     },
-    // after: require('./mock/mock-server.js')
   },
   configureWebpack: {
-    // provide the app's title in webpack's name field, so that
-    // it can be accessed in index.html to inject the correct title.
     name: name,
     resolve: {
       alias: {
-        // 'vue$': 'vue/dist/vue.esm.js',
         '@': resolve('src'),
         '@assets': resolve('src/assets'),
         '@css': resolve('src/assets/css'),
