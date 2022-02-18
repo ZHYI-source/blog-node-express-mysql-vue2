@@ -314,31 +314,15 @@ export const asyncRoutes = [
     children: [
       {
         path: 'admin',
-        component: () => import('@/views/sys/admin'),
+        component: () => import('@/views/system/dir-user-info'),
         name: 'admin',
         meta: {
-          perms: ['GET /admin/admin/list', 'POST /admin/admin/create', 'POST /admin/admin/update', 'POST /admin/admin/delete'],
+          perms: ['GET /admin/user/list', 'POST /admin/user/create', 'POST /admin/user/update', 'POST /admin/user/delete'],
           title: '用户中心',
           noCache: true
         }
       },
-      {
-        path: 'role',
-        component: () => import('@/views/sys/role'),
-        name: 'role',
-        meta: {
-          perms: [
-            'GET /admin/role/list',
-            'POST /admin/role/create',
-            'POST /admin/role/update',
-            'POST /admin/role/delete',
-            'GET /admin/role/getPermissions',
-            'POST /admin/role/permissions'
-          ],
-          title: '角色管理',
-          noCache: true
-        }
-      },
+
     ]
   },
 

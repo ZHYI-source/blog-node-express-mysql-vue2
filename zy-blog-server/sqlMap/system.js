@@ -6,6 +6,22 @@
 */
 
 const systemSqlMap = {
+
+    //系统管理用户
+    adminUserOpt: {
+        list: "SELECT * FROM zy_admin_user ",
+
+        count: "SELECT COUNT(id) FROM zy_admin_user",
+
+        create:"INSERT INTO zy_admin_user (id,username,password,insertTime,updateTime) VALUES (?,?,?,?,?)",
+
+        delete:"DELETE FROM zy_admin_user WHERE id=?",
+
+        update:"UPDATE zy_admin_user SET username=?,password=?,insertTime=?,updateTime=? WHERE id=?",
+
+    },
+
+
     //web站点音乐
     webMusicOpt: {
         list: "SELECT * FROM zy_web_music ",

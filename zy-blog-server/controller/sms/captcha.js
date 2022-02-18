@@ -1,8 +1,5 @@
-let $sql = require('../../sqlMap/system') // sql语句
-let conn = require('../../common') // 引入公共连接池
-let tools = require('../../utils/tools') // 引入工具模块
+
 let svgCaptcha = require('svg-captcha');
-let fs = require('fs');
 //查询字典列表业务处理
 exports.queryCaptcha = async (req, res, next) => {
     try {
