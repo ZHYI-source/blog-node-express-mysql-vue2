@@ -3,10 +3,6 @@ import { MessageBox, Message } from 'element-ui'
 import store from '@/store'
 import { getToken } from '@/utils/auth'
 
-// import axios from 'axios'
-// import store from '@/store'
-
-// create an axios instance
 const service = axios.create({
   // api的base_url  //请求页面数据地址
   baseURL: process.env.VUE_APP_BASE_URL,
