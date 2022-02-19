@@ -13,11 +13,7 @@
                     @clear="goPage(1)" @keyup.enter.native="goPage(1)"
           ></el-input>
         </el-form-item>
-        <el-form-item class="inline-item" prop="className">
-          <el-input v-model.trim="query.params.className" clearable placeholder="输入分类名称搜索" size="mini"
-                    @clear="goPage(1)" @keyup.enter.native="goPage(1)"
-          ></el-input>
-        </el-form-item>
+
       </lk-search-form>
 
       <div class="table-operate">
@@ -66,7 +62,7 @@
                      :data-size="temp.dataSize" @changePageSize="changePageSize" @go="goPage"
       />
     </section>
-    <GetArticleClass v-if="show.edit" :updateData="updateData" @close="closeEdit"/>
+    <GetWebSite v-if="show.edit" :updateData="updateData" @close="closeEdit"/>
   </section>
 </template>
 
@@ -77,17 +73,16 @@
  *@Description:站点信息
  */
 import {getToken} from "@/utils/auth";
-
-import Tools from "@/libs/tool";
-import GetArticleClass from "@/views/blog/get-article-class";
 import ViewArticleClass from "@/views/blog/view-article-class";
 import {setSortType} from "@/utils/sortUtil";
+import GetWebSite from "@/views/blog/get-web-site";
+import ViewWebSite from "@/views/blog/view-web-site";
 
 export default {
   name: 'dir-web-site',
   components: {
-    ViewArticleClass,
-    GetArticleClass,
+    ViewWebSite,
+    GetWebSite,
   },
   watch: {
     'heightL'(val) {
@@ -151,10 +146,12 @@ export default {
       //列表渲染数据列
       fields: [
         {key: 'id', name: 'ID', show: true, width: '', enableSort: false, align: "center", fixed: false},
-        {key: 'className', name: '分类名称', show: true, width: '', enableSort: false, align: "center", fixed: false},
-        {key: 'classValue', name: '分类值', show: true, width: '', enableSort: false, align: "center", fixed: false},
-        {key: 'path', name: '路径', show: true, width: '', enableSort: false, align: "center", fixed: false},
-        {key: 'query', name: '参数', show: true, width: '', enableSort: false, align: "center", fixed: false},
+        {key: 'name', name: '站点名称', show: true, width: '', enableSort: false, align: "center", fixed: false},
+        {key: 'slogan', name: '站点标语', show: true, width: '', enableSort: false, align: "center", fixed: false},
+        {key: 'avatar', name: '站点头像', show: true, width: '', enableSort: false, align: "center", fixed: false},
+        {key: 'domain', name: '站点领域', show: true, width: '', enableSort: false, align: "center", fixed: false},
+        {key: 'notice', name: '站点通知', show: true, width: '', enableSort: false, align: "center", fixed: false},
+        {key: 'desc', name: '站点描述', show: true, width: '', enableSort: false, align: "center", fixed: false},
         {key: 'insertTime', name: '插入时间',sort:true, show: true, width: '', enableSort: true, align: "center", fixed: false},
         {key: 'updateTime', name: '修改时间', show: true, width: '', enableSort: true, align: "center", fixed: false},
         {key: 'toolButton', name: '操作', show: true, width: '250', enableSort: false, align: "center", fixed: 'right'},
@@ -203,7 +200,7 @@ export default {
     getDataList() {
       try {
         this.loading.list = true;
-        this.request('api_blog_article_class_list', this.query).then(res => {
+        this.request('api_blog_web_site_info_list', this.query).then(res => {
           this.datas = res.records || [];
           this.temp.dataSize = res.total;
           this.loading.list = false;
@@ -269,7 +266,7 @@ export default {
     //跳转到查看详情
     goView(data) {
       let datas = data ? data : {};
-      this.toast.showMiniModal('文章分类详情', ViewArticleClass, {datas})
+      this.toast.showSmallModal('站点信息详情', ViewWebSite, {datas})
     },
     //删除文章
     goDelete(data) {
@@ -277,7 +274,7 @@ export default {
         id: data.id || '',
       }
       this.toast.confirmDelete().then(() => {
-        this.request('api_blog_article_class_delete', p).then(res => {
+        this.request('api_blog_web_site_info_delete', p).then(res => {
           this.$message({
             message: '删除成功！',
             type: 'success'
