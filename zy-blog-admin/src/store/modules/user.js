@@ -52,9 +52,9 @@ const actions = {
   login({ commit }, userInfo) {
     const { loginAccount, userPassword,verifyCode,key } = userInfo
     return new Promise((resolve, reject) => {
-      login({ loginAccount: loginAccount.trim(), userPassword: userPassword,verifyCode,key}).then(response => {
+      login({ loginAccount: loginAccount.trim(), userPassword: userPassword,verifyCode:verifyCode,key:key}).then(response => {
         const { data } = response.data
-        console.log(response)
+        console.log('response',response)
         commit('SET_TOKEN', data.token)
         setToken(data.token)
         resolve()

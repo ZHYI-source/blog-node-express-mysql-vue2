@@ -6,7 +6,8 @@ let tools = require('../../utils/tools') // 引入工具模块
 exports.login = async (req, res, next) => {
     try {
         // let sql = $sql.dict.all_dict_type
-        let parms = req.body
+        let params = req.body
+        console.log(params)
         let data = {
             data: {
                 adminInfo: {userId: "1"},
@@ -17,15 +18,6 @@ exports.login = async (req, res, next) => {
 
         }
         res.json(data) //以json的方式返回客户端
-        // conn.query(sql, function (err, result) {
-        //     if (err) {
-        //         console.log("错误", err)
-        //         return
-        //     }
-        //     if (result) {
-        //         res.json({data: result, parms: parms}) //以json的方式返回客户端
-        //     }
-        // })
     } catch (err) {
         next(err)
     }
