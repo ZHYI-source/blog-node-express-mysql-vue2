@@ -5,10 +5,10 @@
       <section class="employee-info">
         <el-row class="sec-title"><i class="el-icon-guide"></i> 基础信息</el-row>
         <lk-view-row>
-          <lk-view-item title="用户名称" label-width="100">{{ form.username }}</lk-view-item>
+          <lk-view-item title="用户账号" label-width="100">{{ form.username }}</lk-view-item>
         </lk-view-row>
         <lk-view-row>
-          <lk-view-item title="客户名称" label-width="100">{{ form.password }}</lk-view-item>
+          <lk-view-item title="用户密码" label-width="100">{{ form.password }}</lk-view-item>
         </lk-view-row>
         <lk-view-row>
           <lk-view-item title="插入时间" label-width="100">
@@ -17,7 +17,7 @@
         </lk-view-row>
         <lk-view-row>
           <lk-view-item title="修改日期" label-width="100">
-            <lk-view-date :date="form.updateTime"/>
+            <lk-view-date :date="form.updateTime || '-'"/>
           </lk-view-item>
         </lk-view-row>
       </section>

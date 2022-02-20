@@ -86,9 +86,9 @@ export const asyncRoutes = [
         meta: {
           title: '文章信息',
           perms: [
-            // 'POST /admin/operate/worker/list',
-            // 'POST /admin/operate/worker/import',
-            // 'POST /admin/operate/worker/create',
+            'POST /admin/operate/worker/list',
+            'POST /admin/operate/worker/import',
+            'POST /admin/operate/worker/create',
           ]
         },
       },
@@ -322,7 +322,20 @@ export const asyncRoutes = [
           noCache: true
         }
       },
-
+      {
+        path: 'role',
+        component: () => import('@/views/system/dir-role-info'),
+        name: 'role',
+        meta: {
+          perms: [
+            'GET /admin/role/list',
+            'POST /admin/role/create',
+            'POST /admin/role/update',
+            'POST /admin/role/delete'],
+          title: '角色中心',
+          noCache: true
+        }
+      },
     ]
   },
 

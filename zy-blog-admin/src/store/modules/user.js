@@ -50,6 +50,7 @@ const mutations = {
 const actions = {
   // user login
   login({ commit }, userInfo) {
+    console.log(userInfo)
     const { loginAccount, userPassword,verifyCode,key } = userInfo
     return new Promise((resolve, reject) => {
       login({ loginAccount: loginAccount.trim(), userPassword: userPassword,verifyCode:verifyCode,key:key}).then(response => {

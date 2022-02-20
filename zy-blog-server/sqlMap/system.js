@@ -6,7 +6,19 @@
 */
 
 const systemSqlMap = {
+    //系统管理角色
+    adminRoleOpt: {
+        list: "SELECT * FROM zy_admin_role ",
 
+        count: "SELECT COUNT(id) FROM zy_admin_role",
+
+        create:"INSERT INTO zy_admin_role (id,roleName,roleKey,roleAuth,insertTime,updateTime) VALUES (?,?,?,?,?,?)",
+
+        delete:"DELETE FROM zy_admin_role WHERE id=?",
+
+        update:"UPDATE zy_admin_role SET roleName=?,roleKey=?,roleAuth=?,insertTime=?,updateTime=? WHERE id=?",
+
+    },
     //系统管理用户
     adminUserOpt: {
         list: "SELECT * FROM zy_admin_user ",

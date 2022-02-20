@@ -8,6 +8,7 @@ let router = express.Router() // express路由
 const captchaCtrl = require('../../controller/sms/captcha')
 const loginCtrl = require('../../controller/sms/login')
 const adminUserCtrl = require('../../controller/sms/admin-user')
+const adminRoleCtrl = require('../../controller/sms/admin-role')
 // 图片验证码
 router.get('/zy-server/sms/captcha', captchaCtrl.queryCaptcha)
 // 后台登录
@@ -20,7 +21,6 @@ router.get('/zy-server/admin/info', loginCtrl.adminInfo)
 router.get('/zy-server/admin/list', loginCtrl.adminList)
 // 角色列表
 router.get('/zy-server/admin/role/list', loginCtrl.roleList)
-
 // 角色选择
 router.get('/zy-server/admin/role/options', loginCtrl.roleOptions)
 
@@ -39,5 +39,20 @@ router.post('/zy-server/admin/user/delete', adminUserCtrl.adminUserDelete)
 // 用户更新
 router.post('/zy-server/admin/user/update', adminUserCtrl.adminUserUpdate)
 
+/**
+ *@author ZY
+ *@date 2022/2/18 21:03
+ *@Description:admin角色
+ */
+// 角色列表
+router.post('/zy-server/admin/role/list', adminRoleCtrl.adminRoleList)
+// 角色增加
+router.post('/zy-server/admin/role/create', adminRoleCtrl.adminRoleCreate)
+// 角色删除
+router.post('/zy-server/admin/role/delete', adminRoleCtrl.adminRoleDelete)
+// 角色更新
+router.post('/zy-server/admin/role/update', adminRoleCtrl.adminRoleUpdate)
+// 权限列表
+router.get('/zy-server/admin/role/getPermissions', adminRoleCtrl.getPermissions)
 
 module.exports = router
