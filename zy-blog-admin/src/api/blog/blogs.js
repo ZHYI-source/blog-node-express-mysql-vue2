@@ -45,9 +45,28 @@ export const blogApi = {
 
   api_blog_web_music_list: {url: '/zy-server/web_music/list', method: 'post',},//web站点音乐列表
 
-  api_blog_web_music_create: {url: '/zy-server/web_music/create', method: 'post',},//web站点音乐关于添加
+  api_blog_web_music_create: {url: '/zy-server/web_music/create', method: 'post',},//web站点音乐添加
 
-  api_blog_web_music_update: {url: '/zy-server/web_music/update', method: 'post',},//web站点音乐关于修改
+  api_blog_web_music_update: {url: '/zy-server/web_music/update', method: 'post',},//web站点音乐修改
 
-  api_blog_web_music_delete: {url: '/zy-server/web_music/delete', method: 'post',},//web站点音乐关于删除
+  api_blog_web_music_delete: {url: '/zy-server/web_music/delete', method: 'post',},//web站点音乐删除
+
+
+
+  api_blog_web_site_info_list: {url: '/zy-server/web_site_info/list', method: 'post',},//web站点配置列表
+
+  api_blog_web_site_info_create: {url: '/zy-server/web_site_info/create', method: 'post',},//web站点配置添加
+
+  api_blog_web_site_info_update: {url: '/zy-server/web_site_info/update', method: 'post',},//web站点配置修改
+
+  api_blog_web_site_info_delete: {url: '/zy-server/web_site_info/delete', method: 'post',},//web站点配置删除
+
+
+  api_blog_web_site_socials_list: {url: '/zy-server/web_site_info/list', method: 'post',},//web站点社交列表
+
+  api_blog_web_site_socials_create: {url: '/zy-server/web_site_info/create', method: 'post',},//web站点社交添加
+
+  api_blog_web_site_socials_update: {url: '/zy-server/web_site_info/update', method: 'post',},//web站点社交修改
+
+  api_blog_web_site_socials_delete: {url: '/zy-server/web_site_info/delete', method: 'post',},//web站点社交删除
 }

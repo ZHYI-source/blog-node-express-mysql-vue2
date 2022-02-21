@@ -12,17 +12,22 @@ let tools = require('../../utils/tools') // 引入工具模块
 exports.articleList = async (req, res, next) => {
     try {
         let params = req.body, sql = '', total = 0;
-        let queryTotal = $systemSqlMap.articleOpt.count
+        let queryTotal = ''
         //多条件查询
         if (params.params.id && params.params.title && params.params.classId) {
+            queryTotal=$systemSqlMap.articleOpt.count + ` WHERE id='${params.params.id}' AND title='${params.params.title}' AND classId='${params.params.classId}'`
             sql = $systemSqlMap.articleOpt.list + ` WHERE id='${params.params.id}' AND title='${params.params.title}' AND classId='${params.params.classId}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
         } else if (params.params.id) {
+            queryTotal=$systemSqlMap.articleOpt.count +` WHERE id='${params.params.id}'`
             sql = $systemSqlMap.articleOpt.list + ` WHERE id='${params.params.id}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
         } else if (params.params.title) {
+            queryTotal=$systemSqlMap.articleOpt.count +` WHERE id='${params.params.title}'`
             sql = $systemSqlMap.articleOpt.list + ` WHERE title='${params.params.title}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
         } else if (params.params.classId) {
+            queryTotal=$systemSqlMap.articleOpt.count +` WHERE id='${params.params.classId}'`
             sql = $systemSqlMap.articleOpt.list + ` WHERE classId='${params.params.classId}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
         } else {
+            queryTotal=$systemSqlMap.articleOpt.count
             sql = $systemSqlMap.articleOpt.list + ` ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
         }
         comMethods.queryCount(queryTotal).then(data => {
@@ -151,22 +156,26 @@ exports.articlePublish = async (req, res, next) => {
  */
 exports.articleClassList = async (req, res, next) => {
     try {
-        let parms = req.body, sql = '', total = 0,
-            queryTotal = $systemSqlMap.articleClassOpt.count
+        let params = req.body, sql = '', total = 0,
+            queryTotal = ''
         //多条件查询
-        if (parms.params.id && parms.params.className) {
-            sql = $systemSqlMap.articleClassOpt.list + ` WHERE id='${parms.params.id}' AND className='${parms.params.className}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
-        } else if (parms.params.id) {
-            sql = $systemSqlMap.articleClassOpt.list + ` WHERE id='${parms.params.id}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
-        } else if (parms.params.className) {
-            sql = $systemSqlMap.articleClassOpt.list + ` WHERE className='${parms.params.className}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
+        if (params.params.id && params.params.className) {
+            queryTotal= $systemSqlMap.articleClassOpt.count+ ` WHERE id='${params.params.id}' AND className='${params.params.className}'`
+            sql = $systemSqlMap.articleClassOpt.list + ` WHERE id='${params.params.id}' AND className='${params.params.className}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
+        } else if (params.params.id) {
+            queryTotal= $systemSqlMap.articleClassOpt.count+ ` WHERE id='${params.params.id}'`
+            sql = $systemSqlMap.articleClassOpt.list + ` WHERE id='${params.params.id}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
+        } else if (params.params.className) {
+            queryTotal= $systemSqlMap.articleClassOpt.count+ ` WHERE className='${params.params.className}'`
+            sql = $systemSqlMap.articleClassOpt.list + ` WHERE className='${params.params.className}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
         } else {
-            sql = $systemSqlMap.articleClassOpt.list + ` ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
+            queryTotal= $systemSqlMap.articleClassOpt.count
+            sql = $systemSqlMap.articleClassOpt.list + ` ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
         }
         comMethods.queryCount(queryTotal).then(data => {
             total = data
         })
-        comMethods.commonQuery(sql, parms).then(data => {
+        comMethods.commonQuery(sql, params).then(data => {
             let resData = data || {}
             resData.total = total
             res.json(resData)
@@ -255,22 +264,26 @@ exports.articleClassDelete = async (req, res, next) => {
  */
 exports.webAboutList = async (req, res, next) => {
     try {
-        let parms = req.body, sql = '', total = 0,
-            queryTotal = $systemSqlMap.webAboutOpt.count
+        let params = req.body, sql = '', total = 0,
+            queryTotal = ''
         //多条件查询
-        if (parms.params.id && parms.params.aboutTitle) {
-            sql = $systemSqlMap.webAboutOpt.list + ` WHERE id='${parms.params.id}' AND aboutTitle='${parms.params.aboutTitle}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
-        } else if (parms.params.id) {
-            sql = $systemSqlMap.webAboutOpt.list + ` WHERE id='${parms.params.id}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
-        } else if (parms.params.aboutTitle) {
-            sql = $systemSqlMap.webAboutOpt.list + ` WHERE aboutTitle='${parms.params.aboutTitle}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
+        if (params.params.id && params.params.aboutTitle) {
+            queryTotal = $systemSqlMap.webAboutOpt.count + ` WHERE id='${params.params.id}' AND aboutTitle='${params.params.aboutTitle}'`
+            sql = $systemSqlMap.webAboutOpt.list + ` WHERE id='${params.params.id}' AND aboutTitle='${params.params.aboutTitle}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
+        } else if (params.params.id) {
+            queryTotal = $systemSqlMap.webAboutOpt.count + ` WHERE id='${params.params.id}'`
+            sql = $systemSqlMap.webAboutOpt.list + ` WHERE id='${params.params.id}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
+        } else if (params.params.aboutTitle) {
+            queryTotal = $systemSqlMap.webAboutOpt.count + ` WHERE aboutTitle='${params.params.aboutTitle}'`
+            sql = $systemSqlMap.webAboutOpt.list + ` WHERE aboutTitle='${params.params.aboutTitle}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
         } else {
-            sql = $systemSqlMap.webAboutOpt.list + ` ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
+            queryTotal = $systemSqlMap.webAboutOpt.count
+            sql = $systemSqlMap.webAboutOpt.list + ` ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
         }
         comMethods.queryCount(queryTotal).then(data => {
             total = data
         })
-        comMethods.commonQuery(sql, parms).then(data => {
+        comMethods.commonQuery(sql, params).then(data => {
             let resData = data || {}
             resData.total = total
             res.json(resData)
@@ -343,22 +356,26 @@ exports.webAboutDelete = async (req, res, next) => {
  */
 exports.webMusicList = async (req, res, next) => {
     try {
-        let parms = req.body, sql = '', total = 0,
-            queryTotal = $systemSqlMap.webMusicOpt.count
+        let params = req.body, sql = '', total = 0,
+            queryTotal = ''
         //多条件查询
-        if (parms.params.id && parms.params.name) {
-            sql = $systemSqlMap.webMusicOpt.list + ` WHERE id='${parms.params.id}' AND name='${parms.params.name}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
-        } else if (parms.params.id) {
-            sql = $systemSqlMap.webMusicOpt.list + ` WHERE id='${parms.params.id}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
-        } else if (parms.params.name) {
-            sql = $systemSqlMap.webMusicOpt.list + ` WHERE name='${parms.params.name}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
+        if (params.params.id && params.params.name) {
+            queryTotal = $systemSqlMap.webMusicOpt.count + ` WHERE id='${params.params.id}' AND name='${params.params.name}'`
+            sql = $systemSqlMap.webMusicOpt.list + ` WHERE id='${params.params.id}' AND name='${params.params.name}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
+        } else if (params.params.id) {
+            queryTotal = $systemSqlMap.webMusicOpt.count + ` WHERE id='${params.params.id}' `
+            sql = $systemSqlMap.webMusicOpt.list + ` WHERE id='${params.params.id}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
+        } else if (params.params.name) {
+            queryTotal = $systemSqlMap.webMusicOpt.count + ` WHERE name='${params.params.name}' `
+            sql = $systemSqlMap.webMusicOpt.list + ` WHERE name='${params.params.name}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
         } else {
-            sql = $systemSqlMap.webMusicOpt.list + ` ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
+            queryTotal = $systemSqlMap.webMusicOpt.count
+            sql = $systemSqlMap.webMusicOpt.list + ` ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
         }
         comMethods.queryCount(queryTotal).then(data => {
             total = data
         })
-        comMethods.commonQuery(sql, parms).then(data => {
+        comMethods.commonQuery(sql, params).then(data => {
             let resData = data || {}
             resData.total = total
             res.json(resData)
@@ -430,6 +447,190 @@ exports.webMusicDelete = async (req, res, next) => {
         next(err)
     }
 }
+/**
+ *@author ZY
+ *@date 2022/2/12 15:11
+ *@Description:站点信息数据管理
+ */
+exports.webSiteInfoList = async (req, res, next) => {
+    try {
+        let params = req.body, sql = '', total = 0,
+            queryTotal=$systemSqlMap.webSiteInfoOpt.count
+        //多条件查询
+        if (params.params.id) {
+            queryTotal=$systemSqlMap.webSiteInfoOpt.count+ ` WHERE id='${params.params.id}' `
+            sql = $systemSqlMap.webSiteInfoOpt.list + ` WHERE id='${params.params.id}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
+        }   else {
+            sql = $systemSqlMap.webSiteInfoOpt.list + ` ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
+        }
+        comMethods.queryCount(queryTotal).then(data => {
+            total = data
+        })
+        comMethods.commonQuery(sql, params).then(data => {
+            let resData = data || {}
+            resData.total = total
+            res.json(resData)
+        }).catch(err => {
+            console.log('--查询web音乐错误--', err)
+        })
+    } catch (err) {
+        next(err)
+    }
+}
+//添加
+exports.webSiteInfoCreate = async (req, res, next) => {
+    try {
+        let params = req.body,
+            sql = $systemSqlMap.webSiteInfoOpt.create,
+            createParams = [
+                tools.createRandomId(),
+                params.avatar,
+                params.slogan,
+                params.name,
+                params.domain,
+                params.notice,
+                params.desc,
+                tools.getDate(),
+                '',
+            ]
+        comMethods.commonQuery(sql, createParams).then(data => {
+            let realRes = data || {}
+            res.json(realRes)
+        })
+    } catch (err) {
+        next(err)
+    }
+}
+//修改
+exports.webSiteInfoUpdate = async (req, res, next) => {
+    try {
+        let params = req.body,
+            sql = $systemSqlMap.webSiteInfoOpt.update,
+            updateParams = [
+                params.avatar,
+                params.slogan,
+                params.name,
+                params.domain,
+                params.notice,
+                params.desc,
+                params.insertTime,
+                tools.getDate(),
+                params.id,
+            ]
+        comMethods.commonQuery(sql, updateParams).then(data => {
+            let realRes = data || {}
+            res.json(realRes)
+        })
+
+    } catch (err) {
+        next(err)
+    }
+}
+//删除
+exports.webSiteInfoDelete = async (req, res, next) => {
+    try {
+        let params = req.body,
+            sql = $systemSqlMap.webSiteInfoOpt.delete,
+            deleteParams = [params.id]
+        comMethods.commonQuery(sql, deleteParams).then(data => {
+            let realRes = data || {}
+            res.json(realRes)
+        })
+    } catch (err) {
+        next(err)
+    }
+}
+
+/**
+ *@author ZY
+ *@date 2022/2/12 15:11
+ *@Description:站点信息数据管理
+ */
+exports.webSiteSocialsList = async (req, res, next) => {
+    try {
+        let params = req.body, sql = '', total = 0,
+            queryTotal=$systemSqlMap.webSiteSocialsOpt.count
+        //多条件查询
+        if (params.params.title) {
+            queryTotal=$systemSqlMap.webSiteSocialsOpt.count+ ` WHERE title='${params.params.title}' `
+            sql = $systemSqlMap.webSiteSocialsOpt.list + ` WHERE title='${params.params.title}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
+        }  else {
+            sql = $systemSqlMap.webSiteSocialsOpt.list + ` ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
+        }
+        comMethods.queryCount(queryTotal).then(data => {
+            total = data
+        })
+        comMethods.commonQuery(sql, params).then(data => {
+            let resData = data || {}
+            resData.total = total
+            res.json(resData)
+        }).catch(err => {
+            console.log('--查询web音乐错误--', err)
+        })
+    } catch (err) {
+        next(err)
+    }
+}
+//添加
+exports.webSiteSocialsCreate = async (req, res, next) => {
+    try {
+        let params = req.body,
+            sql = $systemSqlMap.webSiteSocialsOpt.create,
+            createParams = [
+                tools.createRandomId(),
+                params.title,
+                params.icon,
+                params.color,
+                params.href,
+                tools.getDate(),
+                '',
+            ]
+        comMethods.commonQuery(sql, createParams).then(data => {
+            let realRes = data || {}
+            res.json(realRes)
+        })
+    } catch (err) {
+        next(err)
+    }
+}
+//修改
+exports.webSiteSocialsUpdate = async (req, res, next) => {
+    try {
+        let params = req.body,
+            sql = $systemSqlMap.webSiteSocialsOpt.update,
+            updateParams = [
+                params.title,
+                params.icon,
+                params.color,
+                params.href,
+                params.insertTime,
+                tools.getDate(),
+                params.id,
+            ]
+        comMethods.commonQuery(sql, updateParams).then(data => {
+            let realRes = data || {}
+            res.json(realRes)
+        })
+
+    } catch (err) {
+        next(err)
+    }
+}
+//删除
+exports.webSiteSocialsDelete = async (req, res, next) => {
+    try {
+        let params = req.body,
+            sql = $systemSqlMap.webSiteSocialsOpt.delete,
+            deleteParams = [params.id]
+        comMethods.commonQuery(sql, deleteParams).then(data => {
+            let realRes = data || {}
+            res.json(realRes)
+        })
+    } catch (err) {
+        next(err)
+    }
+}
+
 
 /**
  *@author ZY
@@ -438,22 +639,26 @@ exports.webMusicDelete = async (req, res, next) => {
  */
 exports.articleCommentList = async (req, res, next) => {
     try {
-        let parms = req.body, sql = '', total = 0,
-            queryTotal = $systemSqlMap.articleCommentsOpt.count
+        let params = req.body, sql = '', total = 0,
+            queryTotal = ''
         //多条件查询
-        if (parms.params.postId && parms.params.fromUserName) {
-            sql = $systemSqlMap.articleCommentsOpt.list + ` WHERE postId='${parms.params.postId}' AND fromUserName='${parms.params.fromUserName}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
-        } else if (parms.params.postId) {
-            sql = $systemSqlMap.articleCommentsOpt.list + ` WHERE postId='${parms.params.postId}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
-        } else if (parms.params.fromUserName) {
-            sql = $systemSqlMap.articleCommentsOpt.list + ` WHERE fromUserName='${parms.params.fromUserName}' ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
+        if (params.params.postId && params.params.fromUserName) {
+            queryTotal = $systemSqlMap.articleCommentsOpt.count + ` WHERE postId='${params.params.postId}' AND fromUserName='${params.params.fromUserName}'`
+            sql = $systemSqlMap.articleCommentsOpt.list + ` WHERE postId='${params.params.postId}' AND fromUserName='${params.params.fromUserName}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
+        } else if (params.params.postId) {
+            queryTotal = $systemSqlMap.articleCommentsOpt.count + ` WHERE postId='${params.params.postId}'`
+            sql = $systemSqlMap.articleCommentsOpt.list + ` WHERE postId='${params.params.postId}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
+        } else if (params.params.fromUserName) {
+            queryTotal = $systemSqlMap.articleCommentsOpt.count + ` WHERE fromUserName='${params.params.fromUserName}'`
+            sql = $systemSqlMap.articleCommentsOpt.list + ` WHERE fromUserName='${params.params.fromUserName}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
         } else {
-            sql = $systemSqlMap.articleCommentsOpt.list + ` ORDER BY ${parms.orderBy} ${parms.orderType} LIMIT ${parms.size} OFFSET ${parms.size * (parms.current - 1)}`
+            queryTotal = $systemSqlMap.articleCommentsOpt.count
+            sql = $systemSqlMap.articleCommentsOpt.list + ` ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
         }
         comMethods.queryCount(queryTotal).then(data => {
             total = data
         })
-        comMethods.commonQuery(sql, parms).then(data => {
+        comMethods.commonQuery(sql, params).then(data => {
             let resData = data || {}
             resData.total = total
             res.json(resData)

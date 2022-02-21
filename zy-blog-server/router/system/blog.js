@@ -49,6 +49,24 @@ router.post('/zy-server/web_music/update', blogCtrl.webMusicUpdate) //音乐更�
 //
 router.post('/zy-server/web_music/delete', blogCtrl.webMusicDelete) //音乐删除
 
+/*web站点信息*/
+router.post('/zy-server/web_site_info/list', blogCtrl.webSiteInfoList) //站点信息列表
+//
+router.post('/zy-server/web_site_info/create', blogCtrl.webSiteInfoCreate) //站点信息增加
+//
+router.post('/zy-server/web_site_info/update', blogCtrl.webSiteInfoUpdate) //站点信息更新
+//
+router.post('/zy-server/web_site_info/delete', blogCtrl.webSiteInfoDelete) //站点信息删除
+
+/*web站点社交信息*/
+router.post('/zy-server/web_site_socials/list', blogCtrl.webSiteSocialsList) //站点社交列表
+//
+router.post('/zy-server/web_site_socials/create', blogCtrl.webSiteSocialsCreate) //站点社交增加
+//
+router.post('/zy-server/web_site_socials/update', blogCtrl.webSiteSocialsUpdate) //站点社交更新
+//
+router.post('/zy-server/web_site_socials/delete', blogCtrl.webSiteSocialsDelete) //站点社交删除
+
 
 
 module.exports = router

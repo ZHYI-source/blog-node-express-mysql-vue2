@@ -1,15 +1,13 @@
 import axios from 'axios'
-import { MessageBox, Message } from 'element-ui'
+import {MessageBox, Message} from 'element-ui'
 import store from '@/store'
-import { getToken } from '@/utils/auth'
+import {getToken} from '@/utils/auth'
 
 const service = axios.create({
   // api的base_url  //请求页面数据地址
   baseURL: process.env.VUE_APP_BASE_URL,
   timeout: 5000 // request timeout
 })
-//把数据对象序列化成 json字符串
-service.defaults.transformRequest = data => JSON.stringify(data);
 
 // 请求拦截器
 service.interceptors.request.use(function (config) {
@@ -23,12 +21,22 @@ service.interceptors.request.use(function (config) {
 
 // 响应拦截器
 service.interceptors.response.use(function (response) {
-  return response;
+  const res = response.data
+  if (res.error === 602) {
+    Message({
+      message: res.errMsg,
+      type: 'error',
+      duration: 5 * 1000
+    })
+    return Promise.reject('error')
+  } else {
+    return response;
+  }
 }, function (error) {
   console.log('err' + error) // for debug
   // this.$router.push('/login')
   Message({
-    message: error.message,
+    message: error,
     type: 'error',
     duration: 5 * 1000
   })
@@ -38,16 +46,16 @@ service.interceptors.response.use(function (response) {
 
 // response interceptor
 // service.interceptors.response.use(
-  /**
-   * If you want to get http information such as headers or status
-   * Please return  response => response
-  */
+/**
+ * If you want to get http information such as headers or status
+ * Please return  response => response
+ */
 
-  /**
-   * Determine the request status by custom code
-   * Here is just an example
-   * You can also judge the status by HTTP Status Code
-   */
+/**
+ * Determine the request status by custom code
+ * Here is just an example
+ * You can also judge the status by HTTP Status Code
+ */
 //   response => {
 //     const res = response.data
 //

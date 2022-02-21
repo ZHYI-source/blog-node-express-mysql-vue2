@@ -1,31 +1,48 @@
-let $sql = require('../../sqlMap/system') // sql语句
-let conn = require('../../common') // 引入公共连接池
-let tools = require('../../utils/tools') // 引入工具模块
 
+let {setToken} = require('../../utils/token')
+let {aes} = require('../../utils/crypto')
+let $sql = require('../../sqlMap/system') // sql语句
+let comMethods = require('../../utils/common') // 引入公共连接池
 // 登录
 exports.login = async (req, res, next) => {
     try {
-        // let sql = $sql.dict.all_dict_type
-        let parms = req.body
-        let data = {
-            data: {
-                adminInfo: {userId: "1"},
-                token: "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjb20ueW9sby5sb2dpbiIsImlhdCI6MTY0NDQ2NDk1NSwic3ViIjoie1widXNlcklkXCI6XCIxXCIsXCJpZENhcmRcIjpudWxsLFwiem9uZVwiOm51bGwsXCJwZXJtc1wiOm51bGx9In0.1jWgGNsH9IzNzdthwf8Ixy80iTQCzK8OxVd5Lsu3OTo"
-            },
-            errmsg: "成功",
-            errno: 0
+        //查询是否有该用户
+        let params = req.body
+        let psd = aes.de(params.userPassword)
+        let sql = $sql.adminUserOpt.list + ` WHERE username='${params.loginAccount}' AND password='${psd}'`
+        comMethods.commonQuery(sql, params).then(data => {
+            let resData = data || {}
+            if (resData.records&&resData.records.length) {
+                setToken(params.loginAccount, params.userPassword).then(_token => {
+                    let _data = {
+                        data: {
+                            adminInfo: {
+                                "orgName": "",
+                                "roles": ["超级管理员"],
+                                "name": "admin",
+                                "perms": ["*"],
+                                "userNickName": "超级管理员",
+                                "userId": "1",
+                                "orgId": "O1-1"},
+                            token: _token
+                        },
+                        errMsg: "登录成功",
+                        error: 0
+                    }
+                    res.status(200).json(_data)
+                })
+            } else {
+                let _data = {
+                    errMsg: "用户名或密码错误！",
+                    error: 602
+                }
+                res.status(200).json(_data)
+            }
+        }).catch(err => {
+            console.log('--查询登录用户信息错误--', err)
+        })
 
-        }
-        res.json(data) //以json的方式返回客户端
-        // conn.query(sql, function (err, result) {
-        //     if (err) {
-        //         console.log("错误", err)
-        //         return
-        //     }
-        //     if (result) {
-        //         res.json({data: result, parms: parms}) //以json的方式返回客户端
-        //     }
-        // })
+
     } catch (err) {
         next(err)
     }
@@ -62,7 +79,11 @@ exports.adminInfo = async (req, res, next) => {
                 "orgName": "",
                 "roles": ["超级管理员"],
                 "name": "admin",
-                "perms": ["*"],
+                // "perms": ['GET /admin/role/list',
+                //     'POST /admin/role/create',
+                //     'POST /admin/role/update',
+                //     'POST /admin/role/delete'],
+                "perms": ['*'],
                 "userNickName": "超级管理员",
                 "userId": "1",
                 "orgId": "O1-1"

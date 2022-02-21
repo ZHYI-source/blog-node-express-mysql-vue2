@@ -1,6 +1,7 @@
 import {driverScore} from '../api/driverScore/driverScore'
 import {zyApi} from '../api/zz/zzPages'
 import {blogApi} from "@/api/blog/blogs";
+import {adminSysApi} from "@/api/sys/admin";
 //引入zz-api
 /* eslint-disable spaced-comment,semi */
 /**
@@ -13,6 +14,7 @@ const methodMap = {
 
   ...zyApi,
   ...blogApi, //博客文章api
+  ...adminSysApi, //系统用户api
 
   /***********************/
 
@@ -28,10 +30,10 @@ const methodMap = {
 
   //**用户菜单列表**/
   getUserMenu: {url: '/zy-server/admin/userMenuList', method: 'get'},
-  //**用户列表**/
-  api_admin_user_list: {url: '/zy-server/admin/userList', method: 'post'},
-  //**角色选择列表**/
-  api_admin_role_list: {url: '/zy-server/admin/roleList', method: 'post'},
+  // //**用户列表**/
+  // api_admin_user_list: {url: '/zy-server/admin/userList', method: 'post'},
+  // //**角色选择列表**/
+  // api_admin_role_list: {url: '/zy-server/admin/roleList', method: 'post'},
   //**用户登陆**/
   api_admin_reg: {url: '/zy-server/admin/userReg', method: 'post'},
   //**用户删除**/
