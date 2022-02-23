@@ -124,7 +124,7 @@ exports.getPermissions = async (req, res, next) => {
         let data = {
             data: {
                 assignedPermissions: [
-                    "admin:operate:complaint:list", "admin:operate:driver:list", "admin:operate:rideRecord:list",
+                    "admin:sys:admin:list", "admin:sys:admin:update",
                 ],
                 systemPermissions: [{
                     id: "系统设置",
