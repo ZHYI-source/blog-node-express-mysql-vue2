@@ -2,7 +2,6 @@
     <div ref="chartBox" style="width: 100%;height: 100%">
         <div ref="lkChart" class="lk-chart"></div>
     </div>
-
 </template>
 
 <script>
