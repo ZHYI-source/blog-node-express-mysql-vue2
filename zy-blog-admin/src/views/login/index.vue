@@ -184,7 +184,7 @@
             console.log('init login')
             this.$store.dispatch('user/login', loginData)
               .then((res) => {
-                console.log('login',loginData)
+                // console.log('login',loginData)
                 console.log(this.redirect || '/')
                 this.$router.push({path: this.redirect || '/', query: this.otherQuery})
                 this.loading = false
