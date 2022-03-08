@@ -14,7 +14,7 @@
       </div>
       <div class="footer-item">
         <div>本站已苟活 {{ runTimeInterval }}</div>
-        <div><a target="_blank" class="out-link" href="http://www.zhouyi.run:5221/#/login?redirect=%2Findex">☞后台管理</a></div>
+        <div><a target="_blank" class="out-link" href="http://zhouyi.run:5221/#/index">☞后台管理</a></div>
       </div>
     </div>
      <div class="copyright">Copyright © 2022 by 芒果快熟
