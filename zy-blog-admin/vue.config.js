@@ -31,7 +31,7 @@ module.exports = {
     proxy: {
       '/zy-server': {
         // target: 'http://localhost:5220' //测试环境
-        target: 'http://114.117.164.181:5220' //正式环境
+        target: 'http://zhouyi.run:5220' //正式环境
       },
     },
   },

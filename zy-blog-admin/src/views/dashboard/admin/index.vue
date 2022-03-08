@@ -1,16 +1,17 @@
 <template>
   <div class="dashboard-editor-container">
-    <day-group :groupData="newVisitis.todayData" @router-push="routerPush" ref="todayGroupId" />
+<!--    <day-group :groupData="newVisitis.todayData" @router-push="routerPush" ref="todayGroupId" />-->
 
-    <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">
-      <amount-count-chart :chart-data="newVisitis" />
-    </el-row>
+<!--    <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">-->
+<!--      <amount-count-chart :chart-data="newVisitis" />-->
+<!--    </el-row>-->
+  <Tinymce v-model="content"/>
+    <div style="padding: 30px;height: 300px;background-color:#fff;margin-top: 20px;font-size: 18px;font-family: 楷体;color: #e27806" v-html="content"></div>
+<!--    <panel-group :groupData="newVisitis.groupData" ref="groupId" />-->
 
-    <panel-group :groupData="newVisitis.groupData" ref="groupId" />
-
-    <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">
-      <month-chart :chart-data="newVisitis" />
-    </el-row>
+<!--    <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">-->
+<!--      <month-chart :chart-data="newVisitis" />-->
+<!--    </el-row>-->
 
   </div>
 </template>
@@ -20,6 +21,7 @@ import PanelGroup from './components/PanelGroup'
 import DayGroup from './components/DayGroup'
 import AmountCountChart from './components/AmountCountChart'
 import MonthChart from './components/MonthChart'
+import Tinymce from "@/components/Tinymce";
 const lineChartData = {
   newVisitis: {
     monthData: {},
@@ -35,6 +37,7 @@ const lineChartData = {
 export default {
   name: 'DashboardAdmin',
   components: {
+    Tinymce,
     PanelGroup,
     DayGroup,
     MonthChart,
@@ -42,6 +45,7 @@ export default {
   },
   data() {
     return {
+      content:'',
       query: {
         orgId: '',
         isSuper: 0
