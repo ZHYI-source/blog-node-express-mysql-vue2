@@ -45,7 +45,7 @@
       </div>
     </div>
     <div class="login-foot">
-      <div style="font-size: 13px">Copyright © 2022 by ZY-blog
+      <div style="font-size: 13px">Copyright © 2022 by 芒果快熟
         . All rights reserved. | 黔ICP备20007526号-1</div>
     </div>
 
