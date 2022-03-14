@@ -10,7 +10,6 @@ module.exports = {
     devServer: {
         proxy: {
             '/api': {
-                // target: 'http://zhouyi.run:5220/',
                 target: 'http://localhost:5220',//本地服务器
                 ws: true,
                 secure: true,
