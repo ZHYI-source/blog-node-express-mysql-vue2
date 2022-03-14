@@ -6,7 +6,7 @@ module.exports = {
         host: "localhost",
         user: "root",
         password: "root",
-        database: "zy-blog",
+        database: "zy_blog",
         port: '3306', // mysql链接端口
         connectTimeout: 5000, //连接超时
         multipleStatements: false //是否允许一个query中包含多条sql语句
