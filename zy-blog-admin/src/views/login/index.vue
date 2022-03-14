@@ -47,12 +47,13 @@
       </div>
     </div>
     <div class="login-foot">
-      <div style="font-size: 13px;padding-bottom: 15px">Copyright © 2022 by <a style="color: #3A71A8" href="https://gitee.com/Z568_568">
-        芒果快熟
+      <div class="copyright">Copyright © 2022 by <a style="color: #3A71A8" target="_blank" href="https://gitee.com/Z568_568">
+        @芒果快熟
       </a>
-        . All rights reserved. | <a style="color: #3A71A8"  href="https://beian.miit.gov.cn/">
+        . All rights reserved. | <a style="color: #3A71A8" target="_blank" href="https://beian.miit.gov.cn/">
           黔ICP备2022001745号-1
-        </a></div>
+        </a>
+      </div>
     </div>
 
   </div>
