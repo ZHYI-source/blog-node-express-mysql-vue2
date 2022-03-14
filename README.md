@@ -6,8 +6,8 @@
 #### 项目目录：
 
 - [zy-blog-web](https://gitee.com/Z568_568/all-blog-sys/tree/master/zy-blog-web) 是博客web展示界面
-- [zy-blog-admin](https://gitee.com/Z568_568/all-blog-sys/tree/master/zy-blog-admin) 是博客后台管理界面
-- [zy-blog-server](https://gitee.com/Z568_568/all-blog-sys/tree/master/zy-blog-server) 是博客前后台服务端（`express` + `mysql`）admin 123456
+- [zy-blog-admin](https://gitee.com/Z568_568/all-blog-sys/tree/master/zy-blog-admin) 是博客后台管理界面   admin 123456
+- [zy-blog-server](https://gitee.com/Z568_568/all-blog-sys/tree/master/zy-blog-server) 是博客前后台服务端（`express` + `mysql`）
 
 #### 安装教程
 
