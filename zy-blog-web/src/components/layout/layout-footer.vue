@@ -17,8 +17,13 @@
         <div><a target="_blank" class="out-link" href="http://zhouyi.run:5221/#/index">☞后台管理</a></div>
       </div>
     </div>
-     <div class="copyright">Copyright © 2022 by 芒果快熟
-       . All rights reserved. | 黔ICP备2022001745号-1</div>
+     <div class="copyright">Copyright © 2022 by <a style="color: #3A71A8" target="_blank" href="https://gitee.com/Z568_568">
+       @芒果快熟
+     </a>
+       . All rights reserved. |<a style="color: #3A71A8" target="_blank" href="https://beian.miit.gov.cn/">
+         黔ICP备2022001745号-1
+       </a>
+       </div>
 <!--       <a target="_blank" class="out-link" href="https://www.fengziy.cn">fengziy.cn</a> -->
   </div>
 </template>
