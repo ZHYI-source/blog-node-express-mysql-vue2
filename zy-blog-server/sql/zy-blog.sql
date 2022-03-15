@@ -4,7 +4,7 @@
  Source Server         : zyblog
  Source Server Type    : MySQL
  Source Server Version : 50650
- Source Host           : 114.117.164.181:3306
+ Source Host           : localhost:3306
  Source Schema         : zy_blog
 
  Target Server Type    : MySQL
