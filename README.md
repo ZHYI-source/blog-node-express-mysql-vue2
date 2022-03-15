@@ -17,7 +17,7 @@
 - `yarn install / npm  install`
 - 启动项目 ： web:`npm run server`  admin:`npm run dev`
 - 数据库文件地址sql:  [all-blog-sys/zy-blog-server/sql/zy-blog.sql](https://gitee.com/Z568_568/all-blog-sys/blob/master/zy-blog-server/sql/zy-blog.sql)
-- 打开`navicat`建立数据库 `zy-blog`,运行sql文件 
+- 打开`navicat`建立数据库 `zy_blog`,运行sql文件 
 - 服务端server内的`db.js`文件填写数据库信息，监听 5220端口，启动服务：`nodemon index.js（热加载） / node index.js`
 
 ### DEMO 
