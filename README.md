@@ -1,5 +1,7 @@
 # zy-all-blog
 
+[![Fork me on Gitee](https://gitee.com/Z568_568/all-blog-sys/widgets/widget_2.svg)](https://gitee.com/Z568_568/all-blog-sys)
+
 #### 介绍
 借鉴[Gblog](https://gitee.com/fengziy/Gblog)，[vue-element-admin](https://gitee.com/fengziy/Gblog)做了一些自己的改动，整合成博客全栈系统，`vue2 + node.js + express + mysql` 包含前端博客展示、后台管理、node后端代码全自撸。整套博客系统开箱即用,对`elemen-ui`二次封装组件非常便利，管理端权限模块还未完成，已完成用户登录，验证码，token验证，文章编辑，修改，查看，发布，评论，分类查询，站点配置，音乐配置等等，如果对你有用请star,star,star
 
