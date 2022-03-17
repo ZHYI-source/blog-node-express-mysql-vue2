@@ -151,7 +151,7 @@ export default {
         {key: 'avatar', name: '站点头像', show: true, width: '', enableSort: false, align: "center", fixed: false},
         {key: 'domain', name: '站点领域', show: true, width: '', enableSort: false, align: "center", fixed: false},
         {key: 'notice', name: '站点通知', show: true, width: '', enableSort: false, align: "center", fixed: false},
-        {key: 'desc', name: '站点描述', show: true, width: '', enableSort: false, align: "center", fixed: false},
+        {key: 'psc', name: '站点描述', show: true, width: '', enableSort: false, align: "center", fixed: false},
         {key: 'insertTime', name: '插入时间',sort:true, show: true, width: '', enableSort: true, align: "center", fixed: false},
         {key: 'updateTime', name: '修改时间', show: true, width: '', enableSort: true, align: "center", fixed: false},
         {key: 'toolButton', name: '操作', show: true, width: '250', enableSort: false, align: "center", fixed: 'right'},

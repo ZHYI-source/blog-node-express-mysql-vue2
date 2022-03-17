@@ -512,7 +512,7 @@ exports.webSiteInfoUpdate = async (req, res, next) => {
                 params.name,
                 params.domain||'',
                 params.notice,
-                params.desc,
+                params.psc,
                 params.insertTime,
                 tools.getDate(),
                 params.id,

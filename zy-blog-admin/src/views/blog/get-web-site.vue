@@ -12,18 +12,18 @@
           <el-form-item label="站点头像" prop="img">
             <el-input placeholder="请输入图片地址"
                       clearable
-                      v-model="form.avatar" size="mini"  style="width: 610px;"  ></el-input>
+                      v-model="form.avatar" size="mini" style="width: 610px;"></el-input>
             <el-upload
               class="avatar-uploader"
               action="/zy-server/upload/v1"
               :show-file-list="false"
               :on-success="handleAvatarSuccessLicenseUrl"
               :before-upload="beforeAvatarUpload">
-              <el-button  size="mini" icon="el-icon-upload2" type="primary">点击上传</el-button>
+              <el-button size="mini" icon="el-icon-upload2" type="primary">点击上传</el-button>
             </el-upload>
           </el-form-item>
         </lk-get-row>
-        <lk-get-row   v-if="form.avatar" >
+        <lk-get-row v-if="form.avatar">
           <el-form-item>
             <el-image
               style="width: 100px; height: 100px;border-radius: 5px"
@@ -47,8 +47,8 @@
           </el-form-item>
         </lk-get-row>
         <lk-get-row>
-          <el-form-item label="站点描述" prop="desc">
-            <el-input type="textarea" v-model="form.desc" :autosize="{ minRows: 3}"
+          <el-form-item label="站点描述" prop="psc">
+            <el-input type="textarea" v-model="form.psc" :autosize="{ minRows: 3}"
                       style="width: 610px;" clearable placeholder="请输入站点描述"></el-input>
           </el-form-item>
         </lk-get-row>
@@ -95,7 +95,7 @@ export default {
   },
   data() {
     return {
-      commonKey:0,
+      commonKey: 0,
       form: {},
       isAdd: true,
       rules: {
@@ -112,7 +112,7 @@ export default {
         if (valid) {
           let api = this.isAdd ? 'api_blog_web_site_info_create' : 'api_blog_web_site_info_update'
           this.request(api, this.form).then(res => {
-            if (res.error){
+            if (res.error) {
               this.toast.error(res.errMsg)
               return
             }
@@ -130,7 +130,7 @@ export default {
     handleAvatarSuccessLicenseUrl(res, file) {
       console.log(res)
       this.form.avatar = res.url;
-      this.commonKey+=1
+      this.commonKey += 1
     },
     beforeAvatarUpload(file) {
       console.log(file)
@@ -158,7 +158,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
- .avatar {
-   border-radius: 8px;
- }
+.avatar {
+  border-radius: 8px;
+}
 </style>

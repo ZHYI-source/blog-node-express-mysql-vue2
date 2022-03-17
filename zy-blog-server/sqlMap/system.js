@@ -42,7 +42,7 @@ const systemSqlMap = {
 
         delete: "DELETE FROM zy_web_site_info WHERE id=?",
 
-        update: "UPDATE zy_web_site_info SET avatar=?,slogan=?,name=?,domain=?,notice=?,desc=?,insertTime=?,updateTime=? WHERE id=?",
+        update: "UPDATE zy_web_site_info SET avatar=?,slogan=?,name=?,domain=?,notice=?,psc=?,insertTime=?,updateTime=? WHERE id=?",
 
     },
     //web站点社交
