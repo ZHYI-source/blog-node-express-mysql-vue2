@@ -36,7 +36,7 @@ const systemSqlMap = {
     webSiteInfoOpt: {
         list: "SELECT * FROM zy_web_site_info ",
 
-        count: "SELECT COUNT(id) FROM zy_web_site_info;",
+        count: "SELECT COUNT(id) FROM zy_web_site_info ",
 
         create: "INSERT INTO zy_web_site_info (id,avatar,slogan,name,domain,notice,desc,insertTime,updateTime) VALUES (?,?,?,?,?,?,?,?,?)",
 
