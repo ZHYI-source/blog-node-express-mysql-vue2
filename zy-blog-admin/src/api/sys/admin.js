@@ -7,6 +7,8 @@
 export const adminSysApi ={
   /*登录*/
   api_admin_login: {url: '/zy-server/admin/login', method: 'post',},
+  /*验证码*/
+  api_admin_captcha: {url: '/zy-server/sms/captcha', method: 'get',},
 
   /**用户模块**/
   api_admin_user_list: {url: '/zy-server/admin/user/list', method: 'post',},
