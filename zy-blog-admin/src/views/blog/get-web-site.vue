@@ -129,7 +129,7 @@ export default {
     },
     handleAvatarSuccessLicenseUrl(res, file) {
       console.log(res)
-      this.form.img = res.url;
+      this.form.avatar = res.url;
       this.commonKey+=1
     },
     beforeAvatarUpload(file) {

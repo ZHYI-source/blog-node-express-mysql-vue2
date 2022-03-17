@@ -510,7 +510,7 @@ exports.webSiteInfoUpdate = async (req, res, next) => {
                 params.avatar,
                 params.slogan,
                 params.name,
-                params.domain,
+                params.domain||'',
                 params.notice,
                 params.desc,
                 params.insertTime,
