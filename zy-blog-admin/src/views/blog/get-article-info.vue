@@ -148,7 +148,7 @@ export default {
         'https://tse1-mm.cn.bing.net/th/id/R-C.2200f336cb7cc8f21798e7d9fe9b24f5?rik=6HjanVulzGkvpA&riu=http%3a%2f%2fwww.desktx.com%2fd%2ffile%2fwallpaper%2fscenery%2f20170107%2f080145c3a7460e7fa0369052a11467db.jpg&ehk=ffhPqQk04pZ18gOXu3OrPfkEIoQW046d4EfbUzji9yI%3d&risl=&pid=ImgRaw&r=0',
       ],
       form: {
-        img:'http://www.zhouyi.run:5220/zy-server/public/images?id=164508420659086c5f4f9a6ceb.jpg',
+        img:'https://tse1-mm.cn.bing.net/th/id/OIP-C.ZeQ5h5qmFJdYmGKtrR-I9gAAAA?w=199&h=198&c=7&r=0&o=5&pid=1.7',
         isHot:0,
         isTop:0,
       },
