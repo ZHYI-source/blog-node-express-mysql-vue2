@@ -33,7 +33,6 @@
             </el-image>
           </el-form-item>
         </lk-get-row>
-
         <lk-get-row>
           <el-form-item label="站点标语" prop="slogan">
             <el-input type="textarea" v-model="form.slogan" :autosize="{ minRows: 3}"
