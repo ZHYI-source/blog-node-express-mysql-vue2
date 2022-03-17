@@ -132,7 +132,7 @@ export default {
   },
   methods: {
     verifycodeData() {
-      this.request('api_sms_captcha', {}).then((res) => {
+      this.request('api_admin_captcha', {}).then((res) => {
         this.codeData = res
         this.codeData.text = aes.en(res.text)
         // console.log('123',this.codeData)
