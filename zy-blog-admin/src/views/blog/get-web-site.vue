@@ -8,6 +8,7 @@
             <el-input v-model="form.name" size="mini" class="input-one" clearable placeholder="请输入站点名称"></el-input>
           </el-form-item>
         </lk-get-row>
+
         <lk-get-row>
           <el-form-item label="站点头像" prop="img">
             <el-input placeholder="请输入图片地址"
