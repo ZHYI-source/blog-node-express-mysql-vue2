@@ -3,7 +3,9 @@
 [![Fork me on Gitee](https://gitee.com/Z568_568/all-blog-sys/widgets/widget_2.svg)](https://gitee.com/Z568_568/all-blog-sys)
 
 #### 介绍
-借鉴[Gblog](https://gitee.com/fengziy/Gblog)，[vue-element-admin](https://gitee.com/fengziy/Gblog)做了一些自己的改动，整合成博客全栈系统，`vue2 + node.js + express + mysql` 包含前端博客展示、后台管理、node后端代码全自撸。整套博客系统开箱即用,对`elemen-ui`二次封装组件非常便利，管理端权限模块还未完成，已完成用户登录，验证码，token验证，文章编辑，修改，查看，发布，评论，分类查询，站点配置，音乐配置等等，如果对你有用留个 **star,star,star** 
+借鉴[Gblog](https://gitee.com/fengziy/Gblog)，[vue-element-admin](https://gitee.com/fengziy/Gblog)做了一些自己的改动，整合成博客全栈系统，`vue2 + node.js + express + mysql` 包含前端博客展示、后台管理、node后端服务代码（ **配合原生sql语句，适合初学者上手** ）。整套博客系统开箱即用,对`elemen-ui`二次封装组件非常便利，管理端权限模块还未完成，已完成用户登录，验证码，token验证，文章编辑，修改，查看，发布，评论，分类查询，站点配置，音乐配置等等，如果对你有用请留个 **star,star,star** 
+
+>对象关系映射工具（ORM）：配合`node-orm` 的server后端版本正在进行中，`ORM`可以省去写烦人的sql语句，适合进阶学习
 
 #### 项目目录：
 
