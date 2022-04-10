@@ -5,7 +5,12 @@
 #### 介绍
 借鉴[Gblog](https://gitee.com/fengziy/Gblog)，[vue-element-admin](https://gitee.com/fengziy/Gblog)做了一些自己的改动，整合成博客全栈系统，`vue2 + node.js + express + mysql` 包含前端博客展示、后台管理、node后端服务代码（ **配合原生sql语句，适合初学者上手** ）。整套博客系统开箱即用,对`elemen-ui`二次封装组件非常便利，管理端权限模块还未完成，已完成用户登录，验证码，token验证，文章编辑，修改，查看，发布，评论，分类查询，站点配置，音乐配置等等，如果对你有用请留个 **star,star,star** 
 
->对象关系映射工具（ORM）：配合`sequelize` 的server后端接口模板， swagger ui 自动生成模板 `ORM`可以省去写烦人的sql语句，适合进阶学习 地址[前往接口模板](https://gitee.com/Z568_568/zy-express-sequelize-mysql.git) 
+>  :point_right: 另外一套开箱即用的api模板（无前端，只有node服务代码） 直接上手开发接口，运用`ORM`可以省去写烦人的原生sql语句，更加方便，
+ 技术框架：` Express - Sequelize - Mysql - SwaggerUi - Jwt -（mount-routes）动态加载接口路由 查看等`
+  1.这里是列表文本1.配合文本对象关系映射工具（ORM）：`sequelize` 的server后端接口基础模板，
+  2.swaggerUi 自动生成接口文档  
+  3.loger 实现记录日志到文件中 方便线上查询 Bug
+  :earth_asia:  [ **欢迎查看进阶版接口项目地址** ](https://gitee.com/Z568_568/zy-express-sequelize-mysql.git) 
 
 #### 项目目录：
 
