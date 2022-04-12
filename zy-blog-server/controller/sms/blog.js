@@ -21,10 +21,10 @@ exports.articleList = async (req, res, next) => {
             queryTotal=$systemSqlMap.articleOpt.count +` WHERE id='${params.params.id}'`
             sql = $systemSqlMap.articleOpt.list + ` WHERE id='${params.params.id}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
         } else if (params.params.title) {
-            queryTotal=$systemSqlMap.articleOpt.count +` WHERE id='${params.params.title}'`
+            queryTotal=$systemSqlMap.articleOpt.count +` WHERE title='${params.params.title}'`
             sql = $systemSqlMap.articleOpt.list + ` WHERE title='${params.params.title}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
         } else if (params.params.classId) {
-            queryTotal=$systemSqlMap.articleOpt.count +` WHERE id='${params.params.classId}'`
+            queryTotal=$systemSqlMap.articleOpt.count +` WHERE classId='${params.params.classId}'`
             sql = $systemSqlMap.articleOpt.list + ` WHERE classId='${params.params.classId}' ORDER BY ${params.orderBy} ${params.orderType} LIMIT ${params.size} OFFSET ${params.size * (params.current - 1)}`
         } else {
             queryTotal=$systemSqlMap.articleOpt.count

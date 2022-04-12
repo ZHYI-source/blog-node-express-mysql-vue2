@@ -18,8 +18,6 @@ import './utils/error-log' // error log
 
 import install from './utils/registeredComponents';
 Vue.use(install);
-import * as filters from './filters' // global filters
-import txtFilter from '@/libs/TxtFilter'
 import Http from './libs/http'
 import infiniteScroll from 'vue-infinite-scroll'
 import scroll from 'vue-seamless-scroll'
@@ -41,14 +39,8 @@ Vue.use(scroll,{componentName: 'scroll-seamless'})
 
 Vue.use(infiniteScroll)
 Vue.use(Http)
-Vue.mixin(txtFilter)
 Vue.use(Element, {
   size: Cookies.get('size') || 'medium' // set element-ui default size
-})
-
-// register global utility filters
-Object.keys(filters).forEach(key => {
-  Vue.filter(key, filters[key])
 })
 
 Vue.config.productionTip = false

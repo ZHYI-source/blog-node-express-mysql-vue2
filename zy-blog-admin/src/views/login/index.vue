@@ -164,6 +164,7 @@ export default {
       })
     },
     handleLogin() {
+
       if (!this.loginForm.verifycode) {
         MessageBox.alert('请输入验证码', '警告', {
           confirmButtonText: '确定',
@@ -177,6 +178,7 @@ export default {
         this.refreshCode();
         return;
       }
+
       //AES 对称秘钥加密
       let password = aes.en(this.loginForm.userPassword)
 
