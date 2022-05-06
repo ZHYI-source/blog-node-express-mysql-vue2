@@ -1,7 +1,7 @@
 # 🔥🥯🥯 Mango-Blog-System ⭐⭐
 
 #### 🛠 v1.0.2 介绍
-芒果’个人博客系统，包括前后台完整基础功能，开箱即用，对你有用可以 star ⭐⭐  谢谢大佬们，本项目将会持续维护...
+芒果’个人博客系统，包括前后台完整基础功能，开箱即用，对你有用可以 star ⭐⭐  灰常谢谢
 
 <!-- PROJECT SHIELDS -->
 
@@ -54,14 +54,15 @@
 
 > https://console-docs.apipost.cn/preview/85df1005c24df829/b25c320b5df19b98
 
+
 > 项目截图
 
  
- <img src="DOC/img/1.png" width = "300" height = "200" alt="图片名称" align=center />
- <img src="DOC/img/2.png" width = "300" height = "200" alt="图片名称" align=center />
- <img src="DOC/img/3.png" width = "300" height = "200" alt="图片名称" align=center />
- <img src="DOC/img/4.png" width = "300" height = "200" alt="图片名称" align=center />
- <img src="DOC/img/5.png" width = "300" height = "200" alt="图片名称" align=center />
- <img src="DOC/img/6.png" width = "300" height = "200" alt="图片名称" align=center />
- <img src="DOC/img/7.png" width = "300" height = "200" alt="图片名称" align=center />
- <img src="DOC/img/8.png" width = "300" height = "200" alt="图片名称" align=center />
+ <img src="DOC/img/1.png" width = "300" height = "300" alt="图片名称" align=center />
+ <img src="DOC/img/2.png" width = "300" height = "300" alt="图片名称" align=center />
+ <img src="DOC/img/3.png" width = "300" height = "300" alt="图片名称" align=center />
+ <img src="DOC/img/4.png" width = "300" height = "300" alt="图片名称" align=center />
+ <img src="DOC/img/5.png" width = "300" height = "300" alt="图片名称" align=center />
+ <img src="DOC/img/6.png" width = "300" height = "300" alt="图片名称" align=center />
+ <img src="DOC/img/7.png" width = "300" height = "300" alt="图片名称" align=center />
+ <img src="DOC/img/8.png" width = "300" height = "300" alt="图片名称" align=center />
