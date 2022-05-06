@@ -49,23 +49,19 @@
 - [x] 站点管理
 ...
 
-
-#### 系统设计
-##### 🥯后端server
-
-> 技术栈：Node.js + Express.js + Mysql + Sequelize + 其他插件
-
-##### 🥯前端admin
-
-> 技术栈：D2前端框架 + 富文本 + 其他插件
-
-##### 🥯前端cliect 基于Gblog
-
-> 技术栈：Vue2 + 动画库
 > 
 ##### 🥯接口文档
 
 > https://console-docs.apipost.cn/preview/85df1005c24df829/b25c320b5df19b98
 
+> 项目截图
 
-
+ 
+ <img src="DOC/img/1.png" width = "300" height = "200" alt="图片名称" align=center />
+ <img src="DOC/img/2.png" width = "300" height = "200" alt="图片名称" align=center />
+ <img src="DOC/img/3.png" width = "300" height = "200" alt="图片名称" align=center />
+ <img src="DOC/img/4.png" width = "300" height = "200" alt="图片名称" align=center />
+ <img src="DOC/img/5.png" width = "300" height = "200" alt="图片名称" align=center />
+ <img src="DOC/img/6.png" width = "300" height = "200" alt="图片名称" align=center />
+ <img src="DOC/img/7.png" width = "300" height = "200" alt="图片名称" align=center />
+ <img src="DOC/img/8.png" width = "300" height = "200" alt="图片名称" align=center />
