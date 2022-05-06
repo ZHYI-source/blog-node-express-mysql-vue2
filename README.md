@@ -16,7 +16,7 @@
 
 <p align="center">
   <a href="https://gitee.com/Z568_568/mango-blog-system.git">
-    <img src="./DOC/logo.png" alt="Logo" width="95" height="130">
+    <img src="doc/logo.png" alt="Logo" width="95" height="130">
   </a>
 
 <h3 align="center">"Mango-Blog-System"</h3>
@@ -58,11 +58,11 @@
 ##### 🥯项目截图
 
  
- <img src="DOC/img/1.png" width = "300" height = "300" alt="图片名称" align=center />
- <img src="DOC/img/2.png" width = "300" height = "300" alt="图片名称" align=center />
- <img src="DOC/img/3.png" width = "300" height = "300" alt="图片名称" align=center />
- <img src="DOC/img/4.png" width = "300" height = "300" alt="图片名称" align=center />
- <img src="DOC/img/5.png" width = "300" height = "300" alt="图片名称" align=center />
- <img src="DOC/img/6.png" width = "300" height = "300" alt="图片名称" align=center />
- <img src="DOC/img/7.png" width = "300" height = "300" alt="图片名称" align=center />
- <img src="DOC/img/8.png" width = "300" height = "300" alt="图片名称" align=center />
+ <img src="doc/img/1.png" width = "300" height = "300" alt="图片名称" align=center />
+ <img src="doc/img/2.png" width = "300" height = "300" alt="图片名称" align=center />
+ <img src="doc/img/3.png" width = "300" height = "300" alt="图片名称" align=center />
+ <img src="doc/img/4.png" width = "300" height = "300" alt="图片名称" align=center />
+ <img src="doc/img/5.png" width = "300" height = "300" alt="图片名称" align=center />
+ <img src="doc/img/6.png" width = "300" height = "300" alt="图片名称" align=center />
+ <img src="doc/img/7.png" width = "300" height = "300" alt="图片名称" align=center />
+ <img src="doc/img/8.png" width = "300" height = "300" alt="图片名称" align=center />
