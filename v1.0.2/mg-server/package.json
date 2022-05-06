@@ -1,0 +1,35 @@
+{
+  "name": "zy-express-sequelize-mysql",
+  "version": "1.0.0",
+  "description": "express配合mysql的nodeORM进行模型抽象快速curd",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "chalk": "^4.0.0",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-jwt": "^6.1.1",
+    "express-swagger-generator": "^1.1.17",
+    "install": "^0.13.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "log4js": "^6.4.4",
+    "mount-routes": "^1.0.8",
+    "multer": "^1.4.4",
+    "mysql2": "^2.3.3",
+    "npm": "^8.6.0",
+    "sequelize": "^6.18.0",
+    "svg-captcha": "^1.4.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/Z568_568/zy-express-sequelize-mysql.git"
+  },
+  "author": "ZHOU YI",
+  "license": "ISC"
+}

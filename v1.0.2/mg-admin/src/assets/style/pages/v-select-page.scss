@@ -1,0 +1,51 @@
+.sp-input,.sp-inputs{
+  width: 200px;
+  height: 28px!important;
+  font-size: 12px!important;
+  padding: 1px 5px!important;
+  line-height: 26px!important;
+  padding-left: 14px!important;
+}
+.sp-inputs{
+  min-width: 255px;
+  box-sizing: border-box!important;
+  overflow-y: auto!important;
+  min-height: 30px!important;
+  font-size: 12px!important;
+  padding: 1px 2px!important;
+  line-height: 26px!important;
+
+  .sp-selected-tag {
+    //margin: 3px!important;
+    padding: 2px 8px!important;
+  }
+  .sp-placeholder {
+    margin-top: 0px!important;
+  }
+}
+.sp-result-area {
+  min-width: 250px!important;
+}
+
+.sp-header>h3 {
+  font-size: 12px!important;
+  font-weight: bold!important;
+}
+.sp-result-area ul.sp-results li {
+  font-size: 12px!important;
+}
+.sp-input-container {
+  height: 28px;
+}
+.sp-pagination,.sp-disabled,.sp-search .sp-search-input,.sp-search .sp-inputs{
+  font-size: 12px!important;
+}
+.v-selectpage div.sp-input-container div.sp-clear {
+  padding-top: 2px!important;
+}
+.sp-result-area div.sp-result-message {
+  font-size: 12px!important;
+}
+.sp-inputs span.sp-selected-tag {
+  font-size: 12px!important;
+}

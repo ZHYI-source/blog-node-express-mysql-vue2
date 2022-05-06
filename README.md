@@ -1,50 +1,71 @@
-# zy-all-blog
+# 🔥🥯🥯 Mango-Blog-System ⭐⭐
 
-[![Fork me on Gitee](https://gitee.com/Z568_568/all-blog-sys/widgets/widget_2.svg)](https://gitee.com/Z568_568/all-blog-sys)
+#### 🛠 v1.0.2 介绍
+芒果’个人博客系统，包括前后台完整基础功能，开箱即用，对你有用可以 star ⭐⭐  谢谢大佬们，本项目将会持续维护...
 
-#### 介绍
-借鉴[Gblog](https://gitee.com/fengziy/Gblog)，[vue-element-admin](https://gitee.com/fengziy/Gblog)做了一些自己的改动，整合成博客全栈系统，`vue2 + node.js + express + mysql` 包含前端博客展示、后台管理、node后端服务代码（ **配合原生sql语句，适合初学者上手** ）。整套博客系统开箱即用,对`elemen-ui`二次封装组件非常便利，管理端权限模块还未完成，已完成用户登录，验证码，token验证，文章编辑，修改，查看，发布，评论，分类查询，站点配置，音乐配置等等，如果对你有用请留个 **star,star,star** 
+<!-- PROJECT SHIELDS -->
 
->  :point_right: 另外一套开箱即用的api模板（无前端，只有node服务代码） 直接上手开发接口，运用`ORM`可以省去写烦人的原生sql语句，更加方便，
- 技术框架：` Express - Sequelize - Mysql - SwaggerUi - Jwt -（mount-routes）动态加载接口路由 查看等`
-  1.这里是列表文本1.配合文本对象关系映射工具（ORM）：`sequelize` 的server后端接口基础模板，
-  2.swaggerUi 自动生成接口文档  
-  3.loger 实现记录日志到文件中 方便线上查询 Bug
-  :earth_asia:  [ **欢迎查看进阶版接口项目地址** ](https://gitee.com/Z568_568/zy-express-sequelize-mysql.git) 
+[![star](https://gitee.com/Z568_568/zy-express-sequelize-mysql/badge/star.svg?theme=dark)](https://gitee.com/Z568_568/zy-express-sequelize-mysql/stargazers)
+[![fork](https://gitee.com/Z568_568/zy-express-sequelize-mysql/badge/fork.svg?theme=dark)](https://gitee.com/Z568_568/zy-express-sequelize-mysql/members)
 
-#### 项目目录：
-
-- [zy-blog-web](https://gitee.com/Z568_568/all-blog-sys/tree/master/zy-blog-web) 是博客web展示界面
-- [zy-blog-admin](https://gitee.com/Z568_568/all-blog-sys/tree/master/zy-blog-admin) 是博客后台管理界面   admin 123456
-- [zy-blog-server](https://gitee.com/Z568_568/all-blog-sys/tree/master/zy-blog-server) 是博客前后台服务端（`express` + `mysql`）
-
-#### 安装教程
-
-- 项目于以 `yarn / npm`  安装依赖， 若安装 `node-sass` 不行 就下载`yarn` 安装即可
-- `yarn install / npm  install`
-- 启动项目 ： web:`npm run serve`  admin:`npm run dev`
-- 数据库文件地址sql:  [all-blog-sys/zy-blog-server/sql/zy-blog.sql](https://gitee.com/Z568_568/all-blog-sys/blob/master/zy-blog-server/sql/zy-blog.sql)
-- 打开`navicat`建立数据库 `zy_blog`,运行sql文件 
-- 服务端server内的`db.js`文件填写数据库信息，监听 5220端口，启动服务：`nodemon index.js（热加载） / node index.js`
-- 如果安装启动等有任何问题，请下方留言，会及时解答
-
-### DEMO 
-1.  [前端web端 ZY-Blog](http://zhouyi.run/#/)
-
-2.  [博客管理端 ZY-admin](http://zhouyi.run:5221/#/login?redirect=%2F)
-
-> 前端项目`web`端截图
-
-![输入图片说明](DOC/img/%E9%A6%96%E9%A1%B5%20-%20ZYblog%20-%20Google%20Chrome%202022_2_20%2017_20_55.png)
-
-![输入图片说明](DOC/img/%E9%A6%96%E9%A1%B5%20-%20ZYblog%20-%20Google%20Chrome%202022_2_20%2017_21_55.png)
-
-![输入图片说明](DOC/img/%E9%A6%96%E9%A1%B5%20-%20ZYblog%20-%20Google%20Chrome%202022_2_20%2017_23_46.png)
+<!-- PROJECT LOGO -->
 
 
-> 前端项目管理`admin`端截图
 
-![输入图片说明](DOC/img/ZY%20-%20%E7%94%A8%E6%88%B7%E9%85%8D%E7%BD%AE%201%20-%20Microsoft%E2%80%8B%20Edge%202022_2_20%2017_24_59.png)
+<br />
 
-![输入图片说明](DOC/img/ZY%20-%20%E7%94%A8%E6%88%B7%E9%85%8D%E7%BD%AE%201%20-%20Microsoft%E2%80%8B%20Edge%202022_2_20%2017_25_54.png)
+<p align="center">
+  <a href="https://gitee.com/Z568_568/mango-blog-system.git">
+    <img src="./doc/logo.png" alt="Logo" width="95" height="130">
+  </a>
+
+<h3 align="center">"Mango-Blog-System"</h3>
+  <p align="center">
+    一个 "开箱即用" 个人博客全栈系统项目！
+    <br />
+    <a href="https://gitee.com/Z568_568/all-blog-sys"><strong>探索本项目的源码 »</strong></a>
+    <br />
+    <br />
+    <a href="http://www.zhouyi.run/#/">前台Demo</a>
+    ·
+    <a href="http://zhouyi.run:5221/#/index">管理端Demo</a>
+</p>
+
+</p>
+
+***
+
+#### 功能列表
+
+- [x] 登录
+- [x] 用户管理
+- [x] 菜单管理
+- [x] 角色管理
+- [x] 文章管理
+- [x] 分类管理
+- [x] 标签管理
+- [x] 评论管理
+- [x] 归档管理
+- [x] 站点管理
+...
+
+
+#### 系统设计
+##### 🥯后端server
+
+> 技术栈：Node.js + Express.js + Mysql + Sequelize + 其他插件
+
+##### 🥯前端admin
+
+> 技术栈：D2前端框架 + 富文本 + 其他插件
+
+##### 🥯前端cliect 基于Gblog
+
+> 技术栈：Vue2 + 动画库
+> 
+##### 🥯接口文档
+
+> https://console-docs.apipost.cn/preview/85df1005c24df829/b25c320b5df19b98
+
+
 
