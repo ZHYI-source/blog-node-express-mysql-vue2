@@ -2,7 +2,7 @@
 
 #### 🛠 v1.0.2 介绍
 芒果’个人博客系统，包括前后台完整基础功能，管理端常用增·查·改页面代码自动生成即可，开箱即用，对你有用可以 star ⭐⭐  灰常谢谢，项目启动安装有问题留言，会及时解答
-
+> [node后端api基础服务简易版](https://gitee.com/Z568_568/zy-express-sequelize-mysql)
 <!-- PROJECT SHIELDS -->
 
 [![star](https://gitee.com/Z568_568/all-blog-sys/badge/star.svg?theme=dark)](https://gitee.com/Z568_568/all-blog-sys/stargazers)
