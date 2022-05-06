@@ -5,8 +5,8 @@
 
 <!-- PROJECT SHIELDS -->
 
-[![star](https://gitee.com/Z568_568/zy-express-sequelize-mysql/badge/star.svg?theme=dark)](https://gitee.com/Z568_568/zy-express-sequelize-mysql/stargazers)
-[![fork](https://gitee.com/Z568_568/zy-express-sequelize-mysql/badge/fork.svg?theme=dark)](https://gitee.com/Z568_568/zy-express-sequelize-mysql/members)
+[![star](https://gitee.com/Z568_568/all-blog-sys/badge/star.svg?theme=dark)](https://gitee.com/Z568_568/all-blog-sys/stargazers)
+[![fork](https://gitee.com/Z568_568/all-blog-sys/badge/fork.svg?theme=dark)](https://gitee.com/Z568_568/all-blog-sys/members)
 
 <!-- PROJECT LOGO -->
 
