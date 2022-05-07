@@ -14,9 +14,9 @@
     <a href="https://gitee.com/Z568_568/all-blog-sys"><strong>探索本项目的源码 »</strong></a>
     <br />
     <br />
-    <a href="http://www.zhouyi.run/#/">前台Demo</a>
+    <a href="http://www.zhouyi.run/#/"> 👀 前台预览</a>
     ·
-    <a href="http://zhouyi.run:5221/#/index">管理端Demo</a>
+    <a href="http://zhouyi.run:5221/#/index"> 👀 管理端预览</a>
 </p>
 
 </p>
@@ -26,11 +26,21 @@
 
 >  芒果’个人博客系统，包括前后台完整基础功能，管理端常用增·查·改页面代码自动生成即可，开箱即用，对你有用可以 star ⭐⭐  灰常谢谢，
 - ⭐项目面向前端学习node.js，mysql等后端基础
-- ⭐有好的建议欢迎交流学习
+- ⭐有好的建议欢迎交流学习 1840354092@qq.com
 - ⭐项目启动安装有问题可以留言，会及时解答
 
 > [node后端api基础服务简易版](https://gitee.com/Z568_568/zy-express-sequelize-mysql)
+```js
+目录说明：
 
+    v1.0.1 前台：Gblog 
+           管理端: vue-element-admin
+           Node服务端: express + 原生sql
+
+    v1.0.2 前台：Gblog 
+           管理端：d2-admin 
+           Node服务端: express + 数据库ORM（sequelize框架）
+```
 <!-- PROJECT SHIELDS -->
 
 [![star](https://gitee.com/Z568_568/all-blog-sys/badge/star.svg?theme=dark)](https://gitee.com/Z568_568/all-blog-sys/stargazers)
@@ -39,6 +49,8 @@
 <!-- PROJECT LOGO -->
 
 ***
+ 
+
 
 #### 🥯v1.0.2 功能列表
 
@@ -57,7 +69,10 @@
 
 #### 🥯v1.0.2 接口文档
 
-> https://console-docs.apipost.cn/preview/85df1005c24df829/b25c320b5df19b98
+> 方式1. https://console-docs.apipost.cn/preview/85df1005c24df829/b25c320b5df19b98
+
+
+> 方式2. 项目启动后 访问 swagger-ui 接口文档
 
 
 #### 🥯v1.0.2 项目截图
