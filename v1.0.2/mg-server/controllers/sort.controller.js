@@ -8,7 +8,6 @@ exports.create = (req, res) => {
     const pm = req.body;
     // 请求验证
     if (!pm.sort_name)  return res.sendResult({data: '', code: 605, message: "分类名称不能为空！"})
-
     // Create a Cate
     const sort = {
         sort_name: pm.sort_name,

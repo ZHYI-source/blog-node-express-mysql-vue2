@@ -12,6 +12,7 @@
         <el-button type="primary" icon="el-icon-s-custom" @click="goMenu('c')">友链管理</el-button>
       </el-button-group>
     </section>
+
   </d2-container>
 </template>
 <script>

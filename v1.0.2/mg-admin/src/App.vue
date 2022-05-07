@@ -30,7 +30,7 @@ export default {
   //z-index: 99999!important;
 }
 
-.v-dropdown-container,.el-popover {
+.v-dropdown-container,.el-popover,.el-color-picker__panel {
   z-index: 100000!important;
 }
 //.el-message{
