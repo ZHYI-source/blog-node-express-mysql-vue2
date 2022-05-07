@@ -63,10 +63,10 @@
 
 #### 🥯v1.0.2 接口文档
 
-> 方式1. [查看在线接口文档](https://console-docs.apipost.cn/preview/85df1005c24df829/b25c320b5df19b98)
+> 方式1. <a href="https://console-docs.apipost.cn/preview/85df1005c24df829/b25c320b5df19b98" target="_blank"> 👀 查看在线接口文档</a> 
 
 
-> 方式2. 项目启动后 访问 swagger-ui 接口文档
+> 方式2. 👀 项目启动后 访问 swagger-ui 接口文档
 
 #### 🥯v1.0.2 项目安装启动教程
 
