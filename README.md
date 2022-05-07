@@ -30,7 +30,6 @@
 - ⭐项目启动安装有问题可以留言，会及时解答
 
 ```
-目录说明：
 
     v1.0.1 前台：Gblog 
            管理端: vue-element-admin
@@ -73,11 +72,12 @@
 
 
 ``` 
+
 1.依赖安装: 前台client | 管理端admin | 服务端 server -`npm install`
 
-2.启动项目: 前台client- npm run serve ，
+2.启动项目: 前台client- npm run serve 
 
-           管理端admin - npm run dev ，
+           管理端admin - npm run dev 
 
            服务端 server - nodemon app （热启动） 或者 node app
 
@@ -87,7 +87,7 @@
 
             3.2 在 mg-server/config/db.config.js 配置数据库信息
             
-            3.3 启动成功： 
+            3.3 启动成功示例： 
 
                     项目启动成功: http://localhost:5222
                     接口文档地址: http://localhost:5222/swagger
@@ -102,11 +102,11 @@
 #### 🥯v1.0.2 项目截图
 
  
- <img src="doc/img/1.png" width = "300" height = "300" alt="图片名称" align=center />
- <img src="doc/img/2.png" width = "300" height = "300" alt="图片名称" align=center />
- <img src="doc/img/3.png" width = "300" height = "300" alt="图片名称" align=center />
- <img src="doc/img/4.png" width = "300" height = "300" alt="图片名称" align=center />
- <img src="doc/img/5.png" width = "300" height = "300" alt="图片名称" align=center />
- <img src="doc/img/6.png" width = "300" height = "300" alt="图片名称" align=center />
- <img src="doc/img/7.png" width = "300" height = "300" alt="图片名称" align=center />
- <img src="doc/img/8.png" width = "300" height = "300" alt="图片名称" align=center />
+ <img src="doc/img/1.png" width = "300" height = "150" alt="图片名称" align=center />
+ <img src="doc/img/2.png" width = "300" height = "150" alt="图片名称" align=center />
+ <img src="doc/img/3.png" width = "300" height = "150" alt="图片名称" align=center />
+ <img src="doc/img/4.png" width = "300" height = "150" alt="图片名称" align=center />
+ <img src="doc/img/5.png" width = "300" height = "150" alt="图片名称" align=center />
+ <img src="doc/img/6.png" width = "300" height = "150" alt="图片名称" align=center />
+ <img src="doc/img/7.png" width = "300" height = "150" alt="图片名称" align=center />
+ <img src="doc/img/8.png" width = "300" height = "150" alt="图片名称" align=center />
