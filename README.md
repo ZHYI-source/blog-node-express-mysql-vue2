@@ -76,22 +76,15 @@
 1.依赖安装: 前台client | 管理端admin | 服务端 server -`npm install`
 
 2.启动项目: 前台client- npm run serve 
-
            管理端admin - npm run dev 
-
            服务端 server - nodemon app （热启动） 或者 node app
 
 3.服务端启动前准备: 
-
             3.1 建库: mg_db  建表:运行sql文件到 mg_db 加载数据表
-
             3.2 在 mg-server/config/db.config.js 配置数据库信息
-            
             3.3 启动成功示例： 
-
                     项目启动成功: http://localhost:5222
                     接口文档地址: http://localhost:5222/swagger
-
 
 4.管理端登录账号密码 ：
 
