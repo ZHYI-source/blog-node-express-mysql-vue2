@@ -11,12 +11,12 @@
   <p align="center">
     一个 "开箱即用" 个人博客全栈系统项目！
     <br />
-    <a href="https://gitee.com/Z568_568/all-blog-sys"><strong>探索本项目的源码 »</strong></a>
+    <a href="https://gitee.com/Z568_568/all-blog-sys" target="_blank"><strong>探索本项目的源码 »</strong></a>
     <br />
     <br />
-    <a href="http://www.zhouyi.run/#/"> 👀 前台预览</a>
+    <a href="http://www.zhouyi.run/#/" target="_blank"> 👀 前台预览</a>
     ·
-    <a href="http://zhouyi.run:5221/#/index"> 👀 管理端预览</a>
+    <a href="http://zhouyi.run:5221/#/index" target="_blank"> 👀 管理端预览</a>
 </p>
 
 </p>
