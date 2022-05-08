@@ -221,6 +221,7 @@ export default {
 
     & > div {
       padding: 20px;
+      line-height: 25px;
     }
   }
 
@@ -288,7 +289,7 @@ export default {
   }
 
   .site-main {
-    padding-top: 40px;
+    padding-top: 15px;
   }
 
   .site-content {

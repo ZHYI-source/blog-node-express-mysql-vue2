@@ -14,6 +14,11 @@ module.exports = (sequelize, Sequelize) => {
                 type: Sequelize.STRING,
                 comment: '留言邮箱',
             },
+            status: {
+                type: Sequelize.BOOLEAN,
+                comment: '回复状态',
+                defaultValue: false
+            },
             content: {
                 type: Sequelize.TEXT("long"),
                 comment: '留言内容',

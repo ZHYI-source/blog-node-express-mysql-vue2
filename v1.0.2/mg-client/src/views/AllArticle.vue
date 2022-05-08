@@ -50,7 +50,7 @@ export default {
         limit: 20,//每页条数
         offset: 1,//当前页
         sort: {
-          prop: 'isTop',
+          prop: 'createdAt',
           order: 'desc',
         }
       }
@@ -147,7 +147,7 @@ export default {
 }
 
 .site-main {
-  padding-top: 80px;
+  padding-top: 0px;
 
   &.search {
     padding-top: 0;
@@ -182,7 +182,7 @@ export default {
   }
 
   .site-main {
-    padding-top: 40px;
+    padding-top: 0px;
   }
 
   .site-content {

@@ -5,8 +5,7 @@
         <div class="about-site about-info">
           <section-title><span class="iconfont icon-wodeshuiguoicon-"></span>关于博主</section-title>
           <div class="info-card" v-for="item in aboutUser" :key="item.id">
-            <div v-if="item.about_content"></div>
-            <mk-md-editor v-else class="md-edit" mode="preview" v-model="item.about_content" />
+            <mk-md-editor class="md-edit" mode="preview" v-model="item.about_content"/>
           </div>
         </div>
         <div class="about-me about-info">
@@ -25,8 +24,12 @@
                           show-word-limit></el-input>
               </el-form-item>
               <el-form-item>
-                <el-button type="primary" size="mini" @click="submitForm('ruleForm')">立即创建</el-button>
+                <el-button type="primary" size="mini" @click="submitForm('ruleForm')">提交</el-button>
                 <el-button size="mini" @click="resetForm('ruleForm')">重置</el-button>
+              </el-form-item>
+              <el-form-item>
+                <p>🤸‍♀️🤸‍♂️邮箱只是作为博主回复留言渠道</p>
+                <p>🤸‍♀️🤸‍♂️您的留言信息不会展示在这里，只有博主会看到...</p>
               </el-form-item>
             </el-form>
           </div>
@@ -82,10 +85,10 @@ export default {
           getMessageCreate(this.ruleForm).then(res => {
             this.loading = false
             this.show = true
-            this.msg = '留言成功！'
+            this.msg = '留言成功,博主会以邮件回复你哦！'
             setTimeout(() => {
               this.show = false
-            }, 1300)
+            }, 3000)
             this.$refs['ruleForm'].resetFields();
           }).catch(err => {
             this.show = true
@@ -104,8 +107,8 @@ export default {
     resetForm(formName) {
       this.$refs[formName].resetFields();
     },
-    getAboutUser(){
-      dirAboutList().then(res=>{
+    getAboutUser() {
+      dirAboutList().then(res => {
         console.log(res.data)
         this.aboutUser = res.data
       })

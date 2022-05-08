@@ -3,13 +3,6 @@
     <d2-container type="full" v-if="!show.edit&&!show.view">
       <section class="data-list-box">
         <mk-search-form :model="query"  v-if="permBtn.queryButton"  @search="goPage(1)">
-
-          <el-form-item class="inline-item" prop="id">
-            <el-input v-model.trim="query.params.id" @clear="goPage(1)" @keyup.native.enter="goPage(1)"
-                      clearable placeholder="输入ID搜索"
-                      size="mini"></el-input>
-          </el-form-item>
-
           <el-form-item class="inline-item" prop="email">
             <el-input v-model.trim="query.params.email" @clear="goPage(1)" @keyup.native.enter="goPage(1)"
                       clearable placeholder="输入留言邮箱搜索"
@@ -39,7 +32,15 @@
                                 :dis-edit="!permBtn.updateButton"
                                 @edit="goEdit(scope.row)"
                                 @delete="goDelete(scope.row)">
+                  <el-button size="mini" type="primary" @click="goReply(scope.row)" v-if="permBtn.replyButton">回复</el-button>
                 </mk-tool-button>
+              </template>
+            </el-table-column>
+            <el-table-column v-else-if="field.key=='status'" :align="field.align" :label="field.name"
+                             :width="field.width" :fixed="field.fixed">
+              <template slot-scope="scope">
+                <el-tag type="success" v-if="scope.row.status">已回复</el-tag>
+                <el-tag type="info" v-else>待回复</el-tag>
               </template>
             </el-table-column>
             <el-table-column
@@ -55,6 +56,7 @@
           </template>
 
         </mk-el-table>
+
         <mk-pagination :current-page="query.offset" :page-size="query.limit"
                        :data-size="temp.dataSize" @go="goPage" @changePageSize="changePageSize"/>
       </section>
@@ -71,11 +73,12 @@ import {dirMessageDelete, dirMessageList} from "@/api/modules/sys.message.api";
 import GetMessageInfo from "./get-message-info";
 import ViewMessageInfo from "./view-message-info";
 import util from "@/libs/util";
+import ReplyMessageInfo from "@/views/client/reply-message-info";
 
 
 export default {
   name: 'dir-message-info',
-  components: {ViewMessageInfo, GetMessageInfo,},
+  components: {ReplyMessageInfo, ViewMessageInfo, GetMessageInfo,},
   data() {
     return {
       show: {
@@ -102,6 +105,7 @@ export default {
         queryButton:false,
         deleteButton:false,
         updateButton:false,
+        replyButton:false,
       },
       //返回数据列表
       datas: [],
@@ -125,13 +129,13 @@ export default {
       item_data: {},
       //列表渲染数据列
       fields: [
-        {key: 'toolButton', name: '操作', show: true, align: "center", width: '220', enableSort: false, fixed: 'right'},
-
-        {key: 'id', name: 'ID', show: true, align: "center", enableSort: false, fixed: false},
+        {key: 'status', name: '状态', show: true, align: "center", enableSort: false, fixed: 'right'},
+        {key: 'toolButton', name: '操作', show: true, align: "center", width: '260', enableSort: false, fixed: 'right'},
         {key: 'email', name: '留言邮箱', show: true, align: "center", enableSort: false, fixed: false},
         {key: 'content', name: '留言内容', show: true, align: "center", enableSort: false, fixed: false},
         {key: 'createdAt', name: '创建时间', show: true, align: "center", enableSort: false, fixed: false},
-        {key: 'updatedAt', name: '更新时间', show: true, align: "center", enableSort: false, fixed: false},]
+        {key: 'updatedAt', name: '更新时间', show: true, align: "center", enableSort: false, fixed: false},
+      ]
     }
   },
   watch: {
@@ -154,9 +158,13 @@ export default {
         this.permBtn.queryButton = true;
         this.permBtn.deleteButton = true;
         this.permBtn.updateButton = true;
+        this.permBtn.replyButton = true;
       } else {
         if (perms.includes('POST /api/private/message/create')) {
           this.permBtn.createButton = true;
+        }
+        if (perms.includes('POST /api/private/message/replyMsg')) {
+          this.permBtn.replyButton = true;
         }
         if (perms.includes('POST /api/private/message/list')) {
           this.permBtn.queryButton = true;
@@ -252,6 +260,14 @@ export default {
     goView(data) {
       this.$toast.showSmallModal('查看留言', ViewMessageInfo, {viewData: data || {}}, data => {
         // console.log(data)
+      })
+    } ,
+    //回复留言
+    goReply(data) {
+      this.$toast.showBigModal('回复留言', ReplyMessageInfo, {updateData: data}, data => {
+        if (data) {
+          this.getDataList()
+        }
       })
     }
   }

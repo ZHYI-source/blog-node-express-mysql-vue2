@@ -21,7 +21,7 @@ exports.create = (req, res) => {
     };
 
     Socials.findAll({where:{'icon':pm.icon}}).then(singleSocials=>{
-        if (singleSocials&&singleSocials[0].id)  return  res.sendResultAto(null,605,'不能配置多条社交信息')
+        if (singleSocials.length&&singleSocials[0].id)  return  res.sendResultAto(null,605,'不能配置多条社交信息')
         DAO.create(Socials, socials, data => {
             logger.debug(`${req.method} ${req.baseUrl + req.path} *** 参数：${JSON.stringify(pm)}; 响应：${JSON.stringify(data)}`);
             res.sendResult(data)

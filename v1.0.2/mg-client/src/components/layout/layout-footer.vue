@@ -43,7 +43,7 @@
       . All rights reserved. | <a target="_blank" class="out-link" href="https://beian.miit.gov.cn/#/Integrated/index">黔ICP备2022001745号-1</a>
     </div>
     <div class="copyright" style="margin-top: 10px">
-      <iframe name="weather_inc" src="http://i.tianqi.com/?c=code&id=1" width="220" height="25" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+      <iframe name="weather_inc" src="http://i.tianqi.com/?c=code&id=1" width="240" height="25" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
     </div>
   </div>
 </template>

@@ -40,10 +40,14 @@ export default {
   props: {
     comment: {
       type: Object
-    }
+    },
+    articleTitle: {
+      type: String
+    },
   },
   created() {
     this.form = this.comment || {}
+    console.log(this.form)
   },
   data() {
     return {
@@ -71,9 +75,10 @@ export default {
     submitReply(v) {
       let p = {
         article_id: this.form.article_id,//文章id
+        article_title: this.articleTitle,//文章标题
         pid: this.form.id,//父级id
         from_userId: '1',//用户ID
-        from_username: '周杰伦',//用户名称
+        from_username: '彭于晏',//用户名称
         from_user_logo: 'https://ci.xiaohongshu.com/9c287080-630d-33ad-a988-76a8cf21e152?imageView2/2/w/540/format/jpg',//用户头像
         content: v || '',//评论内容
         to_userId: this.form.from_userId,//回复对象ID

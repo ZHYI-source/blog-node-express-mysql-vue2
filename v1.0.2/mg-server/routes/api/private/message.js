@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Friends = require("../../../controllers/message.controller");
+const Message = require("../../../controllers/message.controller");
 
 /**
  * 创建留言信息
@@ -13,7 +13,7 @@ const Friends = require("../../../controllers/message.controller");
  * @returns {Error}  default - Unexpected error
  */
 
-router.post("/create", Friends.create);
+router.post("/create", Message.create);
 
 /**
  * 删除留言信息
@@ -25,7 +25,7 @@ router.post("/create", Friends.create);
  * @returns {object} 605 - 请求失败
  * @returns {Error}  default - Unexpected error
  */
-router.post("/delete", Friends.delete);
+router.post("/delete", Message.delete);
 /**
  * 查询留言信息列表
  * @route POST /api/private/message/list
@@ -35,7 +35,7 @@ router.post("/delete", Friends.delete);
  * @returns {object} 605 - 请求失败
  * @returns {Error}  default - Unexpected error
  */
-router.post("/list", Friends.findAll);
+router.post("/list", Message.findAll);
 /**
  * 更新留言信息列表
  * @route POST /api/private/message/update
@@ -48,17 +48,19 @@ router.post("/list", Friends.findAll);
  * @returns {object} 605 - 请求失败
  * @returns {Error}  default - Unexpected error
  */
-router.post("/update", Friends.update);
+router.post("/update", Message.update);
 
 /**
- * 删除全部留言信息
- * @route POST /api/private/message/deleteAll
+ * 回复留言信息
+ * @route POST /api/private/message/replyMsg
  * @group 留言管理 - list of message
+ * @param {string} email.query.required - 请输入回复邮箱
+ * @param {string} content.query.required - 请输入留言描述
  * @returns {object} 200 - An array of message info
  * @returns {object} 605 - 请求失败
  * @returns {Error}  default - Unexpected error
  */
-router.post("/deleteAll", Friends.deleteAll);
+router.post("/replyMsg", Message.replyMsg);
 
 
 module.exports = router;

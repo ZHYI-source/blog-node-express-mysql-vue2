@@ -19,6 +19,7 @@
     "mount-routes": "^1.0.8",
     "multer": "^1.4.4",
     "mysql2": "^2.3.3",
+    "nodemailer": "^6.7.5",
     "npm": "^8.6.0",
     "sequelize": "^6.18.0",
     "svg-captcha": "^1.4.0"

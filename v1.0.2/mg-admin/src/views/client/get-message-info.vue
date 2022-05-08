@@ -6,6 +6,10 @@
           <el-form-item label="留言邮箱" prop="email">
             <el-input v-model="form.email" size="mini" class="input-one"  clearable placeholder="请输入留言邮箱"></el-input>
           </el-form-item>
+          <el-form-item label="回复状态" prop="status">
+            <el-switch v-model="form.status" disabled active-color="#13ce66">
+            </el-switch>
+          </el-form-item>
         </mk-get-row>
         <mk-get-row>
           <el-form-item label="留言内容" prop="content" >

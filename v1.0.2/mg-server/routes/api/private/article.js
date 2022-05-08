@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const Article = require("../../../controllers/article.controller");
+const indexCon = require("../../../controllers/home.controller");
+
+router.post("/queryNowMsgAndComments", indexCon.queryNowMsgAndComments);
 
 /**
  * 创建博文信息

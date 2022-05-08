@@ -45,7 +45,7 @@
                                 :dis-edit="!permBtn.updateButton"
                                 @edit="goEdit(scope.row)"
                                 @delete="goDelete(scope.row)">
-                  <el-button size="mini" v-if="scope.row.lever!==3" type="primary" @click="goEditSub(scope.row)">增加子菜单
+                  <el-button size="mini" v-if="scope.row.lever!==3 && permBtn.createButton" type="primary" @click="goEditSub(scope.row)">增加子菜单
                   </el-button>
                 </mk-tool-button>
               </template>

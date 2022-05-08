@@ -138,6 +138,7 @@ const frameIn = [
             'POST /api/private/message/list',
             'POST /api/private/message/delete',
             'POST /api/private/message/update',
+            'POST /api/private/message/replyMsg',
           ],
         },
         component: _import('client/dir-message-info')

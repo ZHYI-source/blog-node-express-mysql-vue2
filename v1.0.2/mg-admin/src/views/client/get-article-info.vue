@@ -23,7 +23,7 @@
           <el-form-item label="博文标题" prop="article_title">
             <el-input clearable v-model.trim="form.article_title" size="mini" style="width: 600px" type="textarea"
                       :rows="2"
-                      maxlength="200"
+                      maxlength="255"
                       show-word-limit
                       placeholder="请输入博文标题"
             />
@@ -33,11 +33,14 @@
           <el-form-item label="博文封面" prop="article_cover">
             <el-input clearable v-model.trim="form.article_cover" size="mini" style="width: 600px" type="textarea"
                       :rows="3"
-                      maxlength="255"
-                      show-word-limit
                       placeholder="请输入在线图片地址"
             />
             <mk-upload v-model="form.article_cover"/>
+            <div class="material-box">
+              <a href="https://wallhaven.cc/" title="图片素材库" target="_blank">wallhaven</a>
+              <a href="https://wallpaperhub.app/"  title="图片素材库" target="_blank">wallpaperhub</a>
+              <a href="https://www.pexels.com/zh-cn/" title="图片素材库" target="_blank">pexels</a>
+            </div>
           </el-form-item>
         </mk-get-row>
         <mk-get-row>
@@ -97,8 +100,6 @@
             />
           </el-form-item>
         </mk-get-row>
-
-
         <mk-get-button @save="save" @close="close(true)"/>
       </el-form>
     </section>
@@ -156,7 +157,9 @@ export default {
       isRelink: false,
       form: {
         isPublish: true,
-        activeName:'md'
+        isRecommend: true,
+        activeName:'md',
+        article_cover:'http://zhouyi.run:5222/api/public/admin/getFiles?id=e52cfbc48528687fd6100e33e40f49ae.jpg&&mimetype=image/jpeg'
       },
       isAdd: true,
       rules: {
@@ -188,11 +191,9 @@ export default {
         if (valid) {
           let _FUC = ''
           _FUC = this.isAdd ? dirArticleCreate : dirArticleUpdate
-          this.isAdd ?
-            this.form.article_summary = '' :
-            this.form.article_summary ?
-              this.form.article_summary :
-              this.form.article_summary = this.form.article_title
+          if (this.isAdd&&!this.form.article_summary){
+            this.form.article_summary = this.form.article_title
+          }
           this.form.editType = this.activeName
           _FUC(this.form).then(res => {
             that.$message.success('修改成功')
@@ -221,6 +222,17 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+.material-box {
+  a {
+    padding: 6px 15px;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    color: #a0a0a0;
+    &:hover {
+      color: #40e373;
+      transition: all .2s linear;
+    }
+  }
+}
 </style>

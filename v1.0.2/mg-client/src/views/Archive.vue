@@ -1,6 +1,6 @@
 <template>
   <div class="home" style=" padding-top: 80px;">
-    <hr style="margin-bottom: 0px">
+    <hr class="hr" style="margin-bottom: 0px">
     <div class="site-content animate">
 
       <div class="chart-box" style="width: 100%;overflow: auto">
@@ -14,7 +14,7 @@
       </div>
       <!--文章列表-->
       <main class="site-main grid-line" style="margin-top: -50px" :class="{'search':hideSlogan}" v-loading="loading">
-        <section-title style="margin-bottom: 40px" v-if="!hideSlogan">文章归档</section-title>
+        <section-title class="st" v-if="!hideSlogan">文章归档</section-title>
         <el-timeline >
           <template v-for="(item,index) in postList">
             <el-timeline-item
@@ -24,7 +24,7 @@
               <div style="padding-top: 15px;">
                 <post :showLine="false" class="post-i" :style="{'animation-delay':0.2+'s'}" :post="item"
                       :key="item.id"></post>
-                <hr style="margin: 0px;margin-top: -25px">
+                <hr class="post-hr">
               </div>
             </el-timeline-item>
           </template>
@@ -70,7 +70,7 @@ export default {
         limit: 20,//每页条数
         offset: 1,//当前页
         sort: {
-          prop: 'isTop',
+          prop: 'createdAt',
           order: 'desc',
         },
         // group: 'id',
@@ -119,6 +119,7 @@ export default {
         for (const data of datas) {
           this.postList.push(data)
         }
+
         this.loading = false
         this.query.offset = res.current + 1
         this.hasNextPage = this.postList.length < res.count
@@ -148,7 +149,9 @@ export default {
       padding: 20px;
     }
   }
-
+  .st {
+    margin-bottom: 40px
+  }
 
   .search-result {
     padding: 15px 20px;
@@ -184,7 +187,10 @@ export default {
     padding-top: 0;
   }
 }
-
+.post-hr {
+  margin: 0px;
+  margin-top: -25px
+}
 .more {
   margin: 50px 0;
 
@@ -208,12 +214,15 @@ export default {
 
 /******/
 @media (max-width: 800px) {
-  .top-feature, .chart-box,.month-box {
+  .top-feature, .chart-box,.month-box,.hr {
     display: none;
   }
 
   .site-main {
-    padding-top: 40px;
+    padding-top: 0px;
+    .st {
+      margin-bottom: 15px
+    }
   }
 
   .site-content {
@@ -227,7 +236,9 @@ export default {
     }
   }
 }
-
+.post-hr {
+  margin: 0px;
+}
 /******/
 .post-i {
   animation: one-in 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;

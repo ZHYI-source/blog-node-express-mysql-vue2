@@ -1,12 +1,12 @@
 <template>
-  <aplayer class="pla" :audio="audio" :showLrc="true" :shuffle="true"/>
+  <aplayer class="pla" :audio="audio" />
 </template>
 
 <script>
 import Vue from 'vue'
 import APlayer from '@moefe/vue-aplayer'
 import {dirMusicList} from "../api/website";
-
+//https://aplayer.netlify.app/docs/guide/options.html#lrctype
 Vue.use(APlayer, {
   defaultCover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy_130iiorSSjF1RWgNBX7qy3evKv2HKsH0g&usqp=CAU',
   productionTip: true,
@@ -15,7 +15,7 @@ export default {
   name: "mk-aplayer",
   data() {
     return {
-      audio: [
+      temp:[
         {
           name: "听妈妈的话",
           artist: "周杰伦",
@@ -32,7 +32,6 @@ export default {
           cover: '', // prettier-ignore
           lrc: ''
         },
-
         {
           name: "Wayward One",
           artist: "Jillian Rae",
@@ -42,6 +41,7 @@ export default {
           lrc: "",
         },
       ],
+      audio: [],
     };
   },
   created() {
@@ -65,7 +65,6 @@ export default {
 .pla {
   /*width: 100%;*/
   max-width: 700px;
-  /*min-width: 375px;*/
   margin: 10px auto;
   border-radius: 5px
 }

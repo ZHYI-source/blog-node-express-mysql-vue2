@@ -21,7 +21,7 @@
           <div class="entry-content " v-if="articleData.editType==='mce'" v-highlight
                v-html="articleData.article_content">
           </div>
-          <mk-md-editor class="md-edit" v-else mode="preview" v-model="articleData.article_content"/>
+          <mk-md-editor class="md-edit" v-else mode="preview"   v-model="articleData.article_content"/>
           <!-- 文章底部 -->
           <section-title>
             <footer class="post-footer">
@@ -72,11 +72,11 @@
               ></comment-message-editor>
             </div>
             <comment v-for="item in comments" style="font-size: 13px;line-height: 20px" :key="item.comment.id"
-                     :comment="item.comment" @reply="replyComment">
+                     :comment="item.comment" :articleTitle="article_title" @reply="replyComment">
               <template v-if="item.reply.length">
                 <comment v-for="reply in item.reply" @reply="replyComment" style="font-size: 13px;line-height: 20px"
                          :key="reply.comment.id"
-                         :comment="reply.comment"></comment>
+                         :comment="reply.comment" :articleTitle="article_title"></comment>
               </template>
             </comment>
           </div>
@@ -118,6 +118,7 @@ export default {
       comKey: 1,
       curLink: '',
       article_id: '',
+      article_title: '-',
       showDonate: false,
       commentsCount: 0,
       comments: [],
@@ -143,9 +144,10 @@ export default {
     toSubmitComment(val) {
       let p = {
         article_id: this.article_id,//文章id
+        article_title: this.article_title,//文章id
         pid: 0,//父级id
         from_userId: '1',//用户ID
-        from_username: '匿名',//用户名称
+        from_username: '吴彦祖',//用户名称
         from_user_logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXSYITOSgSQdTv0Z_Z0KkvwWsBMwadCA2PRA&usqp=CAU',//用户头像
         content: val,//评论内容
         to_userId: '',//回复对象ID
@@ -172,6 +174,7 @@ export default {
     getDataDetail(id) {
       getArticleDetail(id).then(article => {
         this.articleData = article || {}
+        this.article_title = article.article_title
         this.cateName = this.articleData.cate.name
       })
     },
@@ -468,5 +471,13 @@ article.hentry {
     font-size: 15px;
 
   }
+}
+
+/******/
+@media (max-width: 800px) {
+  .site-content .site-main {
+    padding: 30px 0 0 0;
+  }
+
 }
 </style>

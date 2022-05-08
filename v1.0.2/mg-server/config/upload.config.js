@@ -4,5 +4,5 @@
  *@Description:上传文件配置信息
  */
 module.exports = {
-    "baseURL":"http://localhost:5222",
+    "baseURL":"http://zhouyi.run:5222",
 }
