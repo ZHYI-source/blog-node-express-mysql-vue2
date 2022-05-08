@@ -20,11 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="284bcf13-e2b7-4ccf-943a-62f862740896" name="默认变更列表" comment="v1.0.2:增加首页最新评论和留言，邮件回复留言">
-      <change afterPath="$PROJECT_DIR$/doc/img/1.1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/img/1.2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/img/1.3.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/v1.0.2/mg-server/cheese.log" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-server/cheese.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,7 +63,7 @@
       <updated>1651833312024</updated>
       <workItem from="1651833313903" duration="261000" />
       <workItem from="1651845228704" duration="1656000" />
-      <workItem from="1651995197414" duration="1001000" />
+      <workItem from="1651995197414" duration="2550000" />
     </task>
     <task id="LOCAL-00001" summary="✨ v 1.0.2">
       <created>1651834197567</created>
@@ -132,7 +128,35 @@
       <option name="project" value="LOCAL" />
       <updated>1651995525741</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="v1.0.2:增加首页最新评论和留言，邮件回复留言">
+      <created>1651996212770</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1651996212770</updated>
+    </task>
+    <task id="LOCAL-00011" summary="v1.0.2:增加首页最新评论和留言，邮件回复留言">
+      <created>1651996349080</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1651996349080</updated>
+    </task>
+    <task id="LOCAL-00012" summary="v1.0.2:增加首页最新评论和留言，邮件回复留言">
+      <created>1651996496910</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1651996496910</updated>
+    </task>
+    <task id="LOCAL-00013" summary="v1.0.2:增加首页最新评论和留言，邮件回复留言">
+      <created>1651996597503</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1651996597503</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
