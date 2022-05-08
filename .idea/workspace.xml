@@ -63,7 +63,7 @@
       <updated>1651833312024</updated>
       <workItem from="1651833313903" duration="261000" />
       <workItem from="1651845228704" duration="1656000" />
-      <workItem from="1651995197414" duration="2550000" />
+      <workItem from="1651995197414" duration="3997000" />
     </task>
     <task id="LOCAL-00001" summary="✨ v 1.0.2">
       <created>1651834197567</created>
@@ -156,7 +156,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651996597503</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="v1.0.2:增加首页最新评论和留言，邮件回复留言">
+      <created>1651997971424</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1651997971424</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
