@@ -100,6 +100,8 @@
  <img src="doc/img/3.png" width = "300" height = "150" alt="图片名称" align=center />
  <img src="doc/img/4.png" width = "300" height = "150" alt="图片名称" align=center />
  <img src="doc/img/5.png" width = "300" height = "150" alt="图片名称" align=center />
- <img src="doc/img/6.png" width = "300" height = "150" alt="图片名称" align=center />
+ <img src="doc/img/1.1.png" width = "300" height = "150" alt="图片名称" align=center />
  <img src="doc/img/7.png" width = "300" height = "150" alt="图片名称" align=center />
  <img src="doc/img/8.png" width = "300" height = "150" alt="图片名称" align=center />
+ <img src="doc/img/1.2.png" width = "300" height = "150" alt="图片名称" align=center />
+ <img src="doc/img/1.3.png" width = "300" height = "150" alt="图片名称" align=center />

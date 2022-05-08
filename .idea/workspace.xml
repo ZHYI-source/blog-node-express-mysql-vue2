@@ -19,41 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="284bcf13-e2b7-4ccf-943a-62f862740896" name="默认变更列表" comment="1.0.2">
-      <change afterPath="$PROJECT_DIR$/v1.0.2/mg-server/controllers/home.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/v1.0.2/mg-server/utils/utils.nodemailer.js" afterDir="false" />
+    <list default="true" id="284bcf13-e2b7-4ccf-943a-62f862740896" name="默认变更列表" comment="v1.0.2:增加首页最新评论和留言，邮件回复留言">
+      <change afterPath="$PROJECT_DIR$/doc/img/1.1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/img/1.2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/img/1.3.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1.0.2/mg-admin/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-admin/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1.0.2/mg-admin/src/api/modules/sys.index.api.js" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-admin/src/api/modules/sys.index.api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1.0.2/mg-admin/src/api/modules/sys.message.api.js" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-admin/src/api/modules/sys.message.api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1.0.2/mg-admin/src/components/common/mk-upload.vue" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-admin/src/components/common/mk-upload.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1.0.2/mg-admin/src/libs/utils.request.js" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-admin/src/libs/utils.request.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1.0.2/mg-admin/src/router/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-admin/src/router/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1.0.2/mg-admin/src/views/client/dir-message-info.vue" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-admin/src/views/client/dir-message-info.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1.0.2/mg-admin/src/views/client/get-article-info.vue" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-admin/src/views/client/get-article-info.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1.0.2/mg-admin/src/views/client/get-message-info.vue" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-admin/src/views/client/get-message-info.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1.0.2/mg-admin/src/views/system/index/page.vue" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-admin/src/views/system/index/page.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1.0.2/mg-admin/src/views/system/menus/dir-menus-info.vue" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-admin/src/views/system/menus/dir-menus-info.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1.0.2/mg-client/src/components/comment.vue" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-client/src/components/comment.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1.0.2/mg-client/src/components/layout/layout-footer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-client/src/components/layout/layout-footer.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1.0.2/mg-client/src/components/mk-aplayer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-client/src/components/mk-aplayer.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1.0.2/mg-client/src/views/About.vue" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-client/src/views/About.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1.0.2/mg-client/src/views/AllArticle.vue" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-client/src/views/AllArticle.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1.0.2/mg-client/src/views/Archive.vue" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-client/src/views/Archive.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1.0.2/mg-client/src/views/Articles.vue" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-client/src/views/Articles.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1.0.2/mg-client/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-client/src/views/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1.0.2/mg-server/.env" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-server/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/v1.0.2/mg-server/cheese.log" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-server/cheese.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1.0.2/mg-server/config/upload.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-server/config/upload.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1.0.2/mg-server/controllers/message.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-server/controllers/message.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1.0.2/mg-server/controllers/socials.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-server/controllers/socials.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1.0.2/mg-server/controllers/sort.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-server/controllers/sort.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1.0.2/mg-server/models/message.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-server/models/message.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1.0.2/mg-server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-server/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1.0.2/mg-server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1.0.2/mg-server/routes/api/private/article.js" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-server/routes/api/private/article.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1.0.2/mg-server/routes/api/private/message.js" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-server/routes/api/private/message.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1.0.2/mg-server/sql/mg_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/v1.0.2/mg-server/sql/mg_db.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,11 +45,12 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/DOC" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/doc/img" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Tom\Desktop\all-blog-sys\doc\img" />
       <recent name="C:\Users\lk\Desktop\all-blog-sys\DOC" />
     </key>
   </component>
@@ -94,7 +67,7 @@
       <updated>1651833312024</updated>
       <workItem from="1651833313903" duration="261000" />
       <workItem from="1651845228704" duration="1656000" />
-      <workItem from="1651995197414" duration="236000" />
+      <workItem from="1651995197414" duration="1001000" />
     </task>
     <task id="LOCAL-00001" summary="✨ v 1.0.2">
       <created>1651834197567</created>
@@ -152,7 +125,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651850671289</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="v1.0.2:增加首页最新评论和留言，邮件回复留言">
+      <created>1651995525741</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1651995525741</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,12 +153,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="✨ v 1.0.2" />
     <MESSAGE value="1.0.2" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.0.2" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1651850676900">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1651850676900" />
+    <MESSAGE value="v1.0.2:增加首页最新评论和留言，邮件回复留言" />
+    <option name="LAST_COMMIT_MESSAGE" value="v1.0.2:增加首页最新评论和留言，邮件回复留言" />
   </component>
 </project>
