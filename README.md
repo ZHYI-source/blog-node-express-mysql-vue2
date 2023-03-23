@@ -14,9 +14,9 @@
     <a href="https://gitee.com/Z568_568/all-blog-sys" target="_blank"><strong>探索本项目的源码 »</strong></a>
     <br />
     <br />
-    <a href="http://www.zhouyi.run/#/" target="_blank"> 👀 前台预览</a>
+    <a href="http://blog.zhouyi.run/#/" target="_blank"> 👀 前台预览</a>
     ·
-    <a href="http://zhouyi.run:5221/#/index" target="_blank"> 👀 管理端预览</a>
+    <a href="http://admin.zhouyi.run:5221/#/index" target="_blank"> 👀 管理端预览</a>
 </p>
 
 </p>
