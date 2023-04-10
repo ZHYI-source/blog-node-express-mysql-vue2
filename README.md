@@ -47,7 +47,10 @@
 
 <!-- PROJECT LOGO -->
 
->[node后端api基础服务简易版](https://gitee.com/Z568_568/zy-express-sequelize-mysql)
+>[node+mysql后端api基础服务模板](https://gitee.com/Z568_568/zy-express-sequelize-mysql)
+
+>[node+mongodb开发REST API 的轻量级样板 ✨推荐](https://gitee.com/Z568_568/node.mongodb)
+
 ***
 
 #### 🥯v1.0.2 功能列表
